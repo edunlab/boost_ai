@@ -1,23 +1,20 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>[에듀니티랩] Antigravity 기반 AI 워크플로우 설계와 에이전트 구축</title>
-  <link rel="stylesheet" href="style.css">
+  <link href="style.css" rel="stylesheet" />
 </head>
 
 <body>
-
   <!-- Flash Screen layer for Timer Visual Alert -->
-  <div id="flash-screen" class="flash-screen"></div>
-
+  <div class="flash-screen" id="flash-screen"></div>
   <!-- Drawing Indicator Overlay -->
-  <div id="drawing-indicator" class="drawing-indicator">그리기 모드 활성화 중 (P로 해제)</div>
-
+  <div class="drawing-indicator" id="drawing-indicator">그리기 모드 활성화 중 (P로 해제)</div>
   <div class="app-container">
-
     <!-- Top Header -->
     <header>
       <div class="logo-container">
@@ -25,36 +22,38 @@
         <div class="logo-text">Edunity<span>Lab</span> Presentation</div>
       </div>
       <div class="nav-controls">
-        <button id="print-pdf" class="view-toggle-btn print-pdf-btn" title="PDF 저장/인쇄">
-          <svg style="width:16px;height:16px;fill:currentColor" viewBox="0 0 24 24">
-            <path d="M19,8H5C3.34,8 2,9.34 2,11V17H6V21H18V17H22V11C22,9.34 20.66,8 19,8M16,19H8V15H16V19M19,12C18.45,12 18,11.55 18,11C18,10.45 18.45,10 19,10C19.55,10 20,10.45 20,11C20,11.55 19.55,12 19,12M18,3H6V7H18V3Z" />
+        <button class="view-toggle-btn print-pdf-btn" id="print-pdf" title="PDF 저장/인쇄">
+          <svg style="width:16px;height:16px;fill:currentColor" viewbox="0 0 24 24">
+            <path
+              d="M19,8H5C3.34,8 2,9.34 2,11V17H6V21H18V17H22V11C22,9.34 20.66,8 19,8M16,19H8V15H16V19M19,12C18.45,12 18,11.55 18,11C18,10.45 18.45,10 19,10C19.55,10 20,10.45 20,11C20,11.55 19.55,12 19,12M18,3H6V7H18V3Z">
+            </path>
           </svg>
           PDF 저장/인쇄
         </button>
-        <button id="toggle-view" class="view-toggle-btn">
-          <svg style="width:16px;height:16px;fill:currentColor" viewBox="0 0 24 24">
-            <path d="M4,4H20V12H4V4M4,14H11V20H4V14M13,14H20V20H13V14Z" />
+        <button class="view-toggle-btn" id="toggle-view">
+          <svg style="width:16px;height:16px;fill:currentColor" viewbox="0 0 24 24">
+            <path d="M4,4H20V12H4V4M4,14H11V20H4V14M13,14H20V20H13V14Z"></path>
           </svg>
           대시보드 <span class="badge">Esc</span>
         </button>
-        <button id="toggle-tools" class="presenter-tools-toggle" title="발표자 도구 열기 (T)">
-          <svg style="width:20px;height:20px;fill:currentColor" viewBox="0 0 24 24">
+        <button class="presenter-tools-toggle" id="toggle-tools" title="발표자 도구 열기 (T)">
+          <svg style="width:20px;height:20px;fill:currentColor" viewbox="0 0 24 24">
             <path
-              d="M12,15.5A2.5,2.5 0 0,1 9.5,13A2.5,2.5 0 0,1 12,10.5A2.5,2.5 0 0,1 14.5,13A2.5,2.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.47,5.34 14.86,5.08L14.48,2.42C14.44,2.18 14.24,2 14,2H10C9.76,2 9.56,2.18 9.52,2.42L9.14,5.08C8.53,5.34 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.95C7.96,18.34 8.53,18.66 9.14,18.92L9.14,21.58C9.18,21.82 9.38,22 9.62,22H13.62C13.86,22 14.06,21.82 14.1,21.58L14.48,18.92C15.09,18.66 15.66,18.34 16.18,17.95L18.67,18.95C18.89,19.03 19.16,18.95 19.28,18.73L21.28,15.27C21.4,15.05 21.35,14.78 21.16,14.63L19.43,12.97Z" />
+              d="M12,15.5A2.5,2.5 0 0,1 9.5,13A2.5,2.5 0 0,1 12,10.5A2.5,2.5 0 0,1 14.5,13A2.5,2.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.47,5.34 14.86,5.08L14.48,2.42C14.44,2.18 14.24,2 14,2H10C9.76,2 9.56,2.18 9.52,2.42L9.14,5.08C8.53,5.34 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.95C7.96,18.34 8.53,18.66 9.14,18.92L9.14,21.58C9.18,21.82 9.38,22 9.62,22H13.62C13.86,22 14.06,21.82 14.1,21.58L14.48,18.92C15.09,18.66 15.66,18.34 16.18,17.95L18.67,18.95C18.89,19.03 19.16,18.95 19.28,18.73L21.28,15.27C21.4,15.05 21.35,14.78 21.16,14.63L19.43,12.97Z">
+            </path>
           </svg>
         </button>
       </div>
     </header>
-
     <!-- Side Presenter Drawer -->
-    <div id="tools-drawer" class="presenter-tools-drawer">
+    <div class="presenter-tools-drawer" id="tools-drawer">
       <div>
         <div class="drawer-section-title">연습용 타이머</div>
         <div class="timer-container">
           <div class="timer-display">10:00</div>
           <div class="timer-controls-row">
-            <button id="timer-start" class="timer-btn active-play">타이머 시작</button>
-            <button id="timer-reset" class="timer-btn">리셋</button>
+            <button class="timer-btn active-play" id="timer-start">타이머 시작</button>
+            <button class="timer-btn" id="timer-reset">리셋</button>
           </div>
           <div class="timer-presets">
             <button class="preset-btn" data-mins="3">3분</button>
@@ -64,36 +63,36 @@
           </div>
         </div>
       </div>
-
       <div>
         <div class="drawer-section-title">그리기 도구</div>
-        <button id="toggle-drawing" class="tool-action-btn">
-          <svg viewBox="0 0 24 24">
+        <button class="tool-action-btn" id="toggle-drawing">
+          <svg viewbox="0 0 24 24">
             <path
-              d="M14.06,9L15,9.94L5.92,19H5V18.08L14.06,9M17.66,3C17.41,3 17.15,3.1 16.96,3.29L15.13,5.12L18.88,8.87L20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18.17,3.09 17.92,3 17.66,3M14.06,6.19L3,17.25V21H6.75L17.81,9.94L14.06,6.19Z" />
+              d="M14.06,9L15,9.94L5.92,19H5V18.08L14.06,9M17.66,3C17.41,3 17.15,3.1 16.96,3.29L15.13,5.12L18.88,8.87L20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18.17,3.09 17.92,3 17.66,3M14.06,6.19L3,17.25V21H6.75L17.81,9.94L14.06,6.19Z">
+            </path>
           </svg>
           <span class="btn-text">포인터 펜 켜기 (P)</span>
         </button>
-        <button id="clear-drawing" class="tool-action-btn">
-          <svg viewBox="0 0 24 24">
+        <button class="tool-action-btn" id="clear-drawing">
+          <svg viewbox="0 0 24 24">
             <path
-              d="M19.36,2.72L20.78,4.14L15.06,9.86L16.48,11.28L11.12,16.64L9.7,15.22L5.86,19.06L4.44,17.64L8.28,13.8L6.86,12.38L12.22,7.02L13.64,8.44L19.36,2.72M3,21H21V23H3V21Z" />
+              d="M19.36,2.72L20.78,4.14L15.06,9.86L16.48,11.28L11.12,16.64L9.7,15.22L5.86,19.06L4.44,17.64L8.28,13.8L6.86,12.38L12.22,7.02L13.64,8.44L19.36,2.72M3,21H21V23H3V21Z">
+            </path>
           </svg>
           <span>판서 전체 지우기</span>
         </button>
       </div>
-
       <div>
         <div class="drawer-section-title">화면 모드</div>
-        <button id="toggle-theme" class="tool-action-btn">
-          <svg viewBox="0 0 24 24">
+        <button class="tool-action-btn" id="toggle-theme">
+          <svg viewbox="0 0 24 24">
             <path
-              d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z" />
+              d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z">
+            </path>
           </svg>
           <span class="btn-text">발표용 라이트 모드</span>
         </button>
       </div>
-
       <div>
         <div class="drawer-section-title">단축키 정보</div>
         <div class="cheat-sheet-grid">
@@ -105,16 +104,12 @@
         </div>
       </div>
     </div>
-
     <!-- Main Viewport Area -->
     <main class="main-viewport">
-
       <!-- Slide Deck Presentation Mode -->
       <div class="slides-wrapper">
-
         <!-- Virtual Drawing Pen Layer -->
-        <canvas id="drawing-canvas" class="drawing-canvas-layer"></canvas>
-
+        <canvas class="drawing-canvas-layer" id="drawing-canvas"></canvas>
         <!-- Slide 1: [간지] SESSION 01 -->
         <section class="slide-card divider-slide active" id="slide-1">
           <div class="slide-header" style="display: none;">
@@ -140,13 +135,12 @@
             구조가 어떻게 돌아가는지 핵심 작동 원리를 파악해 보겠습니다.</div>
           <div class="visual-guide-notes" style="display:none;">신비로운 블루/그린 그라데이션 배경. 중앙에 대형 라운드 아웃라인 타이포그래피.</div>
         </section>
-
         <!-- Slide 2: 과정 오프닝 & 1차시 안내 -->
         <section class="slide-card" id="slide-2">
           <div class="slide-header">
             <div>
               <div class="slide-category">1차시. AI · LLM · Agent 개념 이해</div>
-              <div class="slide-title">과정 오프닝 & 1차시 안내</div>
+              <div class="slide-title">과정 오프닝 &amp; 1차시 안내</div>
             </div>
             <div class="slide-meta">
               <span class="day-badge">1일차</span>
@@ -157,10 +151,13 @@
             <ul class="bullet-list">
               <li><span class="highlight">과정명:</span> [중급 공통] Antigravity 기반 AI 워크플로우 설계와 에이전트 구축</li>
               <li><span class="highlight">1차시 주제:</span> AI · LLM · Agent 개념 이해 (AI 에이전트로의 첫걸음)</li>
-              <li><span class="highlight">오늘 배울 내용:</span> </li>
-              <li>ChatGPT 질문과 에이전트 설계의 근본적 차이</li>
-              <li>AI, LLM, Agent의 관계도 정의</li>
-              <li>Agent의 4대 구성요소 (Input, Reasoning, Action, Output)</li>
+              <li><span class="highlight">오늘 배울 내용:</span>
+                <ul>
+                  <li>ChatGPT 질문과 에이전트 설계의 근본적 차이</li>
+                  <li>AI, LLM, Agent의 관계도 정의</li>
+                  <li>Agent의 4대 구성요소 (Input, Reasoning, Action, Output)</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">여러분 안녕하세요! 오늘부터 시작되는 'Antigravity 기반 AI 워크플로우 설계와 에이전트
               구축' 과정의 첫 번째 시간입니다. 1차시에서는 우리가 매일 사용하는 생성형 AI와 앞으로 직접 설계하게 될 'AI 에이전트'가 어떻게 다른지 개념적으로 완벽히 정리하고, 에이전트의 내부
@@ -173,7 +170,6 @@
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 3: 도입 질문: 질문과 설계의 차이 -->
         <section class="slide-card" id="slide-3">
           <div class="slide-header">
@@ -187,14 +183,26 @@
             </div>
           </div>
           <div class="slide-body">
-            <ul class="bullet-list">
-              <li><span class="highlight">도입 질문:</span> "ChatGPT에게 매번 좋은 답변을 얻기 위해 프롬프트를 고쳐 쓰는 것과, 하나의 에이전트를 설계하는 것은 무엇이
-                다를까요?"</li>
-              <li><span class="highlight">비교 분석:</span> </li>
-              <li><span class="highlight">ChatGPT 질문:</span> 일회성 질의, 답변을 얻기 위한 즉흥적 시도, 개인의 프롬프트 작성 능력에 의존.</li>
-              <li><span class="highlight">Agent 설계:</span> 반복 가능한 시스템 구축, 입력을 해석해 결과를 내는 자동화 파이프라인 형성, 조직의 표준 워크플로우 적용.
-              </li>
-            </ul>
+            <div class="split-layout">
+              <div>
+                <ul class="bullet-list">
+                  <li><span class="highlight">도입 질문:</span> "ChatGPT에게 매번 좋은 답변을 얻기 위해 프롬프트를 고쳐 쓰는 것과, 하나의 에이전트를 설계하는 것은
+                    무엇이 다를까요?"</li>
+                  <li><span class="highlight">비교 분석:</span>
+                    <ul>
+                      <li><span class="highlight">ChatGPT 질문:</span> 일회성 질의, 답변을 얻기 위한 즉흥적 시도, 개인의 프롬프트 작성 능력에 의존.</li>
+                      <li><span class="highlight">Agent 설계:</span> 반복 가능한 시스템 구축, 입력을 해석해 결과를 내는 자동화 파이프라인 형성, 조직의 표준
+                        워크플로우 적용.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="image-container"
+                style="display: flex; justify-content: center; align-items: center; background: rgba(255,255,255,0.02); border: 1px solid var(--panel-border); border-radius: 12px; padding: 10px;">
+                <img alt="질문과 설계의 차이" src="images/slide3_illustration.png"
+                  style="max-width: 100%; max-height: 320px; border-radius: 8px; object-fit: contain;" />
+              </div>
+            </div>
             <div class="presenter-notes" style="display:none;">우리는 프롬프트 엔지니어링이라고 하면 매번 다르게 입력해서 좋은 대답을 구하는 '개인 비서와의 대화'를
               생각합니다. 하지만 에이전트 설계는 다릅니다. 사용자가 어떤 질문을 던지더라도 정해진 프로세스에 맞춰 판단하고, 도구를 실행해 표준화된 업무 결과물을 뽑아내는 '시스템'을 짓는 일입니다.
             </div>
@@ -206,7 +214,6 @@
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 4: 도입 질문: AI가 일을 처리하려면? -->
         <section class="slide-card" id="slide-4">
           <div class="slide-header">
@@ -227,8 +234,8 @@
                 <div class="flow-desc">현재 입력된 데이터가 무엇인지 파악하고 분류하는 문제 정의 및 의사결정 단계</div>
               </div>
               <div class="flow-arrow">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z" />
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
                 </svg>
               </div>
               <div class="flow-step">
@@ -237,8 +244,8 @@
                 <div class="flow-desc">메일 발송, DB 저장, API 통신 등 외부 시스템과의 연결 및 동작 수행 단계</div>
               </div>
               <div class="flow-arrow">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z" />
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
                 </svg>
               </div>
               <div class="flow-step">
@@ -247,14 +254,14 @@
                 <div class="flow-desc">지정된 템플릿이나 JSON 포맷으로 최종 결과를 전달하여 후속 자동화 연계 보장</div>
               </div>
             </div>
-            <div class="visual-guide-notes" style="display:none;">'판단 -> 도구 사용 -> 출력'의 유기적인 순서도를 가로형 인포그래픽으로 구현.</div>
+            <div class="visual-guide-notes" style="display:none;">'판단 -&gt; 도구 사용 -&gt; 출력'의 유기적인 순서도를 가로형 인포그래픽으로 구현.
+            </div>
           </div>
           <div class="slide-footer">
-            <div>가이드: '판단 -> 도구 사용 -> 출력'의 유기적인 순서도를 가로형 인포그래픽으로 구현.</div>
+            <div>가이드: '판단 -&gt; 도구 사용 -&gt; 출력'의 유기적인 순서도를 가로형 인포그래픽으로 구현.</div>
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 5: 핵심 설명: AI · LLM · Agent의 관계 -->
         <section class="slide-card" id="slide-5">
           <div class="slide-header">
@@ -282,15 +289,15 @@
                 </div>
               </div>
             </div>
-            <div class="visual-guide-notes" style="display:none;">세 개의 원이 서로를 포함하고 있는 벤다이어그램(AI > LLM > Agent)을 입체적인
+            <div class="visual-guide-notes" style="display:none;">세 개의 원이 서로를 포함하고 있는 벤다이어그램(AI &gt; LLM &gt; Agent)을
+              입체적인
               레이어로 표현.</div>
           </div>
           <div class="slide-footer">
-            <div>가이드: 세 개의 원이 서로를 포함하고 있는 벤다이어그램(AI > LLM > Agent)을 입체적인 레이어로 표현.</div>
+            <div>가이드: 세 개의 원이 서로를 포함하고 있는 벤다이어그램(AI &gt; LLM &gt; Agent)을 입체적인 레이어로 표현.</div>
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 6: 핵심 설명: 생성형 AI vs 에이전트의 차이점 -->
         <section class="slide-card" id="slide-6">
           <div class="slide-header">
@@ -345,7 +352,6 @@
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 7: 핵심 설명: Agent 4대 구성요소 (IRAO) -->
         <section class="slide-card" id="slide-7">
           <div class="slide-header">
@@ -366,8 +372,8 @@
                 <div class="flow-desc">사용자 발화, 이메일 본문, API 호출 등으로 전달받은 원시 데이터</div>
               </div>
               <div class="flow-arrow">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z" />
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
                 </svg>
               </div>
               <div class="flow-step">
@@ -376,8 +382,8 @@
                 <div class="flow-desc">페르소나 규칙에 따라 입력 데이터 분석 및 실행 계획 수립</div>
               </div>
               <div class="flow-arrow">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z" />
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
                 </svg>
               </div>
               <div class="flow-step">
@@ -386,8 +392,8 @@
                 <div class="flow-desc">검색, API 요청, 코드 실행 등 물리적 태스크 수행</div>
               </div>
               <div class="flow-arrow">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z" />
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
                 </svg>
               </div>
               <div class="flow-step">
@@ -403,7 +409,6 @@
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 8: 실습 안내: 질문 방식별 응답 비교 실습 -->
         <section class="slide-card" id="slide-8">
           <div class="slide-header">
@@ -432,7 +437,6 @@
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 9: 실습 진행: 3개 유형 프롬프트 대조 -->
         <section class="slide-card" id="slide-9">
           <div class="slide-header">
@@ -477,7 +481,6 @@
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 10: 공유 및 토론: 무엇이 결과의 차이를 만드는가? -->
         <section class="slide-card" id="slide-10">
           <div class="slide-header">
@@ -492,10 +495,13 @@
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">공유 질문:</span> </li>
-              <li>1. 어떤 방식의 질문 결과가 실제 현업 메일로 즉시 사용하기에 가장 수월했습니까?</li>
-              <li>2. 1단계와 3단계 결과물의 퀄리티 차이를 만든 핵심적인 요인은 무엇입니까?</li>
-              <li>3. 에이전트 설계라는 관점에서 볼 때, 'Action(실행)' 단계에 활용될 수 있는 부분은 무엇입니까?</li>
+              <li><span class="highlight">공유 질문:</span>
+                <ul>
+                  <li>1. 어떤 방식의 질문 결과가 실제 현업 메일로 즉시 사용하기에 가장 수월했습니까?</li>
+                  <li>2. 1단계와 3단계 결과물의 퀄리티 차이를 만든 핵심적인 요인은 무엇입니까?</li>
+                  <li>3. 에이전트 설계라는 관점에서 볼 때, 'Action(실행)' 단계에 활용될 수 있는 부분은 무엇입니까?</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">실습 결과를 서로 나누어 보겠습니다. 단순히 친절하게 답하라는 지시보다, 메일의 본질적인 구조(사과,
               원인 분석, 대안 제시)를 분할하여 지시했을 때 훨씬 정돈된 대답이 나옵니다. 에이전트 설계의 핵심은 바로 이 '단계적 지시'와 '구조 설계'에 있습니다.</div>
@@ -506,7 +512,6 @@
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 11: 정리: 1차시 핵심 요약 -->
         <section class="slide-card" id="slide-11">
           <div class="slide-header">
@@ -521,10 +526,15 @@
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">1차시 요약:</span> </li>
-              <li><span class="highlight">질문보다 시스템:</span> 에이전트는 매번 질문을 잘 다듬는 차원을 넘어, 업무 프로세스를 파이프라인화하는 시스템 설계다.</li>
-              <li><span class="highlight">구조화된 생각:</span> 입력을 정확히 규정하고, 판단 로직을 세우고, 실행 도구를 연결하고, 정돈된 출력을 내는 과정이다.</li>
-              <li><span class="highlight">다음 차시 예고:</span> 2차시. 프롬프트 구조화 & Persona 설계 (일관성 있는 페르소나와 구조화 기법)</li>
+              <li><span class="highlight">1차시 요약:</span>
+                <ul>
+                  <li><span class="highlight">질문보다 시스템:</span> 에이전트는 매번 질문을 잘 다듬는 차원을 넘어, 업무 프로세스를 파이프라인화하는 시스템 설계다.
+                  </li>
+                  <li><span class="highlight">구조화된 생각:</span> 입력을 정확히 규정하고, 판단 로직을 세우고, 실행 도구를 연결하고, 정돈된 출력을 내는 과정이다.
+                  </li>
+                  <li><span class="highlight">다음 차시 예고:</span> 2차시. 프롬프트 구조화 &amp; Persona 설계 (일관성 있는 페르소나와 구조화 기법)</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">1차시를 정리하겠습니다. 에이전트 설계는 단순 질문 작성이 아닌 구조화된 업무의 설계도입니다. 다음
               2차시에는 에이전트의 '두뇌' 부분에 확실한 일관성을 불어넣어 줄 Persona와 이를 지탱하는 프롬프트 구조화 기법을 알아보겠습니다. 수고하셨습니다.</div>
@@ -538,39 +548,37 @@
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 12: [간지] SESSION 02 -->
         <section class="slide-card divider-slide" id="slide-12">
           <div class="slide-header" style="display: none;">
-            <div class="slide-category">1일차 | 2차시. 프롬프트 구조화 & Persona 설계</div>
-            <div class="slide-title">[세션 오프닝] 2차시. 프롬프트 구조화 & Persona 설계</div>
+            <div class="slide-category">1일차 | 2차시. 프롬프트 구조화 &amp; Persona 설계</div>
+            <div class="slide-title">[세션 오프닝] 2차시. 프롬프트 구조화 &amp; Persona 설계</div>
           </div>
           <div class="divider-content">
             <div class="divider-day">DAY 1</div>
             <div class="divider-tag">SESSION 02</div>
-            <h1 class="divider-title">프롬프트 구조화 & Persona 설계</h1>
+            <h1 class="divider-title">프롬프트 구조화 &amp; Persona 설계</h1>
             <p class="divider-subtitle">일관성 있는 지능과 구조적 답변을 유도하는 최적의 프롬프트 작성 체계</p>
             <div class="divider-topics">
               <div class="topic-badge"><span>01</span> Persona 설정 기법</div>
               <div class="topic-badge"><span>02</span> System Prompt 설계</div>
-              <div class="topic-badge"><span>03</span> Markdown 구조화 & 제약 제어</div>
+              <div class="topic-badge"><span>03</span> Markdown 구조화 &amp; 제약 제어</div>
             </div>
           </div>
           <div class="slide-body" style="display: none;">
-            <p>2차시. 프롬프트 구조화 & Persona 설계 세션 시작</p>
+            <p>2차시. 프롬프트 구조화 &amp; Persona 설계 세션 시작</p>
             <p>일관성 있는 지능과 구조적 답변을 유도하는 최적의 프롬프트 작성 체계</p>
           </div>
           <div class="presenter-notes" style="display:none;">2차시에서는 에이전트의 '두뇌' 부분에 확실한 일관성을 불어넣어 줄 Persona와 이를 지탱하는 프롬프트
             구조화 기법을 실습합니다.</div>
           <div class="visual-guide-notes" style="display:none;">신비로운 퍼플/바이올렛 그라데이션 배경. 중앙에 대형 라운드 아웃라인 타이포그래피.</div>
         </section>
-
         <!-- Slide 13: 2차시 도입 & 아젠다 -->
         <section class="slide-card" id="slide-13">
           <div class="slide-header">
             <div>
-              <div class="slide-category">2차시. 프롬프트 구조화 & Persona 설계</div>
-              <div class="slide-title">2차시 도입 & 아젠다</div>
+              <div class="slide-category">2차시. 프롬프트 구조화 &amp; Persona 설계</div>
+              <div class="slide-title">2차시 도입 &amp; 아젠다</div>
             </div>
             <div class="slide-meta">
               <span class="day-badge">1일차</span>
@@ -579,11 +587,14 @@
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">2차시 주제:</span> 프롬프트 구조화 & Persona 설계</li>
-              <li><span class="highlight">오늘 배울 내용:</span> </li>
-              <li>역할(Persona)이 프롬프트 아웃풋의 품질과 톤앤매너에 미치는 영향</li>
-              <li>글로벌 표준 프롬프트 프레임워크: RICT 구조</li>
-              <li>좋은 페르소나 설계를 위한 3가지 황금 규칙</li>
+              <li><span class="highlight">2차시 주제:</span> 프롬프트 구조화 &amp; Persona 설계</li>
+              <li><span class="highlight">오늘 배울 내용:</span>
+                <ul>
+                  <li>역할(Persona)이 프롬프트 아웃풋의 품질과 톤앤매너에 미치는 영향</li>
+                  <li>글로벌 표준 프롬프트 프레임워크: RICT 구조</li>
+                  <li>좋은 페르소나 설계를 위한 3가지 황금 규칙</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">2차시를 시작하겠습니다. 앞서 우리는 에이전트의 뇌를 구성하는 첫 단추가 프롬프트라는 것을 알았습니다.
               이번 시간에는 LLM에게 단순한 대답을 유도하는 것이 아니라, 특정 분야의 '전문가'로서 한결같고 안정적인 판단 기준을 지니도록 만드는 페르소나 설계와 구조화 기법을 다뤄보겠습니다.
@@ -596,12 +607,11 @@
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 14: 도입 질문: 역할 부여의 효과 -->
         <section class="slide-card" id="slide-14">
           <div class="slide-header">
             <div>
-              <div class="slide-category">2차시. 프롬프트 구조화 & Persona 설계</div>
+              <div class="slide-category">2차시. 프롬프트 구조화 &amp; Persona 설계</div>
               <div class="slide-title">도입 질문: 역할 부여의 효과</div>
             </div>
             <div class="slide-meta">
@@ -613,9 +623,13 @@
             <ul class="bullet-list">
               <li><span class="highlight">도입 질문:</span> "동일한 내용의 질문을 던져도 '누가 답변하느냐(Persona)'에 따라 LLM의 분석 결과와 문장이 완전히
                 달라지는 이유는 무엇일까요?"</li>
-              <li><span class="highlight">핵심 원리:</span> </li>
-              <li><span class="highlight">가중치 활성화:</span> LLM 내부의 방대한 신경망 중 해당 역할군과 관련된 단어뭉치와 지식 가중치를 집중적으로 활성화함.</li>
-              <li><span class="highlight">판단 기준 변경:</span> 단순 답변이 아닌 해당 직군의 전문성, 말투, 금기어 등을 고려함.</li>
+              <li><span class="highlight">핵심 원리:</span>
+                <ul>
+                  <li><span class="highlight">가중치 활성화:</span> LLM 내부의 방대한 신경망 중 해당 역할군과 관련된 단어뭉치와 지식 가중치를 집중적으로 활성화함.
+                  </li>
+                  <li><span class="highlight">판단 기준 변경:</span> 단순 답변이 아닌 해당 직군의 전문성, 말투, 금기어 등을 고려함.</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">LLM에 '너는 15년 차 시니어 마케터야'라고 역할을 지정하면, 언어 모델은 웹에 존재하는 수많은
               마케팅 서적과 보고서 데이터 근처의 단어들을 중심으로 문장을 생성하기 시작합니다. 즉, 단순히 말투만 바뀌는 것이 아니라 문제를 바라보는 깊이와 기준 자체가 달라지는 것입니다.</div>
@@ -627,12 +641,11 @@
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 15: 핵심 설명: 프롬프트의 4대 뼈대 (R-I-C-O) -->
         <section class="slide-card" id="slide-15">
           <div class="slide-header">
             <div>
-              <div class="slide-category">2차시. 프롬프트 구조화 & Persona 설계</div>
+              <div class="slide-category">2차시. 프롬프트 구조화 &amp; Persona 설계</div>
               <div class="slide-title">핵심 설명: 프롬프트의 4대 뼈대 (R-I-C-O)</div>
             </div>
             <div class="slide-meta">
@@ -679,12 +692,11 @@
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 16: 핵심 설명: 좋은 Persona의 3가지 조건 -->
         <section class="slide-card" id="slide-16">
           <div class="slide-header">
             <div>
-              <div class="slide-category">2차시. 프롬프트 구조화 & Persona 설계</div>
+              <div class="slide-category">2차시. 프롬프트 구조화 &amp; Persona 설계</div>
               <div class="slide-title">핵심 설명: 좋은 Persona의 3가지 조건</div>
             </div>
             <div class="slide-meta">
@@ -694,11 +706,16 @@
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">성공적인 페르소나 설계법:</span> </li>
-              <li><span class="highlight">1. 역할의 구체화:</span> "마케터야" (X) -> "신규 앱 다운로드 캠페인을 진행하는 퍼포먼스 마케팅 팀장이야" (O)</li>
-              <li><span class="highlight">2. 판단 및 의사결정 기준 포함:</span> "리뷰에 답해줘" (X) -> "환불 요구 리뷰에는 당사 책임 여부를 3단계 기준으로 엄격히
-                판단해 답해줘" (O)</li>
-              <li><span class="highlight">3. 명확한 대상(Audience) 설정:</span> "일반 고객을 대상으로 쉬운 용어를 쓰되 정중함을 유지한다."</li>
+              <li><span class="highlight">성공적인 페르소나 설계법:</span>
+                <ul>
+                  <li><span class="highlight">1. 역할의 구체화:</span> "마케터야" (X) -&gt; "신규 앱 다운로드 캠페인을 진행하는 퍼포먼스 마케팅 팀장이야"
+                    (O)</li>
+                  <li><span class="highlight">2. 판단 및 의사결정 기준 포함:</span> "리뷰에 답해줘" (X) -&gt; "환불 요구 리뷰에는 당사 책임 여부를 3단계
+                    기준으로 엄격히
+                    판단해 답해줘" (O)</li>
+                  <li><span class="highlight">3. 명확한 대상(Audience) 설정:</span> "일반 고객을 대상으로 쉬운 용어를 쓰되 정중함을 유지한다."</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">좋은 페르소나를 만들기 위해서는 단순 직업 이름만 던져서는 부족합니다. 그 사람의 연차, 담당
               프로젝트의 성격, 일할 때 적용할 구체적인 내부 정책과 기준, 그리고 이 글을 읽을 최종 타겟 독자층까지 함께 묘사해 주어야 기대에 부합하는 정밀한 결과가 나옵니다.</div>
@@ -710,12 +727,11 @@
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 17: 사례 분석: 부실한 페르소나 vs 잘 짜인 페르소나 -->
         <section class="slide-card" id="slide-17">
           <div class="slide-header">
             <div>
-              <div class="slide-category">2차시. 프롬프트 구조화 & Persona 설계</div>
+              <div class="slide-category">2차시. 프롬프트 구조화 &amp; Persona 설계</div>
               <div class="slide-title">사례 분석: 부실한 페르소나 vs 잘 짜인 페르소나</div>
             </div>
             <div class="slide-meta">
@@ -725,13 +741,19 @@
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><strong>Before (부실한 설계)</strong></li>
-              <li><code>"너는 블로그 작가야. AI 트렌드에 대해 쉽게 블로그 글을 써줘."</code></li>
-              <li><strong>After (구조화된 설계)</strong></li>
-              <li><code>Role: IT 전문 테크 저널리스트</code></li>
-              <li><code>Instruction: AI 에이전트의 발전 현황과 산업적 영향을 설명하는 칼럼 작성</code></li>
-              <li><code>Context: 독자는 비전공자 직장인. 전문 용어는 주석을 달고, 구체적 비즈니스 사례 2개 포함</code></li>
-              <li><code>Output: 제목 1개, 서론-본론-결론의 3단 구성, 1,000자 이내의 친근한 어조</code></li>
+              <li><strong>Before (부실한 설계)</strong>
+                <ul>
+                  <li><code>"너는 블로그 작가야. AI 트렌드에 대해 쉽게 블로그 글을 써줘."</code></li>
+                </ul>
+              </li>
+              <li><strong>After (구조화된 설계)</strong>
+                <ul>
+                  <li><code>Role: IT 전문 테크 저널리스트</code></li>
+                  <li><code>Instruction: AI 에이전트의 발전 현황과 산업적 영향을 설명하는 칼럼 작성</code></li>
+                  <li><code>Context: 독자는 비전공자 직장인. 전문 용어는 주석을 달고, 구체적 비즈니스 사례 2개 포함</code></li>
+                  <li><code>Output: 제목 1개, 서론-본론-결론의 3단 구성, 1,000자 이내의 친근한 어조</code></li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">Before와 After의 차이가 느껴지시나요? 전자는 평이하고 뻔한 인터넷 글을 생성하지만, 후자는
               직장인들이 출퇴근 길에 읽기 딱 좋은 깊이와 분량의 트렌드 칼럼을 정확한 아웃풋 규격에 맞춰 뽑아냅니다.</div>
@@ -743,12 +765,11 @@
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 18: 실습 안내: Persona별 프롬프트 설계 실습 -->
         <section class="slide-card" id="slide-18">
           <div class="slide-header">
             <div>
-              <div class="slide-category">2차시. 프롬프트 구조화 & Persona 설계</div>
+              <div class="slide-category">2차시. 프롬프트 구조화 &amp; Persona 설계</div>
               <div class="slide-title">실습 안내: Persona별 프롬프트 설계 실습</div>
             </div>
             <div class="slide-meta">
@@ -760,10 +781,13 @@
             <ul class="bullet-list">
               <li><span class="highlight">실습명:</span> 동일한 작업에 대한 Persona별 결과 분석 및 최적화</li>
               <li><span class="highlight">실습 태스크:</span> <code>"신규 서비스(예: AI 일정 관리 앱) 출시 안내문 작성"</code></li>
-              <li><span class="highlight">실험할 3대 페르소나:</span> </li>
-              <li><span class="highlight">Persona A:</span> 친절한 고객 지원 상담원</li>
-              <li><span class="highlight">Persona B:</span> 논리적인 서비스 기획자</li>
-              <li><span class="highlight">Persona C:</span> 업계 트렌드 리포트 분석가</li>
+              <li><span class="highlight">실험할 3대 페르소나:</span>
+                <ul>
+                  <li><span class="highlight">Persona A:</span> 친절한 고객 지원 상담원</li>
+                  <li><span class="highlight">Persona B:</span> 논리적인 서비스 기획자</li>
+                  <li><span class="highlight">Persona C:</span> 업계 트렌드 리포트 분석가</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">두 번째 실습 시간입니다. 새로운 AI 기반 서비스의 출시 소식을 알리는 글을 작성해 볼 텐데요.
               상담원, 기획자, 트렌드 분석가라는 3가지의 완전히 다른 인격체를 투입해 결과물을 얻어보고, 각 인격체가 생성한 글의 구조와 표현 방식을 대조해 보겠습니다.</div>
@@ -775,12 +799,11 @@
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 19: 실습 진행: 페르소나 설정 및 프롬프트 템플릿 -->
         <section class="slide-card" id="slide-19">
           <div class="slide-header">
             <div>
-              <div class="slide-category">2차시. 프롬프트 구조화 & Persona 설계</div>
+              <div class="slide-category">2차시. 프롬프트 구조화 &amp; Persona 설계</div>
               <div class="slide-title">실습 진행: 페르소나 설정 및 프롬프트 템플릿</div>
             </div>
             <div class="slide-meta">
@@ -823,12 +846,11 @@ Output: 이메일 텍스트 포맷</pre>
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 20: 공유 및 토론: 최적의 페르소나 조합 찾기 -->
         <section class="slide-card" id="slide-20">
           <div class="slide-header">
             <div>
-              <div class="slide-category">2차시. 프롬프트 구조화 & Persona 설계</div>
+              <div class="slide-category">2차시. 프롬프트 구조화 &amp; Persona 설계</div>
               <div class="slide-title">공유 및 토론: 최적의 페르소나 조합 찾기</div>
             </div>
             <div class="slide-meta">
@@ -838,10 +860,13 @@ Output: 이메일 텍스트 포맷</pre>
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">토론 과제:</span> </li>
-              <li>1. 특정 역할만 주었을 때보다 '판단 및 제약 기준'을 추가했을 때 결과물의 퀄리티는 어떻게 달라졌습니까?</li>
-              <li>2. 실무에서 가장 유용하게 쓸 수 있을 것 같은 자신만의 페르소나 조합은 무엇입니까?</li>
-              <li>3. 페르소나 일관성을 방해하는 에러나 한계점은 없었나요?</li>
+              <li><span class="highlight">토론 과제:</span>
+                <ul>
+                  <li>1. 특정 역할만 주었을 때보다 '판단 및 제약 기준'을 추가했을 때 결과물의 퀄리티는 어떻게 달라졌습니까?</li>
+                  <li>2. 실무에서 가장 유용하게 쓸 수 있을 것 같은 자신만의 페르소나 조합은 무엇입니까?</li>
+                  <li>3. 페르소나 일관성을 방해하는 에러나 한계점은 없었나요?</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">여러분의 실습 결과를 공유해 보겠습니다. 역할을 구체적으로 주지 않으면 AI는 보편적인 수준의 대답만
               합니다. 하지만 우리가 원하는 것은 비즈니스 수준의 전문적 판단입니다. 실무에서 자주 사용할 수 있는 핵심 페르소나 조합을 이야기해 봅시다.</div>
@@ -853,12 +878,11 @@ Output: 이메일 텍스트 포맷</pre>
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 21: 심화: 페르소나의 일관성을 유지하는 팁 -->
         <section class="slide-card" id="slide-21">
           <div class="slide-header">
             <div>
-              <div class="slide-category">2차시. 프롬프트 구조화 & Persona 설계</div>
+              <div class="slide-category">2차시. 프롬프트 구조화 &amp; Persona 설계</div>
               <div class="slide-title">심화: 페르소나의 일관성을 유지하는 팁</div>
             </div>
             <div class="slide-meta">
@@ -868,11 +892,16 @@ Output: 이메일 텍스트 포맷</pre>
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">페르소나 탈옥(Jailbreak) 방지 기법:</span> </li>
-              <li><span class="highlight">가이드라인 명시화:</span> "답변에 있어 절대 개발자 관점의 용어(API, 벡엔드 등)를 노출하지 마라."</li>
-              <li><span class="highlight">예외 응답 정의:</span> "본인의 전문 분야 외의 질문이 들어올 경우 '그 부분은 제 전문 분야가 아닙니다'라고 정형화된 대답을 하도록
-                사전에 규정하라."</li>
-              <li><span class="highlight">원칙 선언:</span> 프롬프트 최하단에 페르소나 규칙을 재강조하여 LLM의 문맥 주의 집중(Attention)을 유지시킴.</li>
+              <li><span class="highlight">페르소나 탈옥(Jailbreak) 방지 기법:</span>
+                <ul>
+                  <li><span class="highlight">가이드라인 명시화:</span> "답변에 있어 절대 개발자 관점의 용어(API, 벡엔드 등)를 노출하지 마라."</li>
+                  <li><span class="highlight">예외 응답 정의:</span> "본인의 전문 분야 외의 질문이 들어올 경우 '그 부분은 제 전문 분야가 아닙니다'라고 정형화된 대답을
+                    하도록
+                    사전에 규정하라."</li>
+                  <li><span class="highlight">원칙 선언:</span> 프롬프트 최하단에 페르소나 규칙을 재강조하여 LLM의 문맥 주의 집중(Attention)을 유지시킴.
+                  </li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">에이전트가 작동하다가 갑자기 지정된 역할에서 벗어나 엉뚱한 답변을 하는 경우가 있습니다. 이를 방지하기
               위해 프롬프트 마지막에 다시 한번 '당신의 신분을 잊지 마세요'와 같은 가이드라인을 강력하게 선언해 주는 구조적 장치가 필요합니다.</div>
@@ -884,13 +913,12 @@ Output: 이메일 텍스트 포맷</pre>
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 22: 2차시 정리 & 3차시 예고 -->
         <section class="slide-card" id="slide-22">
           <div class="slide-header">
             <div>
-              <div class="slide-category">2차시. 프롬프트 구조화 & Persona 설계</div>
-              <div class="slide-title">2차시 정리 & 3차시 예고</div>
+              <div class="slide-category">2차시. 프롬프트 구조화 &amp; Persona 설계</div>
+              <div class="slide-title">2차시 정리 &amp; 3차시 예고</div>
             </div>
             <div class="slide-meta">
               <span class="day-badge">1일차</span>
@@ -899,10 +927,14 @@ Output: 이메일 텍스트 포맷</pre>
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">2차시 요약:</span> </li>
-              <li>페르소나는 단순한 말투 흉내를 넘어 결과물의 <strong>관점과 전문 지식 수준</strong>을 제어한다.</li>
-              <li>좋은 페르소나는 <strong>R-I-C-O(Role-Instruction-Context-Output)</strong> 구조를 정확하게 갖춰야 한다.</li>
-              <li><span class="highlight">다음 차시 예고:</span> 3차시. 출력 구조 제어 & 데이터화 (표, Bullet, JSON 등 비정형 텍스트의 자산화)</li>
+              <li><span class="highlight">2차시 요약:</span>
+                <ul>
+                  <li>페르소나는 단순한 말투 흉내를 넘어 결과물의 <strong>관점과 전문 지식 수준</strong>을 제어한다.</li>
+                  <li>좋은 페르소나는 <strong>R-I-C-O(Role-Instruction-Context-Output)</strong> 구조를 정확하게 갖춰야 한다.</li>
+                  <li><span class="highlight">다음 차시 예고:</span> 3차시. 출력 구조 제어 &amp; 데이터화 (표, Bullet, JSON 등 비정형 텍스트의 자산화)
+                  </li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">2차시 내용을 정리하겠습니다. 결국 탄탄한 페르소나가 잡혀야 일정한 판단을 내리는 에이전트의 기반이
               마련됩니다. 다음 3차시에는 이렇게 만들어진 좋은 답변들을 실무 시스템에서 실제로 연동하고 활용할 수 있도록 표, Bullet, JSON 형식 등으로 깔끔하게 데이터화하는 기법을
@@ -916,26 +948,25 @@ Output: 이메일 텍스트 포맷</pre>
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 23: [간지] SESSION 03 -->
         <section class="slide-card divider-slide" id="slide-23">
           <div class="slide-header" style="display: none;">
-            <div class="slide-category">1일차 | 3차시. 데이터 파이프라인 & 벡터 DB</div>
-            <div class="slide-title">[세션 오프닝] 3차시. 데이터 파이프라인 & 벡터 DB</div>
+            <div class="slide-category">1일차 | 3차시. 데이터 파이프라인 &amp; 벡터 DB</div>
+            <div class="slide-title">[세션 오프닝] 3차시. 데이터 파이프라인 &amp; 벡터 DB</div>
           </div>
           <div class="divider-content">
             <div class="divider-day">DAY 1</div>
             <div class="divider-tag">SESSION 03</div>
-            <h1 class="divider-title">데이터 파이프라인 & 벡터 DB</h1>
+            <h1 class="divider-title">데이터 파이프라인 &amp; 벡터 DB</h1>
             <p class="divider-subtitle">외부 지식 데이터베이스와 결합하여 고품질의 정보를 탐색하고 처리하는 아키텍처</p>
             <div class="divider-topics">
               <div class="topic-badge"><span>01</span> 데이터 전처리 실무</div>
-              <div class="topic-badge"><span>02</span> Vector DB & 임베딩 이해</div>
+              <div class="topic-badge"><span>02</span> Vector DB &amp; 임베딩 이해</div>
               <div class="topic-badge"><span>03</span> RAG 아키텍처 구축</div>
             </div>
           </div>
           <div class="slide-body" style="display: none;">
-            <p>3차시. 데이터 파이프라인 & 벡터 DB 세션 시작</p>
+            <p>3차시. 데이터 파이프라인 &amp; 벡터 DB 세션 시작</p>
             <p>외부 지식 데이터베이스와 결합하여 고품질의 정보를 탐색하고 처리하는 아키텍처</p>
           </div>
           <div class="presenter-notes" style="display:none;">3차시에서는 에이전트가 외부 지식 데이터를 불러와 똑똑하게 동작할 수 있게 해주는 RAG 시스템의 핵심인
@@ -943,13 +974,12 @@ Output: 이메일 텍스트 포맷</pre>
           <div class="visual-guide-notes" style="display:none;">동적인 네온 블루/핑크 그라데이션 배경. 데이터 파이프라인 및 노드 흐름을 모티브로 한 그래픽
             레이아웃.</div>
         </section>
-
         <!-- Slide 24: 3차시 도입 & 아젠다 -->
         <section class="slide-card" id="slide-24">
           <div class="slide-header">
             <div>
-              <div class="slide-category">3차시. 출력 구조 제어 & 데이터화</div>
-              <div class="slide-title">3차시 도입 & 아젠다</div>
+              <div class="slide-category">3차시. 출력 구조 제어 &amp; 데이터화</div>
+              <div class="slide-title">3차시 도입 &amp; 아젠다</div>
             </div>
             <div class="slide-meta">
               <span class="day-badge">1일차</span>
@@ -958,11 +988,14 @@ Output: 이메일 텍스트 포맷</pre>
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">3차시 주제:</span> 출력 구조 제어 & 데이터화</li>
-              <li><span class="highlight">오늘 배울 내용:</span> </li>
-              <li>비정형 줄글 응답의 비즈니스적 한계 극복</li>
-              <li>3대 대표 출력 포맷의 특징과 용도 (Table, Bullet, JSON)</li>
-              <li>LLM 응답을 완벽하게 제어하여 데이터 파이프라인과 연동하는 법</li>
+              <li><span class="highlight">3차시 주제:</span> 출력 구조 제어 &amp; 데이터화</li>
+              <li><span class="highlight">오늘 배울 내용:</span>
+                <ul>
+                  <li>비정형 줄글 응답의 비즈니스적 한계 극복</li>
+                  <li>3대 대표 출력 포맷의 특징과 용도 (Table, Bullet, JSON)</li>
+                  <li>LLM 응답을 완벽하게 제어하여 데이터 파이프라인과 연동하는 법</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">3차시를 시작하겠습니다. 아무리 훌륭한 문장을 작성하는 에이전트가 있더라도, 그 결과가 1,000자짜리
               줄글 형태로 나온다면 실무자는 이를 다시 복사해서 엑셀에 넣거나 시스템에 일일이 쳐 넣어야 할 것입니다. 이번 시간에는 LLM의 답변을 우리가 원하는 정확한 규격으로 인출하는 '출력 제어
@@ -975,12 +1008,11 @@ Output: 이메일 텍스트 포맷</pre>
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 25: 도입 질문: 줄글 응답의 한계 -->
         <section class="slide-card" id="slide-25">
           <div class="slide-header">
             <div>
-              <div class="slide-category">3차시. 출력 구조 제어 & 데이터화</div>
+              <div class="slide-category">3차시. 출력 구조 제어 &amp; 데이터화</div>
               <div class="slide-title">도입 질문: 줄글 응답의 한계</div>
             </div>
             <div class="slide-meta">
@@ -992,10 +1024,13 @@ Output: 이메일 텍스트 포맷</pre>
             <ul class="bullet-list">
               <li><span class="highlight">도입 질문:</span> "아무리 훌륭한 보고서 요약본이라도, 복사해서 공유하거나 ERP 시스템에 바로 등록하기 어려운 근본적인 이유는
                 무엇일까요?"</li>
-              <li><span class="highlight">문제점 진단:</span> </li>
-              <li><span class="highlight">가독성 저하:</span> 긴 텍스트 덩어리는 핵심 파악에 시간이 걸림.</li>
-              <li><span class="highlight">재사용 불가:</span> 텍스트 사이에 숨어 있는 일정, 담당자 정보를 컴퓨터가 자동으로 추출해 내기 어려움.</li>
-              <li><span class="highlight">비정형성의 한계:</span> 실행할 때마다 포맷이 달라져 후속 프로세스 자동화가 불가능함.</li>
+              <li><span class="highlight">문제점 진단:</span>
+                <ul>
+                  <li><span class="highlight">가독성 저하:</span> 긴 텍스트 덩어리는 핵심 파악에 시간이 걸림.</li>
+                  <li><span class="highlight">재사용 불가:</span> 텍스트 사이에 숨어 있는 일정, 담당자 정보를 컴퓨터가 자동으로 추출해 내기 어려움.</li>
+                  <li><span class="highlight">비정형성의 한계:</span> 실행할 때마다 포맷이 달라져 후속 프로세스 자동화가 불가능함.</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">인간에게 유용한 지식은 정제되고 규격화된 상태로 존재합니다. 만약 AI가 쓴 보고서 요약본이 매번 서술
               방식이 달라진다면, 그것은 자동화가 아니라 또 다른 수작업의 시작입니다. 비즈니스 에이전트는 출력의 포맷을 강하게 고정해야만 합니다.</div>
@@ -1007,12 +1042,11 @@ Output: 이메일 텍스트 포맷</pre>
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 26: 핵심 설명: 3대 출력 포맷 (Table, Bullet, JSON) -->
         <section class="slide-card" id="slide-26">
           <div class="slide-header">
             <div>
-              <div class="slide-category">3차시. 출력 구조 제어 & 데이터화</div>
+              <div class="slide-category">3차시. 출력 구조 제어 &amp; 데이터화</div>
               <div class="slide-title">핵심 설명: 3대 출력 포맷 (Table, Bullet, JSON)</div>
             </div>
             <div class="slide-meta">
@@ -1052,12 +1086,11 @@ Output: 이메일 텍스트 포맷</pre>
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 27: 핵심 설명: 출력 구조 제어 프롬프트 기법 -->
         <section class="slide-card" id="slide-27">
           <div class="slide-header">
             <div>
-              <div class="slide-category">3차시. 출력 구조 제어 & 데이터화</div>
+              <div class="slide-category">3차시. 출력 구조 제어 &amp; 데이터화</div>
               <div class="slide-title">핵심 설명: 출력 구조 제어 프롬프트 기법</div>
             </div>
             <div class="slide-meta">
@@ -1090,12 +1123,11 @@ You are a senior system analyst.
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 28: 깊이 보기: Few-shot 기법을 통한 출력 보장 -->
         <section class="slide-card" id="slide-28">
           <div class="slide-header">
             <div>
-              <div class="slide-category">3차시. 출력 구조 제어 & 데이터화</div>
+              <div class="slide-category">3차시. 출력 구조 제어 &amp; 데이터화</div>
               <div class="slide-title">깊이 보기: Few-shot 기법을 통한 출력 보장</div>
             </div>
             <div class="slide-meta">
@@ -1133,12 +1165,11 @@ Output:</pre>
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 29: 실습 안내: 회의록 데이터 구조화 실습 -->
         <section class="slide-card" id="slide-29">
           <div class="slide-header">
             <div>
-              <div class="slide-category">3차시. 출력 구조 제어 & 데이터화</div>
+              <div class="slide-category">3차시. 출력 구조 제어 &amp; 데이터화</div>
               <div class="slide-title">실습 안내: 회의록 데이터 구조화 실습</div>
             </div>
             <div class="slide-meta">
@@ -1165,12 +1196,11 @@ Output:</pre>
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 30: 실습 진행: 원본 회의록 및 스키마 정보 -->
         <section class="slide-card" id="slide-30">
           <div class="slide-header">
             <div>
-              <div class="slide-category">3차시. 출력 구조 제어 & 데이터화</div>
+              <div class="slide-category">3차시. 출력 구조 제어 &amp; 데이터화</div>
               <div class="slide-title">실습 진행: 원본 회의록 및 스키마 정보</div>
             </div>
             <div class="slide-meta">
@@ -1180,21 +1210,12 @@ Output:</pre>
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">회의록 원문:</span> </li>
-              <li><code>"5월 정기 회의에서 신규 교육 프로그램 홍보 일정이 논의되었다. 홍보 문안은 김민지가 이번 주 금요일까지 초안을 작성하기로 했다..."</code></li>
+              <li><span class="highlight">회의록 원문:</span>
+                <ul>
+                  <li><code>"5월 정기 회의에서 신규 교육 프로그램 홍보 일정이 논의되었다. 홍보 문안은 김민지가 이번 주 금요일까지 초안을 작성하기로 했다..."</code></li>
+                </ul>
+              </li>
               <li><span class="highlight">JSON 스키마 요구사항:</span> </li>
-              <div class="code-container">
-                <div class="code-header">
-                  <span>JSON 포맷</span>
-                  <button class="copy-btn">복사</button>
-                </div>
-                <pre class="code-block"><code>{
-  "decisions": ["결정사항들"],
-  "tasks": [
-    { "task": "할 일", "owner": "담당자", "due_date": "기한" }
-  ]
-}</code></pre>
-              </div>
             </ul>
             <div class="presenter-notes" style="display:none;">원본 회의록에는 여러 사람의 이름과 다른 요일의 기한들이 뒤섞여 있습니다. 이 정보를 정확하게 파싱하여
               화면의 스키마 구조에 딱 들어맞는 JSON 데이터를 출력해 보십시오. 특히 날짜가 상대적인 '이번 주 금요일'인 경우 실제 달력을 기준으로 계산하도록 프롬프트를 고도화할 수도 있습니다.
@@ -1207,12 +1228,11 @@ Output:</pre>
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 31: 공유 및 토론: 포맷별 비즈니스 활용처 -->
         <section class="slide-card" id="slide-31">
           <div class="slide-header">
             <div>
-              <div class="slide-category">3차시. 출력 구조 제어 & 데이터화</div>
+              <div class="slide-category">3차시. 출력 구조 제어 &amp; 데이터화</div>
               <div class="slide-title">공유 및 토론: 포맷별 비즈니스 활용처</div>
             </div>
             <div class="slide-meta">
@@ -1222,10 +1242,13 @@ Output:</pre>
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">토론 질문:</span> </li>
-              <li>1. 사람이 읽고 액션을 취하기에 가장 가독성이 뛰어난 형식은 무엇이었나요?</li>
-              <li>2. JSON 결과에서 불필요한 설명(예: "네, 준비된 결과입니다.")을 완전히 제거하기 위해 어떤 프롬프트 지시어를 추가했나요?</li>
-              <li>3. 회의록에 명확한 기한이나 담당자가 누락된 경우, 에이전트가 오작동하지 않고 예외 처리를 수행하게 만든 노하우가 있다면?</li>
+              <li><span class="highlight">토론 질문:</span>
+                <ul>
+                  <li>1. 사람이 읽고 액션을 취하기에 가장 가독성이 뛰어난 형식은 무엇이었나요?</li>
+                  <li>2. JSON 결과에서 불필요한 설명(예: "네, 준비된 결과입니다.")을 완전히 제거하기 위해 어떤 프롬프트 지시어를 추가했나요?</li>
+                  <li>3. 회의록에 명확한 기한이나 담당자가 누락된 경우, 에이전트가 오작동하지 않고 예외 처리를 수행하게 만든 노하우가 있다면?</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">실습 결과를 바탕으로 이야기해 봅시다. JSON 출력에서 불필요한 서두를 제거하기 위해 어떤 제어
               방식을 사용하셨나요? 또한 담당자가 빠진 업무는 어떻게 표기되도록 강제하셨는지, 서로의 솔루션을 비교해 봅시다.</div>
@@ -1237,12 +1260,11 @@ Output:</pre>
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 32: 실무 팁: 안정적인 JSON 파싱 기법 -->
         <section class="slide-card" id="slide-32">
           <div class="slide-header">
             <div>
-              <div class="slide-category">3차시. 출력 구조 제어 & 데이터화</div>
+              <div class="slide-category">3차시. 출력 구조 제어 &amp; 데이터화</div>
               <div class="slide-title">실무 팁: 안정적인 JSON 파싱 기법</div>
             </div>
             <div class="slide-meta">
@@ -1277,13 +1299,12 @@ JSON 외의 어떤 설명 문자도 포함하지 마십시오.
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 33: 1일차 총정리 & 2일차 예고 -->
         <section class="slide-card" id="slide-33">
           <div class="slide-header">
             <div>
-              <div class="slide-category">3차시. 출력 구조 제어 & 데이터화</div>
-              <div class="slide-title">1일차 총정리 & 2일차 예고</div>
+              <div class="slide-category">3차시. 출력 구조 제어 &amp; 데이터화</div>
+              <div class="slide-title">1일차 총정리 &amp; 2일차 예고</div>
             </div>
             <div class="slide-meta">
               <span class="day-badge">1일차</span>
@@ -1292,12 +1313,15 @@ JSON 외의 어떤 설명 문자도 포함하지 마십시오.
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">1일차 핵심 개념 요약:</span> </li>
-              <li><span class="highlight">1차시:</span> 에이전트는 입력을 해석하여 최종 판단 및 실행 결과를 만드는 비즈니스 파이프라인이다.</li>
-              <li><span class="highlight">2차시:</span> R-I-C-O 프레임워크를 적용하여 고유의 업무 기준과 전문성을 가진 Persona를 확보한다.</li>
-              <li><span class="highlight">3차시:</span> 표, JSON 등의 출력 구조를 강제 제어하여 비정형 데이터를 유용한 정형 데이터로 변환한다.</li>
-              <li><span class="highlight">2일차 예고:</span> 이제 단일 프롬프트를 벗어나 <strong>Workflow 설계, 조건 분기, 나만의 자동화 에이전트
-                  설계(Mini Project)</strong>로 나아갑니다.</li>
+              <li><span class="highlight">1일차 핵심 개념 요약:</span>
+                <ul>
+                  <li><span class="highlight">1차시:</span> 에이전트는 입력을 해석하여 최종 판단 및 실행 결과를 만드는 비즈니스 파이프라인이다.</li>
+                  <li><span class="highlight">2차시:</span> R-I-C-O 프레임워크를 적용하여 고유의 업무 기준과 전문성을 가진 Persona를 확보한다.</li>
+                  <li><span class="highlight">3차시:</span> 표, JSON 등의 출력 구조를 강제 제어하여 비정형 데이터를 유용한 정형 데이터로 변환한다.</li>
+                  <li><span class="highlight">2일차 예고:</span> 이제 단일 프롬프트를 벗어나 <strong>Workflow 설계, 조건 분기, 나만의 자동화 에이전트
+                      설계(Mini Project)</strong>로 나아갑니다.</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">이것으로 1일차 과정을 모두 마쳤습니다. 오늘 우리는 에이전트의 기본기인 개념 이해, 역할 부여,
               그리고 출력 제어를 완벽히 정복했습니다. 내일부터는 여러 개의 프롬프트를 체인처럼 연결하는 Workflow 설계와 조건 분기 로직을 결합하여, 진짜 스스로 판단하고 단계적으로 일하는
@@ -1312,7 +1336,6 @@ JSON 외의 어떤 설명 문자도 포함하지 마십시오.
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 34: [간지] SESSION 04 -->
         <section class="slide-card divider-slide" id="slide-34">
           <div class="slide-header" style="display: none;">
@@ -1327,7 +1350,7 @@ JSON 외의 어떤 설명 문자도 포함하지 마십시오.
             <div class="divider-topics">
               <div class="topic-badge"><span>01</span> 에이전트 프롬프트 패턴</div>
               <div class="topic-badge"><span>02</span> 단일 루프 vs 다단계 워크플로우</div>
-              <div class="topic-badge"><span>03</span> 외부 API 연동 & Tool 활용</div>
+              <div class="topic-badge"><span>03</span> 외부 API 연동 &amp; Tool 활용</div>
             </div>
           </div>
           <div class="slide-body" style="display: none;">
@@ -1339,13 +1362,12 @@ JSON 외의 어떤 설명 문자도 포함하지 마십시오.
           <div class="visual-guide-notes" style="display:none;">신뢰감을 주는 다크 네이비와 오렌지 그라데이션 대비. 입체적인 기어 및 연결선 그래픽 모티브.
           </div>
         </section>
-
         <!-- Slide 35: 2일차 오프닝 & 4차시 아젠다 -->
         <section class="slide-card" id="slide-35">
           <div class="slide-header">
             <div>
               <div class="slide-category">4차시. Agent 흐름 설계: Prompt에서 Workflow로</div>
-              <div class="slide-title">2일차 오프닝 & 4차시 아젠다</div>
+              <div class="slide-title">2일차 오프닝 &amp; 4차시 아젠다</div>
             </div>
             <div class="slide-meta">
               <span class="day-badge">2일차</span>
@@ -1356,23 +1378,26 @@ JSON 외의 어떤 설명 문자도 포함하지 마십시오.
             <ul class="bullet-list">
               <li><span class="highlight">과정명:</span> [중급 공통] Antigravity 기반 AI 워크플로우 설계와 에이전트 구축</li>
               <li><span class="highlight">4차시 주제:</span> Agent 흐름 설계: Prompt에서 Workflow로 (단계형 처리의 시작)</li>
-              <li><span class="highlight">오늘 배울 내용:</span> </li>
-              <li>단일 프롬프트가 가진 성능적 한계와 컨텍스트 유실 문제</li>
-              <li>프롬프트 체이닝(Prompt Chaining)의 개념과 강점</li>
-              <li>Workflow 구조 설계 기법: Task -> Step -> Flow 매핑</li>
+              <li><span class="highlight">오늘 배울 내용:</span>
+                <ul>
+                  <li>단일 프롬프트가 가진 성능적 한계와 컨텍스트 유실 문제</li>
+                  <li>프롬프트 체이닝(Prompt Chaining)의 개념과 강점</li>
+                  <li>Workflow 구조 설계 기법: Task -&gt; Step -&gt; Flow 매핑</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">여러분, 반갑습니다! 2일차 아침이 밝았습니다. 어제 배운 내용이 단일 프롬프트를 완성도 있게 깎는
               작업이었다면, 오늘부터는 그 프롬프트들을 연결해 하나의 거대한 공장 라인을 만드는 '워크플로우(Workflow) 설계'를 시작합니다. 4차시에서는 복잡한 문제를 잘게 쪼개어 단계별로
               풀어나가는 핵심 설계도를 설계해 보겠습니다.</div>
-            <div class="visual-guide-notes" style="display:none;">활기찬 아침 분위기의 라이트 오렌지 & 오션 블루 컬러 테마. 컨베이어 벨트나 조립 라인의 유기적
+            <div class="visual-guide-notes" style="display:none;">활기찬 아침 분위기의 라이트 오렌지 &amp; 오션 블루 컬러 테마. 컨베이어 벨트나 조립 라인의
+              유기적
               순서도를 연상케 하는 3D 메탈릭 파이프라인 그래픽 적용.</div>
           </div>
           <div class="slide-footer">
-            <div>가이드: 활기찬 아침 분위기의 라이트 오렌지 & 오션 블루 컬러 테마.</div>
+            <div>가이드: 활기찬 아침 분위기의 라이트 오렌지 &amp; 오션 블루 컬러 테마.</div>
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 36: 도입 질문: 한 번에 시키기 vs 나누어 시키기 -->
         <section class="slide-card" id="slide-36">
           <div class="slide-header">
@@ -1389,11 +1414,16 @@ JSON 외의 어떤 설명 문자도 포함하지 마십시오.
             <ul class="bullet-list">
               <li><span class="highlight">도입 질문:</span> "한 번에 3가지 지시사항(요약, 분류, 답변 작성)을 담아 긴 프롬프트를 실행하는 것과, 3단계로 쪼개어 차례로
                 실행하는 것은 어떤 품질 차이를 만들까요?"</li>
-              <li><span class="highlight">이론적 한계 분석:</span> </li>
-              <li><span class="highlight">단일 긴 프롬프트:</span> 모델의 주의력(Attention)이 분산되어 중간 단계 지시를 쉽게 무시함. 오류 발생 시 어떤 단계에서
-                잘못되었는지 디버깅이 불가능함.</li>
-              <li><span class="highlight">다단계 Workflow:</span> 각 단계의 입력과 출력에 집중하므로 각 부분의 완성도가 극대화됨. 에러가 나면 해당 단계만 수정하면
-                됨.</li>
+              <li><span class="highlight">이론적 한계 분석:</span>
+                <ul>
+                  <li><span class="highlight">단일 긴 프롬프트:</span> 모델의 주의력(Attention)이 분산되어 중간 단계 지시를 쉽게 무시함. 오류 발생 시 어떤
+                    단계에서
+                    잘못되었는지 디버깅이 불가능함.</li>
+                  <li><span class="highlight">다단계 Workflow:</span> 각 단계의 입력과 출력에 집중하므로 각 부분의 완성도가 극대화됨. 에러가 나면 해당 단계만
+                    수정하면
+                    됨.</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">인턴에게 일을 시킬 때 '이 회의록을 요약하고, 핵심 골자를 파악해서, 다음 일정 메일 초안까지 작성해
               와'라고 한 번에 지시하면 실수할 확률이 큽니다. 반대로 '우선 요약부터 해봐', '그다음 핵심만 뽑아봐', '그걸 바탕으로 메일을 써'라고 순차적으로 시키면 어떨까요? AI도 완전히
@@ -1406,7 +1436,6 @@ JSON 외의 어떤 설명 문자도 포함하지 마십시오.
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 37: 핵심 설명: 프롬프트 체이닝 (Prompt Chaining) -->
         <section class="slide-card" id="slide-37">
           <div class="slide-header">
@@ -1427,8 +1456,8 @@ JSON 외의 어떤 설명 문자도 포함하지 마십시오.
                 <div class="flow-desc">사용자 유입 메일 원본</div>
               </div>
               <div class="flow-arrow">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z" />
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
                 </svg>
               </div>
               <div class="flow-step">
@@ -1437,8 +1466,8 @@ JSON 외의 어떤 설명 문자도 포함하지 마십시오.
                 <div class="flow-desc">카테고리 및 심각도 등 감정 지표 판별</div>
               </div>
               <div class="flow-arrow">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z" />
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
                 </svg>
               </div>
               <div class="flow-step">
@@ -1447,8 +1476,8 @@ JSON 외의 어떤 설명 문자도 포함하지 마십시오.
                 <div class="flow-desc">JSON 포맷의 분류 태그</div>
               </div>
               <div class="flow-arrow">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z" />
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
                 </svg>
               </div>
               <div class="flow-step">
@@ -1471,7 +1500,6 @@ JSON 외의 어떤 설명 문자도 포함하지 마십시오.
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 38: 핵심 설명: Workflow 구조의 3요소 (TSF) -->
         <section class="slide-card" id="slide-38">
           <div class="slide-header">
@@ -1492,8 +1520,8 @@ JSON 외의 어떤 설명 문자도 포함하지 마십시오.
                 <div class="flow-desc">신규 메일 수신, 매시간 크론탭 등 이벤트 트리거</div>
               </div>
               <div class="flow-arrow">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z" />
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
                 </svg>
               </div>
               <div class="flow-step">
@@ -1502,8 +1530,8 @@ JSON 외의 어떤 설명 문자도 포함하지 마십시오.
                 <div class="flow-desc">분석, 보강, 필터링 등 순차적/병렬적 체이닝 실행</div>
               </div>
               <div class="flow-arrow">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z" />
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
                 </svg>
               </div>
               <div class="flow-step">
@@ -1520,7 +1548,6 @@ JSON 외의 어떤 설명 문자도 포함하지 마십시오.
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 39: 사례 연구: 3단계 업무 요약 Workflow 설계 예시 -->
         <section class="slide-card" id="slide-39">
           <div class="slide-header">
@@ -1541,8 +1568,8 @@ JSON 외의 어떤 설명 문자도 포함하지 마십시오.
                 <div class="flow-desc">고객 질문의 카테고리(환불, 오류, 단순질문) 및 긴급도 분류</div>
               </div>
               <div class="flow-arrow">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z" />
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
                 </svg>
               </div>
               <div class="flow-step">
@@ -1551,8 +1578,8 @@ JSON 외의 어떤 설명 문자도 포함하지 마십시오.
                 <div class="flow-desc">1단계 분류 및 기업 가이드라인에 맞춘 개인화 답변 초안 작성</div>
               </div>
               <div class="flow-arrow">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z" />
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
                 </svg>
               </div>
               <div class="flow-step">
@@ -1569,7 +1596,6 @@ JSON 외의 어떤 설명 문자도 포함하지 마십시오.
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 40: 실습 안내: 3단계 Workflow 기획 및 검증 -->
         <section class="slide-card" id="slide-40">
           <div class="slide-header">
@@ -1599,7 +1625,6 @@ JSON 외의 어떤 설명 문자도 포함하지 마십시오.
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 41: 실습 진행: 단계별 설계서 템플릿 작성법 -->
         <section class="slide-card" id="slide-41">
           <div class="slide-header">
@@ -1640,7 +1665,6 @@ def handle_email_pipeline(user_email):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 42: 공유 및 토론: 단일 vs 단계형 결과 대조 -->
         <section class="slide-card" id="slide-42">
           <div class="slide-header">
@@ -1655,10 +1679,13 @@ def handle_email_pipeline(user_email):
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">토론 과제:</span> </li>
-              <li>1. 단일 프롬프트로 다짜고짜 액션 아이템을 만들었을 때와, 요약-이슈-액션의 단계를 거쳐 완성했을 때 최종 결과물의 정밀도 차이는 어떠합니까?</li>
-              <li>2. 1단계에서 2단계로 넘어갈 때 원본의 중요 정보가 유실되는 현상이 발생했다면, 이를 프롬프트로 어떻게 보완하셨나요?</li>
-              <li>3. 실무에서 단계를 더 쪼개거나 합치고 싶은 영역은 무엇입니까?</li>
+              <li><span class="highlight">토론 과제:</span>
+                <ul>
+                  <li>1. 단일 프롬프트로 다짜고짜 액션 아이템을 만들었을 때와, 요약-이슈-액션의 단계를 거쳐 완성했을 때 최종 결과물의 정밀도 차이는 어떠합니까?</li>
+                  <li>2. 1단계에서 2단계로 넘어갈 때 원본의 중요 정보가 유실되는 현상이 발생했다면, 이를 프롬프트로 어떻게 보완하셨나요?</li>
+                  <li>3. 실무에서 단계를 더 쪼개거나 합치고 싶은 영역은 무엇입니까?</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">실습 결과를 바탕으로 이야기를 나눠 보겠습니다. 아마 단계를 거쳐 나온 액션 아이템이 훨씬 더
               구체적이고 당장 업무에 쓰기 좋은 형태일 것입니다. 정보 유실 문제가 있었던 조는 1단계 요약 프롬프트에 '숫자와 날짜 정보는 절대 누락하지 말 것'이라는 규칙을 넣어 보완할 수 있습니다.
@@ -1671,7 +1698,6 @@ def handle_email_pipeline(user_email):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 43: 설계 노하우: 정보 유실과 왜곡 방지법 -->
         <section class="slide-card" id="slide-43">
           <div class="slide-header">
@@ -1686,12 +1712,17 @@ def handle_email_pipeline(user_email):
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">Workflow 안정성 극대화 가이드:</span> </li>
-              <li><span class="highlight">핵심 정보 보존 지시:</span> "입력값에 포함된 고유명사, 숫자, 담당자 이름, 데드라인은 절대 요약 단계에서 제외하거나 생략하지 말고
-                그대로 전송하라."</li>
-              <li><span class="highlight">컨텍스트 캐싱:</span> 중간 결과만 전달하지 말고, 필요시 2단계 입력에 '원본 텍스트'를 배경 정보로 함께 넘겨주는 설계 적용.
+              <li><span class="highlight">Workflow 안정성 극대화 가이드:</span>
+                <ul>
+                  <li><span class="highlight">핵심 정보 보존 지시:</span> "입력값에 포함된 고유명사, 숫자, 담당자 이름, 데드라인은 절대 요약 단계에서 제외하거나
+                    생략하지 말고
+                    그대로 전송하라."</li>
+                  <li><span class="highlight">컨텍스트 캐싱:</span> 중간 결과만 전달하지 말고, 필요시 2단계 입력에 '원본 텍스트'를 배경 정보로 함께 넘겨주는 설계
+                    적용.
+                  </li>
+                  <li><span class="highlight">중간 검증 단계:</span> 데이터가 넘어가는 경계면에서 형식 오류가 있는지 체크하는 룰 도입.</li>
+                </ul>
               </li>
-              <li><span class="highlight">중간 검증 단계:</span> 데이터가 넘어가는 경계면에서 형식 오류가 있는지 체크하는 룰 도입.</li>
             </ul>
             <div class="presenter-notes" style="display:none;">워크플로우를 돌리다 보면 2단계, 3단계로 갈수록 정보가 야위어서 나중엔 알맹이가 빠지는 현상이
               생깁니다. 이를 막기 위해 이전 결과물과 함께 원본 텍스트를 일부 결합해 주는 컨텍스트 유지 설계가 필요합니다.</div>
@@ -1703,13 +1734,12 @@ def handle_email_pipeline(user_email):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 44: 4차시 정리 & 5차시 예고 -->
         <section class="slide-card" id="slide-44">
           <div class="slide-header">
             <div>
               <div class="slide-category">4차시. Agent 흐름 설계: Prompt에서 Workflow로</div>
-              <div class="slide-title">4차시 정리 & 5차시 예고</div>
+              <div class="slide-title">4차시 정리 &amp; 5차시 예고</div>
             </div>
             <div class="slide-meta">
               <span class="day-badge">2일차</span>
@@ -1718,10 +1748,14 @@ def handle_email_pipeline(user_email):
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">4차시 요약:</span> </li>
-              <li>복잡한 비즈니스 문제는 단일 프롬프트보다 <strong>다단계 Workflow(Prompt Chaining)</strong>로 푸는 것이 정확하고 디버깅에 유리하다.</li>
-              <li>Workflow의 핵심 설계는 <strong>Task 정의 -> Step 쪼개기 -> Flow 제어</strong>이다.</li>
-              <li><span class="highlight">다음 차시 예고:</span> 5차시. 조건 분기 & 판단형 Agent 설계 (상황에 따라 다르게 작동하는 진짜 에이전트의 조건문)</li>
+              <li><span class="highlight">4차시 요약:</span>
+                <ul>
+                  <li>복잡한 비즈니스 문제는 단일 프롬프트보다 <strong>다단계 Workflow(Prompt Chaining)</strong>로 푸는 것이 정확하고 디버깅에 유리하다.</li>
+                  <li>Workflow의 핵심 설계는 <strong>Task 정의 -&gt; Step 쪼개기 -&gt; Flow 제어</strong>이다.</li>
+                  <li><span class="highlight">다음 차시 예고:</span> 5차시. 조건 분기 &amp; 판단형 Agent 설계 (상황에 따라 다르게 작동하는 진짜 에이전트의
+                    조건문)</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">4차시 과정을 마쳤습니다. 이제 여러분은 단계를 연결할 수 있게 되었습니다. 하지만 모든 업무가 한
               방향 일직선으로만 흐르지는 않죠. 고객 리뷰가 긍정이면 감사를 보내고, 부정이면 사과를 해야 합니다. 다음 5차시에는 상황에 따라 다르게 판단하고 흐름을 바꾸는 '조건 분기형 에이전트'를
@@ -1736,17 +1770,16 @@ def handle_email_pipeline(user_email):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 45: [간지] SESSION 05 -->
         <section class="slide-card divider-slide" id="slide-45">
           <div class="slide-header" style="display: none;">
-            <div class="slide-category">2일차 | 5차시. 자율 에이전트 & 판단 에이전트 설계</div>
-            <div class="slide-title">[세션 오프닝] 5차시. 자율 에이전트 & 판단 에이전트 설계</div>
+            <div class="slide-category">2일차 | 5차시. 자율 에이전트 &amp; 판단 에이전트 설계</div>
+            <div class="slide-title">[세션 오프닝] 5차시. 자율 에이전트 &amp; 판단 에이전트 설계</div>
           </div>
           <div class="divider-content">
             <div class="divider-day">DAY 2</div>
             <div class="divider-tag">SESSION 05</div>
-            <h1 class="divider-title">자율 에이전트 & 판단 에이전트 설계</h1>
+            <h1 class="divider-title">자율 에이전트 &amp; 판단 에이전트 설계</h1>
             <p class="divider-subtitle">스스로 상황을 평가하고 실행 경로를 제어하며 다중 에이전트 간 협업을 조율하는 설계 기법</p>
             <div class="divider-topics">
               <div class="topic-badge"><span>01</span> 의사결정 분기 설계</div>
@@ -1755,20 +1788,19 @@ def handle_email_pipeline(user_email):
             </div>
           </div>
           <div class="slide-body" style="display: none;">
-            <p>5차시. 자율 에이전트 & 판단 에이전트 설계 세션 시작</p>
+            <p>5차시. 자율 에이전트 &amp; 판단 에이전트 설계 세션 시작</p>
             <p>스스로 상황을 평가하고 실행 경로를 제어하며 다중 에이전트 간 협업을 조율하는 설계 기법</p>
           </div>
           <div class="presenter-notes" style="display:none;">5차시에서는 정해진 흐름을 넘어 스스로 경로를 선택하고, 결과를 교정하며, 여러 에이전트가 협업하여
             고도화된 문제를 해결하는 자율 에이전트를 실습합니다.</div>
           <div class="visual-guide-notes" style="display:none;">바이올렛과 네온 그린의 대비. 다중 분기와 의사결정 노드 구조 시각화.</div>
         </section>
-
         <!-- Slide 46: 5차시 도입 & 아젠다 -->
         <section class="slide-card" id="slide-46">
           <div class="slide-header">
             <div>
-              <div class="slide-category">5차시. 조건 분기 & 판단형 Agent 설계</div>
-              <div class="slide-title">5차시 도입 & 아젠다</div>
+              <div class="slide-category">5차시. 조건 분기 &amp; 판단형 Agent 설계</div>
+              <div class="slide-title">5차시 도입 &amp; 아젠다</div>
             </div>
             <div class="slide-meta">
               <span class="day-badge">2일차</span>
@@ -1777,11 +1809,14 @@ def handle_email_pipeline(user_email):
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">5차시 주제:</span> 조건 분기 & 판단형 Agent 설계</li>
-              <li><span class="highlight">오늘 배울 내용:</span> </li>
-              <li>AI 에이전트의 핵심 역량: 상황 판단과 경로 우회 (If-Else)</li>
-              <li>텍스트 감정 및 의도에 따른 정밀 분류 기준 설계법</li>
-              <li>판단 이유(Reasoning) 출력을 통한 투명성 확보 및 예외 처리 가이드라인</li>
+              <li><span class="highlight">5차시 주제:</span> 조건 분기 &amp; 판단형 Agent 설계</li>
+              <li><span class="highlight">오늘 배울 내용:</span>
+                <ul>
+                  <li>AI 에이전트의 핵심 역량: 상황 판단과 경로 우회 (If-Else)</li>
+                  <li>텍스트 감정 및 의도에 따른 정밀 분류 기준 설계법</li>
+                  <li>판단 이유(Reasoning) 출력을 통한 투명성 확보 및 예외 처리 가이드라인</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">5차시를 시작하겠습니다. 앞선 차시에서 워크플로우를 설계했는데, 그것은 모든 데이터가 동일한 길로만
               가는 단순 통로였습니다. 진짜 똑똑한 에이전트라면 유입되는 데이터의 성격을 스스로 '판단'하고, 그에 맞는 최적의 경로로 일을 흘려보내야 합니다. 마치 프로그래밍의 If문과 같은 조건 분기
@@ -1794,12 +1829,11 @@ def handle_email_pipeline(user_email):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 47: 도입 질문: 모든 입력에 동일한 답을 하는 비서? -->
         <section class="slide-card" id="slide-47">
           <div class="slide-header">
             <div>
-              <div class="slide-category">5차시. 조건 분기 & 판단형 Agent 설계</div>
+              <div class="slide-category">5차시. 조건 분기 &amp; 판단형 Agent 설계</div>
               <div class="slide-title">도입 질문: 모든 입력에 동일한 답을 하는 비서?</div>
             </div>
             <div class="slide-meta">
@@ -1811,10 +1845,13 @@ def handle_email_pipeline(user_email):
             <ul class="bullet-list">
               <li><span class="highlight">도입 질문:</span> "고객의 격려 칭찬 메일과 시스템 결제 에러 항의 메일에 똑같은 어투와 템플릿으로 답변을 보내는 AI 시스템이
                 있다면 어떤 문제가 발생할까요?"</li>
-              <li><span class="highlight">비즈니스 리스크:</span> </li>
-              <li><span class="highlight">부적절한 대응:</span> 화가 난 고객에게 영혼 없는 자동 완성 어조로 답하여 이탈 가속화.</li>
-              <li><span class="highlight">업무 비효율:</span> 급박한 긴급 오류 건과 단순 정보 문의 건이 동일 순위로 처리되어 장애 대응 지연.</li>
-              <li><span class="highlight">신뢰성 상실:</span> 고객이 기업의 AI 대응에 대해 성의 없다고 느낌.</li>
+              <li><span class="highlight">비즈니스 리스크:</span>
+                <ul>
+                  <li><span class="highlight">부적절한 대응:</span> 화가 난 고객에게 영혼 없는 자동 완성 어조로 답하여 이탈 가속화.</li>
+                  <li><span class="highlight">업무 비효율:</span> 급박한 긴급 오류 건과 단순 정보 문의 건이 동일 순위로 처리되어 장애 대응 지연.</li>
+                  <li><span class="highlight">신뢰성 상실:</span> 고객이 기업의 AI 대응에 대해 성의 없다고 느낌.</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">비즈니스 현장에서는 매 순간 판단이 필요합니다. 좋은 에이전트는 기쁜 고객에게는 감사를, 화가 난
               고객에게는 신속한 사과와 긴급 기술 지원을 트리거해야 합니다. 이 모든 흐름의 첫 단추는 인풋 데이터에 대한 정밀한 분류와 판단력입니다.</div>
@@ -1826,12 +1863,11 @@ def handle_email_pipeline(user_email):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 48: 핵심 설명: 조건 분기 (Conditional Branching) -->
         <section class="slide-card" id="slide-48">
           <div class="slide-header">
             <div>
-              <div class="slide-category">5차시. 조건 분기 & 판단형 Agent 설계</div>
+              <div class="slide-category">5차시. 조건 분기 &amp; 판단형 Agent 설계</div>
               <div class="slide-title">핵심 설명: 조건 분기 (Conditional Branching)</div>
             </div>
             <div class="slide-meta">
@@ -1866,12 +1902,11 @@ def handle_email_pipeline(user_email):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 49: 핵심 설명: 정밀 분류 기준서 설계 (Classification Matrix) -->
         <section class="slide-card" id="slide-49">
           <div class="slide-header">
             <div>
-              <div class="slide-category">5차시. 조건 분기 & 판단형 Agent 설계</div>
+              <div class="slide-category">5차시. 조건 분기 &amp; 판단형 Agent 설계</div>
               <div class="slide-title">핵심 설명: 정밀 분류 기준서 설계 (Classification Matrix)</div>
             </div>
             <div class="slide-meta">
@@ -1907,12 +1942,11 @@ def handle_email_pipeline(user_email):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 50: 핵심 설명: 예외 처리와 가드레일 (Exception Handling) -->
         <section class="slide-card" id="slide-50">
           <div class="slide-header">
             <div>
-              <div class="slide-category">5차시. 조건 분기 & 판단형 Agent 설계</div>
+              <div class="slide-category">5차시. 조건 분기 &amp; 판단형 Agent 설계</div>
               <div class="slide-title">핵심 설명: 예외 처리와 가드레일 (Exception Handling)</div>
             </div>
             <div class="slide-meta">
@@ -1928,8 +1962,8 @@ def handle_email_pipeline(user_email):
                 <div class="flow-desc">LLM을 통해 답변 또는 JSON 결과 최초 생성</div>
               </div>
               <div class="flow-arrow">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z" />
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
                 </svg>
               </div>
               <div class="flow-step">
@@ -1938,8 +1972,8 @@ def handle_email_pipeline(user_email):
                 <div class="flow-desc">JSON 파싱 오류 체크 및 필수 키 존재 유무 확인</div>
               </div>
               <div class="flow-arrow">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z" />
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
                 </svg>
               </div>
               <div class="flow-step">
@@ -1948,8 +1982,8 @@ def handle_email_pipeline(user_email):
                 <div class="flow-desc">검증 실패 시, 오류 메시지를 첨부하여 LLM에 재수정 요청</div>
               </div>
               <div class="flow-arrow">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z" />
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
                 </svg>
               </div>
               <div class="flow-step">
@@ -1966,12 +2000,11 @@ def handle_email_pipeline(user_email):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 51: 중요 기법: 판단 이유(Reasoning) 동시 출력 -->
         <section class="slide-card" id="slide-51">
           <div class="slide-header">
             <div>
-              <div class="slide-category">5차시. 조건 분기 & 판단형 Agent 설계</div>
+              <div class="slide-category">5차시. 조건 분기 &amp; 판단형 Agent 설계</div>
               <div class="slide-title">중요 기법: 판단 이유(Reasoning) 동시 출력</div>
             </div>
             <div class="slide-meta">
@@ -1981,20 +2014,16 @@ def handle_email_pipeline(user_email):
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">Reasoning 출력의 가치:</span> </li>
-              <li>AI가 분류 결과를 낼 때 그 근거(이유)를 함께 출력하도록 프롬프트를 설계함.</li>
-              <li><span class="highlight">출력 스키마 예시:</span> </li>
-              <div class="code-container">
-                <div class="code-header">
-                  <span>JSON 포맷</span>
-                  <button class="copy-btn">복사</button>
-                </div>
-                <pre class="code-block"><code>{
-  "classification": "Negative",
-  "reason": "고객이 결제 과정 중 '두 번 청구'라는 명확한 금전적 오류를 언급하였고, '확인 요망'이라며 신속한 조치를 촉구하고 있으므로 부정 및 긴급 건으로 분류함."
-}</code></pre>
-              </div>
-              <li><span class="highlight">이점:</span> 현업 담당자가 결과의 타당성을 즉시 검토할 수 있으며, 프롬프트 디버깅이 쉬워짐.</li>
+              <li><span class="highlight">Reasoning 출력의 가치:</span>
+                <ul>
+                  <li>AI가 분류 결과를 낼 때 그 근거(이유)를 함께 출력하도록 프롬프트를 설계함.</li>
+                </ul>
+              </li>
+              <li><span class="highlight">출력 스키마 예시:</span>
+                <ul>
+                  <li><span class="highlight">이점:</span> 현업 담당자가 결과의 타당성을 즉시 검토할 수 있으며, 프롬프트 디버깅이 쉬워짐.</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">AI에게 '그냥 결과만 말해'라고 하면 검증할 방법이 없습니다. 반드시 '왜 그렇게 생각했는지 이유를
               적어줘'라고 지시해야 합니다. 이 판단 이유는 나중에 강사나 운영진이 에이전트의 로직을 튜닝할 때 엄청난 힌트가 되며, 현업 실무자에게도 신뢰감을 줍니다.</div>
@@ -2006,12 +2035,11 @@ def handle_email_pipeline(user_email):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 52: 실습 안내: 리뷰 분류 Agent 설계 실습 -->
         <section class="slide-card" id="slide-52">
           <div class="slide-header">
             <div>
-              <div class="slide-category">5차시. 조건 분기 & 판단형 Agent 설계</div>
+              <div class="slide-category">5차시. 조건 분기 &amp; 판단형 Agent 설계</div>
               <div class="slide-title">실습 안내: 리뷰 분류 Agent 설계 실습</div>
             </div>
             <div class="slide-meta">
@@ -2040,12 +2068,11 @@ def handle_email_pipeline(user_email):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 53: 실습 진행: 리뷰 데이터셋 및 가이드라인 -->
         <section class="slide-card" id="slide-53">
           <div class="slide-header">
             <div>
-              <div class="slide-category">5차시. 조건 분기 & 판단형 Agent 설계</div>
+              <div class="slide-category">5차시. 조건 분기 &amp; 판단형 Agent 설계</div>
               <div class="slide-title">실습 진행: 리뷰 데이터셋 및 가이드라인</div>
             </div>
             <div class="slide-meta">
@@ -2085,12 +2112,11 @@ def get_valid_json(prompt, max_retries=3):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 54: 공유 및 토론: 예외 처리와 판단 오류 튜닝 -->
         <section class="slide-card" id="slide-54">
           <div class="slide-header">
             <div>
-              <div class="slide-category">5차시. 조건 분기 & 판단형 Agent 설계</div>
+              <div class="slide-category">5차시. 조건 분기 &amp; 판단형 Agent 설계</div>
               <div class="slide-title">공유 및 토론: 예외 처리와 판단 오류 튜닝</div>
             </div>
             <div class="slide-meta">
@@ -2100,10 +2126,13 @@ def get_valid_json(prompt, max_retries=3):
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">토론 과제:</span> </li>
-              <li>1. 4번 리뷰(설명은 좋았지만 실습이 짧음)를 여러분의 에이전트는 어떻게 분류했습니까? 긍정인가요, 부정인가요, 복합인가요?</li>
-              <li>2. 분류가 모호했던 예외적인 케이스를 만나면 프롬프트의 어느 부분을 고쳤습니까?</li>
-              <li>3. 후속 조치(Action) 파라미터가 적절하게 제안되었는지 조별로 비교해 봅시다.</li>
+              <li><span class="highlight">토론 과제:</span>
+                <ul>
+                  <li>1. 4번 리뷰(설명은 좋았지만 실습이 짧음)를 여러분의 에이전트는 어떻게 분류했습니까? 긍정인가요, 부정인가요, 복합인가요?</li>
+                  <li>2. 분류가 모호했던 예외적인 케이스를 만나면 프롬프트의 어느 부분을 고쳤습니까?</li>
+                  <li>3. 후속 조치(Action) 파라미터가 적절하게 제안되었는지 조별로 비교해 봅시다.</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">많은 조에서 4번 리뷰의 처리를 두고 논의하셨을 겁니다. '설명은 좋았다'는 긍정이지만 '실습이
               부족했다'는 개선 요구(부정)입니다. 이를 '복합'으로 똑똑하게 잡아내고 불편 요소를 우선하여 후속 조치를 취하도록 설계했다면 훌륭한 수준의 에이전트 설계입니다.</div>
@@ -2115,13 +2144,12 @@ def get_valid_json(prompt, max_retries=3):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 55: 5차시 정리 & 6차시 예고 -->
         <section class="slide-card" id="slide-55">
           <div class="slide-header">
             <div>
-              <div class="slide-category">5차시. 조건 분기 & 판단형 Agent 설계</div>
-              <div class="slide-title">5차시 정리 & 6차시 예고</div>
+              <div class="slide-category">5차시. 조건 분기 &amp; 판단형 Agent 설계</div>
+              <div class="slide-title">5차시 정리 &amp; 6차시 예고</div>
             </div>
             <div class="slide-meta">
               <span class="day-badge">2일차</span>
@@ -2130,12 +2158,16 @@ def get_valid_json(prompt, max_retries=3):
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">5차시 요약:</span> </li>
-              <li>스마트한 에이전트는 <strong>조건 분기(If-Else)</strong>를 통해 데이터별 최적의 처리 트랙을 배정한다.</li>
-              <li>예외 상황에 대처하는 <strong>가드레일과 Fallback 규칙</strong>이 있어야 시스템이 멈추지 않는다.</li>
-              <li><strong>판단 사유(Reasoning)</strong>를 함께 출력하는 것은 에이전트 투명성의 기본이다.</li>
-              <li><span class="highlight">다음 차시 예고:</span> 6차시. 업무 자동화 Agent 설계: Mini Project (과정의 최종 단계, 나만의 에이전트 기획서
-                제작)</li>
+              <li><span class="highlight">5차시 요약:</span>
+                <ul>
+                  <li>스마트한 에이전트는 <strong>조건 분기(If-Else)</strong>를 통해 데이터별 최적의 처리 트랙을 배정한다.</li>
+                  <li>예외 상황에 대처하는 <strong>가드레일과 Fallback 규칙</strong>이 있어야 시스템이 멈추지 않는다.</li>
+                  <li><strong>판단 사유(Reasoning)</strong>를 함께 출력하는 것은 에이전트 투명성의 기본이다.</li>
+                  <li><span class="highlight">다음 차시 예고:</span> 6차시. 업무 자동화 Agent 설계: Mini Project (과정의 최종 단계, 나만의 에이전트
+                    기획서
+                    제작)</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">5차시 개념도 잘 이해해 주셨습니다. 판단력을 장착한 에이전트는 훨씬 더 완성도가 높습니다. 자,
               드디어 마지막 6차시입니다! 지금까지 배운 모든 지식(페르소나, 출력 제어, 워크플로우 체이닝, 조건 분기)을 전부 쏟아부어, 본인의 실제 업무를 자동화하는 나만의 에이전트 설계서를 작성하고
@@ -2150,7 +2182,6 @@ def get_valid_json(prompt, max_retries=3):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 56: [간지] SESSION 06 -->
         <section class="slide-card divider-slide" id="slide-56">
           <div class="slide-header" style="display: none;">
@@ -2163,7 +2194,7 @@ def get_valid_json(prompt, max_retries=3):
             <h1 class="divider-title">자율화 에이전트 실습</h1>
             <p class="divider-subtitle">학습한 모든 개념을 총동원하여 실무 자동화 에이전트를 직접 기획하고 구축하는 종합 프로젝트</p>
             <div class="divider-topics">
-              <div class="topic-badge"><span>01</span> 미니 프로젝트 기획 & 설계</div>
+              <div class="topic-badge"><span>01</span> 미니 프로젝트 기획 &amp; 설계</div>
               <div class="topic-badge"><span>02</span> 에이전트 파이프라인 구축</div>
               <div class="topic-badge"><span>03</span> 디버깅, 최적화 및 최종 배포</div>
             </div>
@@ -2176,13 +2207,12 @@ def get_valid_json(prompt, max_retries=3):
             자동화 에이전트 시스템을 기획하고 구현하는 미니 프로젝트를 진행합니다.</div>
           <div class="visual-guide-notes" style="display:none;">골드와 퍼플의 조화로운 그라데이션. 완성도 높은 메쉬 구체와 파이프라인 그래픽.</div>
         </section>
-
         <!-- Slide 57: 6차시 도입 & 아젠다 -->
         <section class="slide-card" id="slide-57">
           <div class="slide-header">
             <div>
               <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
-              <div class="slide-title">6차시 도입 & 아젠다</div>
+              <div class="slide-title">6차시 도입 &amp; 아젠다</div>
             </div>
             <div class="slide-meta">
               <span class="day-badge">2일차</span>
@@ -2192,11 +2222,14 @@ def get_valid_json(prompt, max_retries=3):
           <div class="slide-body">
             <ul class="bullet-list">
               <li><span class="highlight">6차시 주제:</span> 업무 자동화 Agent 설계: Mini Project</li>
-              <li><span class="highlight">오늘 수행할 과제:</span> </li>
-              <li>실무에서 자동화가 필요한 반복 업무 발굴 및 타겟팅</li>
-              <li>에이전트 자동화 적합성 평가 3대 지표 분석</li>
-              <li>종합 에이전트 설계서 작성 및 3분 피칭(발표)</li>
-              <li>상호 동료 피드백 및 루브릭 기반 평가</li>
+              <li><span class="highlight">오늘 수행할 과제:</span>
+                <ul>
+                  <li>실무에서 자동화가 필요한 반복 업무 발굴 및 타겟팅</li>
+                  <li>에이전트 자동화 적합성 평가 3대 지표 분석</li>
+                  <li>종합 에이전트 설계서 작성 및 3분 피칭(발표)</li>
+                  <li>상호 동료 피드백 및 루브릭 기반 평가</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">여러분, 드디어 본 과정의 최종 하이라이트인 6차시 Mini Project 시간입니다. 지금까지 배운
               개별 부품들을 조립해 실제 여러분의 업무 현장에 당장 배치할 수 있는 '실무형 업무 자동화 에이전트'를 기획하고, 동료들 앞에서 발표하며 실용성을 검증받는 종합 실습을 시작하겠습니다.
@@ -2209,7 +2242,6 @@ def get_valid_json(prompt, max_retries=3):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 58: 도입 질문: 어떤 업무를 에이전트에 맡길 것인가? -->
         <section class="slide-card" id="slide-58">
           <div class="slide-header">
@@ -2226,10 +2258,13 @@ def get_valid_json(prompt, max_retries=3):
             <ul class="bullet-list">
               <li><span class="highlight">도입 질문:</span> "현재 여러분이 하고 있는 일상 업무 중, AI 에이전트에게 온전히 넘겨주고 여러분은 더 창의적인 일에 몰두하고
                 싶은 첫 번째 업무는 무엇인가요?"</li>
-              <li><span class="highlight">자동화 대상 후보 아이디어:</span> </li>
-              <li>매일 아침 여러 뉴스 사이트에서 수집하는 '업계 트렌드 스크랩'</li>
-              <li>정기적으로 고객들에게 보내는 '맞춤형 뉴스레터 초안 작성'</li>
-              <li>유입되는 고객의 주문 정보 유효성 검사 및 정제 작업</li>
+              <li><span class="highlight">자동화 대상 후보 아이디어:</span>
+                <ul>
+                  <li>매일 아침 여러 뉴스 사이트에서 수집하는 '업계 트렌드 스크랩'</li>
+                  <li>정기적으로 고객들에게 보내는 '맞춤형 뉴스레터 초안 작성'</li>
+                  <li>유입되는 고객의 주문 정보 유효성 검사 및 정제 작업</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">가장 나쁜 업무 자동화 기획은 '어려워 보이고 거창한 일'을 고르는 것입니다. 진짜 훌륭한 기획은 매주
               2~3시간씩 나의 손목을 아프게 만드는 지루하고 짜증 나는 반복 작업을 찾아내는 것입니다. 오늘 그런 업무를 하나씩 꺼내어 자동화해 봅시다.</div>
@@ -2241,7 +2276,6 @@ def get_valid_json(prompt, max_retries=3):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 59: 핵심 설명: 자동화 업무 선정의 3대 필터 (R-R-D) -->
         <section class="slide-card" id="slide-59">
           <div class="slide-header">
@@ -2262,8 +2296,8 @@ def get_valid_json(prompt, max_retries=3):
                 <div class="flow-desc">매주 10회 이상 정기적으로 반복 발생하여 자동화 효용성이 입증되는 성격의 업무</div>
               </div>
               <div class="flow-arrow">
-                <svg viewBox="0 0 24 24">
-                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                <svg viewbox="0 0 24 24">
+                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
                 </svg>
               </div>
               <div class="flow-step">
@@ -2272,8 +2306,8 @@ def get_valid_json(prompt, max_retries=3):
                 <div class="flow-desc">판단 조건(If-Else)이 명백하고 인간의 막연한 직관 대신 매뉴얼화가 가능한 영역</div>
               </div>
               <div class="flow-arrow">
-                <svg viewBox="0 0 24 24">
-                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                <svg viewbox="0 0 24 24">
+                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
                 </svg>
               </div>
               <div class="flow-step">
@@ -2290,7 +2324,6 @@ def get_valid_json(prompt, max_retries=3):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 60: 핵심 설명: 에이전트 설계서의 표준 뼈대 -->
         <section class="slide-card" id="slide-60">
           <div class="slide-header">
@@ -2322,7 +2355,7 @@ def get_valid_json(prompt, max_retries=3):
 - Output: 자동 회신문 본문 및 관리자 알림
 
 ## 3. 흐름도 및 예외처리 가이드
-- 분류 조건: VIP -> 담당자 호출 / 일반 -> AI 초안
+- 분류 조건: VIP -&gt; 담당자 호출 / 일반 -&gt; AI 초안
 - 예외 상황: 고객 비방 발생 시 즉각 담당자 이관 처리</pre>
             </div>
             <div class="visual-guide-notes" style="display:none;">실제 비즈니스 기획서 서식 템플릿의 각 구획을 확대해 보여주며 주요 포인트를 말풍선으로 안내.
@@ -2333,7 +2366,6 @@ def get_valid_json(prompt, max_retries=3):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 61: 실습 안내: 종합 Mini Project 수행 요령 -->
         <section class="slide-card" id="slide-61">
           <div class="slide-header">
@@ -2349,10 +2381,14 @@ def get_valid_json(prompt, max_retries=3):
           <div class="slide-body">
             <ul class="bullet-list">
               <li><span class="highlight">프로젝트 명:</span> 현업 밀착형 나만의 업무 자동화 Agent 설계</li>
-              <li><span class="highlight">진행 절차:</span> </li>
-              <li><span class="highlight">1단계 (업무 선정):</span> 개별 또는 조별 반복 업무 후보 3개 적기 -> R-R-D 기준으로 최고점 1개 선정.</li>
-              <li><span class="highlight">2단계 (설계서 작성):</span> 배포된 템플릿에 맞추어 문제 정의, 흐름, 예외 처리 설계 채우기.</li>
-              <li><span class="highlight">3단계 (발표 준비):</span> 3분 분량의 엘리베이터 피치 형식 슬라이드 1장 요약본 작성.</li>
+              <li><span class="highlight">진행 절차:</span>
+                <ul>
+                  <li><span class="highlight">1단계 (업무 선정):</span> 개별 또는 조별 반복 업무 후보 3개 적기 -&gt; R-R-D 기준으로 최고점 1개 선정.
+                  </li>
+                  <li><span class="highlight">2단계 (설계서 작성):</span> 배포된 템플릿에 맞추어 문제 정의, 흐름, 예외 처리 설계 채우기.</li>
+                  <li><span class="highlight">3단계 (발표 준비):</span> 3분 분량의 엘리베이터 피치 형식 슬라이드 1장 요약본 작성.</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">프로젝트 진행 순서입니다. 우선 개인별로 후보 업무를 적고, 조원들과 의논해 가장 파급력이 크고
               자동화하기 알맞은 주제를 단 하나만 선택하십시오. 그 후 설계서를 꼼꼼히 메우고 최종 발표용 요약 슬라이드를 작성하시면 됩니다.</div>
@@ -2363,7 +2399,6 @@ def get_valid_json(prompt, max_retries=3):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 62: 실습 진행: 반복 업무 후보 선정표 양식 -->
         <section class="slide-card" id="slide-62">
           <div class="slide-header">
@@ -2426,7 +2461,6 @@ def get_valid_json(prompt, max_retries=3):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 63: 실습 진행: 종합 에이전트 설계서 세부 템플릿 -->
         <section class="slide-card" id="slide-63">
           <div class="slide-header">
@@ -2441,13 +2475,16 @@ def get_valid_json(prompt, max_retries=3):
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">작성할 항목 리스트:</span> </li>
-              <li><span class="highlight">1. 프로젝트명:</span> 에이전트의 이름 (예: 고객 소리 분석 로봇)</li>
-              <li><span class="highlight">2. 해결할 문제:</span> 기존 업무 방식의 한계와 고통 지점</li>
-              <li><span class="highlight">3. 인풋 데이터:</span> 가공할 대상 원본 (예: 상담 게시판 글)</li>
-              <li><span class="highlight">4. 처리 아키텍처:</span> Persona 정의 및 3단계 Workflow 흐름</li>
-              <li><span class="highlight">5. 조건 분기 로직:</span> 예외 및 상황 분류 필터 기준</li>
-              <li><span class="highlight">6. 최종 아웃풋:</span> JSON 구조 및 사용자 전달 표 포맷</li>
+              <li><span class="highlight">작성할 항목 리스트:</span>
+                <ul>
+                  <li><span class="highlight">1. 프로젝트명:</span> 에이전트의 이름 (예: 고객 소리 분석 로봇)</li>
+                  <li><span class="highlight">2. 해결할 문제:</span> 기존 업무 방식의 한계와 고통 지점</li>
+                  <li><span class="highlight">3. 인풋 데이터:</span> 가공할 대상 원본 (예: 상담 게시판 글)</li>
+                  <li><span class="highlight">4. 처리 아키텍처:</span> Persona 정의 및 3단계 Workflow 흐름</li>
+                  <li><span class="highlight">5. 조건 분기 로직:</span> 예외 및 상황 분류 필터 기준</li>
+                  <li><span class="highlight">6. 최종 아웃풋:</span> JSON 구조 및 사용자 전달 표 포맷</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">이 설계서 시트가 오늘 과정의 최종 결과물입니다. 그동안 배운 R-I-C-O, Few-Shot 예시,
               JSON 스키마, If-Else 분기 논리가 이 한 장의 문서에 조화롭게 들어가야 합니다. 옆 사람이나 조원들과 활발히 아이디어를 묻고 답하며 완성도를 높여 주십시오.</div>
@@ -2459,7 +2496,6 @@ def get_valid_json(prompt, max_retries=3):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 64: 발표 가이드: 3분 엘리베이터 피칭(Elevator Pitch) -->
         <section class="slide-card" id="slide-64">
           <div class="slide-header">
@@ -2474,11 +2510,14 @@ def get_valid_json(prompt, max_retries=3):
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">핵심 3분 피치 구성 요령:</span> </li>
-              <li><span class="highlight">1단계: 문제 상황 정의 (30초):</span> "우리는 매일 X개의 데이터 처리에 Y시간을 낭비하고 있습니다."</li>
-              <li><span class="highlight">2단계: 솔루션 흐름 제시 (60초):</span> "본 에이전트는 입력-처리-분기-출력 과정을 통해 해결합니다."</li>
-              <li><span class="highlight">3단계: 핵심 판단 메커니즘 (60초):</span> "특히 복합 감정 분류와 JSON 변환이 핵심 로직입니다."</li>
-              <li><span class="highlight">4단계: 도입 후 기대 효과 (30초):</span> "도입 시 주당 Z시간 단축 및 오류율 0%를 달성합니다."</li>
+              <li><span class="highlight">핵심 3분 피치 구성 요령:</span>
+                <ul>
+                  <li><span class="highlight">1단계: 문제 상황 정의 (30초):</span> "우리는 매일 X개의 데이터 처리에 Y시간을 낭비하고 있습니다."</li>
+                  <li><span class="highlight">2단계: 솔루션 흐름 제시 (60초):</span> "본 에이전트는 입력-처리-분기-출력 과정을 통해 해결합니다."</li>
+                  <li><span class="highlight">3단계: 핵심 판단 메커니즘 (60초):</span> "특히 복합 감정 분류와 JSON 변환이 핵심 로직입니다."</li>
+                  <li><span class="highlight">4단계: 도입 후 기대 효과 (30초):</span> "도입 시 주당 Z시간 단축 및 오류율 0%를 달성합니다."</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">설계서 작성이 끝나면 발표가 진행됩니다. 발표 시간은 팀당 딱 3분입니다. 군더더기 정보는 빼고 '어떤
               문제를 겪고 있었는데, 어떤 구조의 에이전트로 해결했고, 도입하면 얼마나 업무 시간이 줄어드는지' 핵심 위주로 명료하게 설득해 주시기 바랍니다.</div>
@@ -2489,7 +2528,6 @@ def get_valid_json(prompt, max_retries=3):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 65: 피드백 및 평가 루브릭 활용 -->
         <section class="slide-card" id="slide-65">
           <div class="slide-header">
@@ -2504,11 +2542,14 @@ def get_valid_json(prompt, max_retries=3):
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">동료 평가 기준 (Rubric):</span> </li>
-              <li><span class="highlight">문제 정의:</span> 대상 업무와 페인 포인트가 아주 뚜렷한가?</li>
-              <li><span class="highlight">흐름 설계:</span> 단계별 입출력 연결이 논리적이고 현실성 있는가?</li>
-              <li><span class="highlight">조건 분기:</span> 상황 분류와 예외 처리(Fallback)가 촘촘히 설계되었는가?</li>
-              <li><span class="highlight">출력 설계:</span> 후속 시스템이나 사람이 즉시 재활용하기 좋은 형식인가?</li>
+              <li><span class="highlight">동료 평가 기준 (Rubric):</span>
+                <ul>
+                  <li><span class="highlight">문제 정의:</span> 대상 업무와 페인 포인트가 아주 뚜렷한가?</li>
+                  <li><span class="highlight">흐름 설계:</span> 단계별 입출력 연결이 논리적이고 현실성 있는가?</li>
+                  <li><span class="highlight">조건 분기:</span> 상황 분류와 예외 처리(Fallback)가 촘촘히 설계되었는가?</li>
+                  <li><span class="highlight">출력 설계:</span> 후속 시스템이나 사람이 즉시 재활용하기 좋은 형식인가?</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">다른 조의 발표를 들으실 때는 이 루브릭을 바탕으로 피드백을 적어 주셔야 합니다. 완성도가 다소
               낮더라도 아이디어가 참신한지, 실제 동작할 수 있는 흐름으로 쪼개졌는지 건설적이고 날카로운 질문을 많이 던져 주시기 바랍니다.</div>
@@ -2520,7 +2561,6 @@ def get_valid_json(prompt, max_retries=3):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
         <!-- Slide 66: 과정 클로징: AI 에이전트 설계자로의 도약 -->
         <section class="slide-card" id="slide-66">
           <div class="slide-header">
@@ -2535,11 +2575,15 @@ def get_valid_json(prompt, max_retries=3):
           </div>
           <div class="slide-body">
             <ul class="bullet-list">
-              <li><span class="highlight">클로징 메시지:</span> </li>
-              <li>"AI를 단순히 잘 부려먹는 질문자(Prompt User)를 넘어, AI가 스스로 판단하고 안전하게 일하도록 환경을 만드는 <strong>에이전트 시스템 설계자(Agent
-                  Architect)</strong>로 나아가십시오."</li>
-              <li><span class="highlight">지속 가능한 액션:</span> 현업 복귀 후 매주 1개의 비효율 업무 발굴하기, Antigravity 플랫폼 활용해 작은 워크플로우부터
-                점진적으로 구축해 보기.</li>
+              <li><span class="highlight">클로징 메시지:</span>
+                <ul>
+                  <li>"AI를 단순히 잘 부려먹는 질문자(Prompt User)를 넘어, AI가 스스로 판단하고 안전하게 일하도록 환경을 만드는 <strong>에이전트 시스템 설계자(Agent
+                      Architect)</strong>로 나아가십시오."</li>
+                  <li><span class="highlight">지속 가능한 액션:</span> 현업 복귀 후 매주 1개의 비효율 업무 발굴하기, Antigravity 플랫폼 활용해 작은
+                    워크플로우부터
+                    점진적으로 구축해 보기.</li>
+                </ul>
+              </li>
             </ul>
             <div class="presenter-notes" style="display:none;">이틀 동안 정말 고생 많으셨습니다. 여러분이 만든 설계서는 단순한 종이 조각이 아닌, 곧바로 구현
               가능한 비즈니스 자산입니다. AI의 노예가 아닌, AI 워크포스를 지휘하는 훌륭한 시스템 아키텍트로서 현업의 혁신을 이끌어 나가시기를 늘 응원하겠습니다. 감사합니다!</div>
@@ -2551,9 +2595,7 @@ def get_valid_json(prompt, max_retries=3):
             <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
           </div>
         </section>
-
       </div>
-
       <!-- Dashboard Grid View (Shown via dashboard mode) -->
       <div class="dashboard-viewport">
         <div class="dashboard-header">
@@ -2562,39 +2604,36 @@ def get_valid_json(prompt, max_retries=3):
             <p>원하는 차시의 카드형 요약본을 클릭하여 슬라이드로 이동할 수 있습니다.</p>
           </div>
           <div class="search-filter-box">
-            <svg class="search-icon" viewBox="0 0 24 24">
-              <path fill="currentColor"
-                d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+            <svg class="search-icon" viewbox="0 0 24 24">
+              <path
+                d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"
+                fill="currentColor"></path>
             </svg>
-            <input type="text" id="search-slides" placeholder="슬라이드 검색 (주제, 키워드)...">
+            <input id="search-slides" placeholder="슬라이드 검색 (주제, 키워드)..." type="text" />
           </div>
         </div>
-
         <!-- Cards Grid Container (Rendered dynamically) -->
         <div class="cards-grid"></div>
       </div>
-
       <!-- Fixed Presentation Navigation Controls -->
       <div class="navigation-bar">
-        <button id="prev-btn" class="nav-btn" title="이전 슬라이드 (←)">
-          <svg viewBox="0 0 24 24">
-            <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
+        <button class="nav-btn" id="prev-btn" title="이전 슬라이드 (←)">
+          <svg viewbox="0 0 24 24">
+            <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"></path>
           </svg>
         </button>
         <div class="progress-track">
           <div class="progress-bar"></div>
         </div>
         <div class="slide-progress-info">1 / 16</div>
-        <button id="next-btn" class="nav-btn" title="다음 슬라이드 (→ / Space)">
-          <svg viewBox="0 0 24 24">
-            <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+        <button class="nav-btn" id="next-btn" title="다음 슬라이드 (→ / Space)">
+          <svg viewbox="0 0 24 24">
+            <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"></path>
           </svg>
         </button>
       </div>
-
     </main>
   </div>
-
   <script src="app.js"></script>
 </body>
 

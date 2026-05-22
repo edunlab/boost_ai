@@ -223,7 +223,7 @@ header {
   border-radius: 20px;
   box-shadow: var(--panel-shadow);
   backdrop-filter: blur(25px);
-  padding: 50px 60px;
+  padding: 40px 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -278,15 +278,15 @@ header {
   justify-content: space-between;
   align-items: flex-start;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding-bottom: 15px;
-  margin-bottom: 20px;
-  height: 65px;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  min-height: 65px;
 }
 
 .slide-category {
   font-family: 'Outfit', sans-serif;
   text-transform: uppercase;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   letter-spacing: 0.15em;
   color: var(--accent-blue);
   font-weight: 600;
@@ -295,7 +295,7 @@ header {
 
 .slide-title {
   font-family: 'Outfit', sans-serif;
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   font-weight: 800;
   letter-spacing: -0.01em;
   color: var(--text-primary);
@@ -305,7 +305,7 @@ header {
 .slide-meta {
   text-align: right;
   font-family: 'Outfit', sans-serif;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text-muted);
   display: flex;
   flex-direction: column;
@@ -318,7 +318,7 @@ header {
   padding: 4px 10px;
   border-radius: 20px;
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   margin-bottom: 4px;
   box-shadow: 0 4px 10px rgba(114, 9, 183, 0.3);
 }
@@ -355,9 +355,9 @@ header {
   justify-content: space-between;
   align-items: center;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding-top: 15px;
-  margin-top: 20px;
-  font-size: 0.85rem;
+  padding-top: 12px;
+  margin-top: 15px;
+  font-size: 0.95rem;
   color: var(--text-muted);
 }
 
@@ -377,7 +377,7 @@ header {
   color: var(--kbd-color);
   padding: 2px 6px;
   border-radius: 4px;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
   font-weight: 600;
 }
@@ -649,7 +649,7 @@ header {
 
 .intro-tagline {
   color: var(--accent-cyan);
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   margin-bottom: 12px;
@@ -657,7 +657,7 @@ header {
 }
 
 .intro-main-title {
-  font-size: 3rem;
+  font-size: 3.4rem;
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 24px;
@@ -675,7 +675,7 @@ header {
 }
 
 .intro-desc {
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   color: var(--text-secondary);
   line-height: 1.7;
 }
@@ -715,14 +715,14 @@ header {
 
 .concept-title {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--accent-cyan);
   margin-bottom: 6px;
 }
 
 .concept-text {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--text-secondary);
   line-height: 1.5;
 }
@@ -732,16 +732,16 @@ header {
   list-style: none;
 }
 
-.bullet-list li {
+.bullet-list > li {
   position: relative;
   padding-left: 28px;
   margin-bottom: 12px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.6;
   color: var(--text-primary);
 }
 
-.bullet-list li::before {
+.bullet-list > li::before {
   content: "✦";
   position: absolute;
   left: 6px;
@@ -750,14 +750,41 @@ header {
   font-weight: bold;
 }
 
-.bullet-list.check li::before {
+.bullet-list.check > li::before {
   content: "✓";
   color: var(--accent-green);
 }
 
-.bullet-list.danger li::before {
+.bullet-list.danger > li::before {
   content: "⚠";
   color: var(--accent-pink);
+}
+
+/* Nested Sub-bullets */
+.bullet-list > li > ul {
+  list-style: none;
+  margin-top: 8px;
+  margin-left: 10px;
+}
+
+.bullet-list > li > ul > li {
+  position: relative;
+  padding-left: 20px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.bullet-list > li > ul > li::before {
+  content: "◦";
+  position: absolute;
+  left: 6px;
+  top: -1px;
+  color: var(--accent-blue);
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .bullet-list span.highlight {
@@ -773,7 +800,7 @@ header {
   border-radius: 12px;
   padding: 18px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--text-primary);
   line-height: 1.6;
   overflow: hidden;
@@ -788,7 +815,7 @@ header {
   margin-bottom: 12px;
   padding-bottom: 8px;
   color: var(--text-muted);
-  font-size: 0.75rem;
+  font-size: 0.85rem;
 }
 
 .copy-btn {
@@ -798,7 +825,7 @@ header {
   padding: 4px 10px;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   transition: all 0.2s ease;
   font-family: sans-serif;
   font-weight: 500;
@@ -840,7 +867,7 @@ header {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
 }
 
 .slide-table th {
@@ -925,12 +952,12 @@ header {
 .loop-node-title {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   margin-bottom: 4px;
 }
 
 .loop-node-desc {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
   line-height: 1.2;
 }
@@ -979,7 +1006,7 @@ header {
 
 .stage-num {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.8rem;
+  font-size: 2.1rem;
   font-weight: 800;
   color: rgba(255, 255, 255, 0.08);
   line-height: 1;
@@ -1002,14 +1029,14 @@ header {
 }
 
 .stage-part-label {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
   color: var(--text-muted);
   font-weight: 600;
 }
 
 .stage-part-val {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--text-primary);
   font-weight: 500;
 }
@@ -1018,7 +1045,7 @@ header {
   background: var(--code-bg);
   padding: 2px 6px;
   border-radius: 4px;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   border: 1px solid var(--code-border);
 }
 
@@ -1061,13 +1088,13 @@ header {
 .persona-name {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 6px;
   color: var(--text-primary);
 }
 
 .persona-desc {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--text-secondary);
   line-height: 1.5;
 }
@@ -1094,7 +1121,7 @@ header {
 
 .rubric-tier {
   font-family: 'Outfit', sans-serif;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 8px;
   display: flex;
@@ -1115,7 +1142,7 @@ header {
 }
 
 .rubric-points {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.5;
 }
@@ -1126,7 +1153,7 @@ header {
   border-left: 4px solid var(--accent-cyan);
   padding: 16px 20px;
   border-radius: 0 12px 12px 0;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   line-height: 1.6;
   margin-bottom: 15px;
 }
@@ -1271,7 +1298,7 @@ header {
 
 .timer-display {
   font-family: 'Outfit', sans-serif;
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   font-weight: 800;
   letter-spacing: 0.05em;
   color: var(--text-primary);
@@ -1438,7 +1465,7 @@ header {
   color: white;
   padding: 8px 16px;
   border-radius: 20px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 700;
   box-shadow: 0 5px 15px rgba(247, 37, 133, 0.4);
   z-index: 101;
@@ -1538,7 +1565,7 @@ header {
 
 .divider-slide .divider-day {
   font-family: 'Outfit', sans-serif;
-  font-size: 1rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--accent-pink);
   margin-bottom: 8px;
@@ -1547,7 +1574,7 @@ header {
 
 .divider-slide .divider-tag {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.25em;
@@ -1562,7 +1589,7 @@ header {
 
 .divider-slide .divider-title {
   font-family: 'Outfit', 'Inter', sans-serif;
-  font-size: 3rem;
+  font-size: 3.4rem;
   font-weight: 800;
   background: linear-gradient(135deg, #ffffff 0%, #b8c1ec 100%);
   -webkit-background-clip: text;
@@ -1573,11 +1600,11 @@ header {
 }
 
 .divider-slide .divider-subtitle {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   color: var(--text-secondary);
   max-width: 700px;
   line-height: 1.6;
-  margin-bottom: 44px;
+  margin-bottom: 35px;
   font-weight: 400;
 }
 
@@ -1594,7 +1621,7 @@ header {
   border: 1px solid rgba(255, 255, 255, 0.05);
   padding: 10px 20px;
   border-radius: 12px;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--text-primary);
   display: flex;
   align-items: center;
@@ -1679,16 +1706,16 @@ header {
 .nested-container .nested-label {
   font-family: 'Outfit', sans-serif;
   font-weight: 800;
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   color: var(--accent-purple);
   letter-spacing: 0.05em;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   display: inline-block;
 }
 
 .nested-container .nested-desc-top {
-  margin-bottom: 16px;
-  font-size: 0.85rem;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
   color: var(--text-secondary);
   line-height: 1.4;
 }
@@ -1704,16 +1731,16 @@ header {
 
 .nested-sub-1 .nested-label {
   color: var(--accent-cyan);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
 }
 
 .nested-sub-1 .nested-desc-top {
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .nested-sub-2 {
   border-radius: 12px;
-  padding: 18px;
+  padding: 14px;
   border: 2px solid var(--accent-green);
   background: rgba(16, 185, 129, 0.03);
   position: relative;
@@ -1722,7 +1749,7 @@ header {
 
 .nested-sub-2 .nested-label {
   color: var(--accent-green);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
 }
 
 .nested-sub-2 .nested-desc-top {
@@ -1795,8 +1822,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.8rem;
-  margin-bottom: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
   font-family: 'Outfit', sans-serif;
 }
 
@@ -1807,13 +1834,13 @@ header {
 .flow-title {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--text-primary);
   margin-bottom: 6px;
 }
 
 .flow-desc {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
   line-height: 1.4;
 }
@@ -1823,7 +1850,7 @@ header {
   align-items: center;
   justify-content: center;
   color: var(--text-muted);
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   width: 16px;
   flex-shrink: 0;
   opacity: 0.6;
@@ -1871,7 +1898,7 @@ header {
 .matrix-label {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--accent-cyan);
 }
 
@@ -1892,7 +1919,7 @@ header {
 }
 
 .matrix-tag {
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   padding: 2px 6px;
   border-radius: 4px;
   background: rgba(255, 255, 255, 0.06);
@@ -1906,7 +1933,7 @@ header {
 }
 
 .matrix-desc {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.45;
 }
@@ -1926,7 +1953,7 @@ header {
   border-radius: 12px;
   padding: 10px 20px;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 242, 254, 0.08);
 }
@@ -1963,7 +1990,7 @@ header {
 }
 
 .branch-leaf-label {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: var(--accent-pink);
   font-weight: 700;
   margin-bottom: 4px;
@@ -1989,7 +2016,7 @@ header {
   padding: 10px 14px;
   width: 100%;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--text-primary);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   transition: all 0.2s;
@@ -2054,7 +2081,7 @@ header {
 .routing-header {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--text-primary);
   margin-bottom: 6px;
   display: flex;
@@ -2063,7 +2090,7 @@ header {
 }
 
 .routing-desc {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
   line-height: 1.4;
 }
@@ -2099,7 +2126,7 @@ header {
 .compare-title {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   margin-bottom: 8px;
   display: flex;
   align-items: center;
@@ -2115,7 +2142,7 @@ header {
 }
 
 .compare-desc {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.45;
 }
@@ -2256,7 +2283,7 @@ header {
 
   .slide-title {
     color: #111111 !important;
-    font-size: 2rem !important;
+    font-size: 2.4rem !important;
   }
 
   .slide-body {
@@ -2272,7 +2299,7 @@ header {
     border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
     padding-top: 10px !important;
     margin-top: 15px !important;
-    font-size: 0.8rem !important;
+    font-size: 0.95rem !important;
   }
 
   /* Special slide type styling (e.g. divider slide) */
