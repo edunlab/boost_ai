@@ -175,6 +175,11 @@ header {
   border-color: transparent;
 }
 
+.print-pdf-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-purple);
+}
+
 .badge {
   background: var(--kbd-bg);
   color: var(--text-secondary);
@@ -2118,4 +2123,243 @@ header {
 /* Ensure code containers have copyable content look nice */
 .code-container pre {
   margin: 0;
+}
+
+/* ==========================================
+   Print Optimization & PDF Generation Styles
+   ========================================== */
+@media print {
+  /* Set A4 Landscape page size and margins */
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+
+  /* Override color theme to ink-saving light mode */
+  :root, [data-theme] {
+    --bg-primary: #ffffff !important;
+    --bg-gradient: none !important;
+    --panel-bg: #ffffff !important;
+    --panel-border: rgba(0, 0, 0, 0.1) !important;
+    --panel-shadow: none !important;
+
+    --text-primary: #111111 !important;
+    --text-secondary: #222222 !important;
+    --text-muted: #555555 !important;
+
+    --accent-cyan: #0891b2 !important;
+    --accent-blue: #1e3a8a !important;
+    --accent-purple: #6d28d9 !important;
+    --accent-violet: #5b21b6 !important;
+    --accent-pink: #be185d !important;
+    --accent-green: #047857 !important;
+    --accent-yellow: #b45309 !important;
+
+    --slide-bg: #ffffff !important;
+    --slide-border: rgba(0, 0, 0, 0.1) !important;
+    --code-bg: #f8fafc !important;
+    --code-border: rgba(0, 0, 0, 0.1) !important;
+
+    --kbd-bg: rgba(0, 0, 0, 0.05) !important;
+    --kbd-color: #111111 !important;
+  }
+
+  /* Hide interactive controls, toolbars, dashboards, canvases, and guides */
+  header,
+  .navigation-bar,
+  #tools-drawer,
+  #drawing-canvas,
+  #drawing-indicator,
+  #flash-screen,
+  .footer-nav-guide,
+  .copy-btn,
+  .dashboard-viewport {
+    display: none !important;
+  }
+
+  /* Reset layout structure to allow slide cards to flow naturally */
+  html, body {
+    background: #ffffff !important;
+    color: #111111 !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    min-height: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .app-container,
+  .main-viewport {
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    position: static !important;
+  }
+
+  .slides-wrapper {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    position: static !important;
+    transform: none !important;
+    overflow: visible !important;
+  }
+
+  /* Re-layout each slide card to fit exactly on one landscape page */
+  .slide-card {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    width: 297mm !important; /* Standard A4 Width */
+    height: 209.9mm !important; /* Fit exactly on A4 height (210mm) without bleeding to next page */
+    box-sizing: border-box !important;
+    margin: 0 auto !important;
+    padding: 40px 50px !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    overflow: hidden !important;
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Disable CSS transitions during printing */
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  /* Style adjustments for slide elements under print context */
+  .slide-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 15px !important;
+    height: auto !important;
+  }
+
+  .slide-category {
+    color: var(--accent-blue) !important;
+  }
+
+  .slide-title {
+    color: #111111 !important;
+    font-size: 2rem !important;
+  }
+
+  .slide-body {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    overflow: visible !important;
+    padding-right: 0 !important;
+  }
+
+  .slide-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+    padding-top: 10px !important;
+    margin-top: 15px !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Special slide type styling (e.g. divider slide) */
+  .slide-card.divider-slide {
+    background: #ffffff !important;
+    border: none !important;
+    box-shadow: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .divider-slide .divider-day {
+    color: var(--accent-pink) !important;
+  }
+
+  .divider-slide .divider-tag {
+    color: var(--accent-purple) !important;
+    background: rgba(0, 0, 0, 0.05) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* Standard text colors for gradient/transparent headers */
+  .intro-main-title,
+  .divider-slide .divider-title {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+    color: #111111 !important;
+  }
+
+  /* Visual guides, presenter notes, visual guidance should NEVER print */
+  .presenter-notes,
+  .visual-guide-notes {
+    display: none !important;
+  }
+
+  /* Render lists, tables, cards, and diagrams nicely on white background */
+  .concept-item,
+  .loop-node,
+  .workflow-stage,
+  .persona-card,
+  .rubric-card,
+  .flow-step,
+  .matrix-card,
+  .branch-card,
+  .routing-card,
+  .compare-card,
+  .nested-container,
+  .nested-sub-1,
+  .nested-sub-2 {
+    background: rgba(0, 0, 0, 0.01) !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    color: #111111 !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  .table-container {
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .slide-table th {
+    background: rgba(0, 0, 0, 0.05) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15) !important;
+    color: #111111 !important;
+  }
+
+  .slide-table td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+    color: #222222 !important;
+  }
+
+  .code-container {
+    background: #f8fafc !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    color: #111111 !important;
+  }
+
+  .code-block {
+    max-height: none !important;
+    overflow-y: visible !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+  }
 }

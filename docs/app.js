@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevBtn = document.getElementById('prev-btn');
   const nextBtn = document.getElementById('next-btn');
   const toggleViewBtn = document.getElementById('toggle-view');
+  const printPdfBtn = document.getElementById('print-pdf');
 
   const presentationViewport = document.querySelector('.slides-wrapper');
   const dashboardViewport = document.querySelector('.dashboard-viewport');
@@ -100,6 +101,12 @@ document.addEventListener('DOMContentLoaded', () => {
   toggleViewBtn.addEventListener('click', () => {
     setViewMode(state.viewMode === 'presentation' ? 'dashboard' : 'presentation');
   });
+
+  if (printPdfBtn) {
+    printPdfBtn.addEventListener('click', () => {
+      window.print();
+    });
+  }
 
   // --- Presenter Drawer Toggle ---
   toolsToggle.addEventListener('click', () => {
