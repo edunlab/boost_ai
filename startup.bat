@@ -1,1 +1,0 @@
-python -m http.server 8000 --directory d:\workspace\edu\ai_boost\presentation
