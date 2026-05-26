@@ -275,12 +275,23 @@ header {
 /* --- Slide Content Typography --- */
 .slide-header {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   padding-bottom: 10px;
   margin-bottom: 15px;
   min-height: 65px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.slide-header > div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
 }
 
 .slide-category {
@@ -303,6 +314,9 @@ header {
 }
 
 .slide-meta {
+  position: absolute;
+  top: 0;
+  right: 0;
   text-align: right;
   font-family: 'Outfit', sans-serif;
   font-size: 1rem;
@@ -328,6 +342,8 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
   overflow-y: auto;
   padding-right: 10px;
 }
@@ -715,14 +731,14 @@ header {
 
 .concept-title {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.15rem;
+  font-size: 1.35rem;
   font-weight: 600;
   color: var(--accent-cyan);
   margin-bottom: 6px;
 }
 
 .concept-text {
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   color: var(--text-secondary);
   line-height: 1.5;
 }
@@ -730,13 +746,15 @@ header {
 /* Bullet Points & Lists */
 .bullet-list {
   list-style: none;
+  display: inline-block;
+  text-align: left;
 }
 
 .bullet-list > li {
   position: relative;
   padding-left: 28px;
   margin-bottom: 12px;
-  font-size: 1.2rem;
+  font-size: 1.45rem;
   line-height: 1.6;
   color: var(--text-primary);
 }
@@ -772,7 +790,7 @@ header {
   padding-left: 20px;
   margin-top: 6px;
   margin-bottom: 6px;
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   line-height: 1.5;
   color: var(--text-secondary);
 }
@@ -800,7 +818,7 @@ header {
   border-radius: 12px;
   padding: 18px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   color: var(--text-primary);
   line-height: 1.6;
   overflow: hidden;
@@ -867,7 +885,7 @@ header {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 0.95rem;
+  font-size: 1.15rem;
 }
 
 .slide-table th {
@@ -1621,7 +1639,7 @@ header {
   border: 1px solid rgba(255, 255, 255, 0.05);
   padding: 10px 20px;
   border-radius: 12px;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   color: var(--text-primary);
   display: flex;
   align-items: center;
@@ -1715,7 +1733,7 @@ header {
 
 .nested-container .nested-desc-top {
   margin-bottom: 12px;
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   color: var(--text-secondary);
   line-height: 1.4;
 }
@@ -1731,7 +1749,7 @@ header {
 
 .nested-sub-1 .nested-label {
   color: var(--accent-cyan);
-  font-size: 1.15rem;
+  font-size: 1.35rem;
 }
 
 .nested-sub-1 .nested-desc-top {
@@ -1749,7 +1767,7 @@ header {
 
 .nested-sub-2 .nested-label {
   color: var(--accent-green);
-  font-size: 1.05rem;
+  font-size: 1.25rem;
 }
 
 .nested-sub-2 .nested-desc-top {
@@ -1834,13 +1852,13 @@ header {
 .flow-title {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   color: var(--text-primary);
   margin-bottom: 6px;
 }
 
 .flow-desc {
-  font-size: 0.85rem;
+  font-size: 1.05rem;
   color: var(--text-secondary);
   line-height: 1.4;
 }
@@ -1898,7 +1916,7 @@ header {
 .matrix-label {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   color: var(--accent-cyan);
 }
 
@@ -1919,7 +1937,7 @@ header {
 }
 
 .matrix-tag {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   padding: 2px 6px;
   border-radius: 4px;
   background: rgba(255, 255, 255, 0.06);
@@ -1933,7 +1951,7 @@ header {
 }
 
 .matrix-desc {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   color: var(--text-secondary);
   line-height: 1.45;
 }
@@ -2456,4 +2474,50 @@ header {
 }
 [data-theme="light"] .session-6 {
   --session-slide-bg: rgba(241, 245, 249, 0.96);
+}
+
+/* Slide Page Number Styling */
+.slide-page-number {
+  position: absolute;
+  bottom: 24px;
+  right: 32px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  user-select: none;
+  z-index: 10;
+}
+
+[data-theme="light"] .slide-page-number {
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.divider-slide .slide-page-number {
+  display: none;
+}
+
+/* --- Slide Centering Layout Overrides --- */
+.split-layout,
+.matrix-grid,
+.concept-grid,
+.code-container,
+.slide-table {
+  text-align: left;
+}
+
+.table-container {
+  margin: 15px auto;
+  max-width: 100%;
+}
+
+.code-container {
+  margin: 15px auto;
+  width: 100%;
+  max-width: 900px;
 }

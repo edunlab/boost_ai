@@ -80,6 +80,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // --- Element Selectors ---
   const slides = document.querySelectorAll('.slide-card');
+
+  // Inject page numbers into slides dynamically
+  slides.forEach((slide, index) => {
+    const pageNum = document.createElement('div');
+    pageNum.className = 'slide-page-number';
+    pageNum.textContent = index + 1;
+    slide.appendChild(pageNum);
+  });
+
   const progressBar = document.querySelector('.progress-bar');
   const slideProgressText = document.querySelector('.slide-progress-info');
   const prevBtn = document.getElementById('prev-btn');
