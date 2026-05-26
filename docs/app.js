@@ -1,4 +1,68 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  // --- Load Session Files Dynamically ---
+  async function loadSessions() {
+    const sessions = ['session1.html', 'session2.html', 'session3.html', 'session4.html', 'session5.html', 'session6.html'];
+    const wrapper = document.querySelector('.slides-wrapper');
+    
+    const fetches = sessions.map(file => fetch(file).then(r => {
+      if (!r.ok) throw new Error(`HTTP error! status: ${r.status}`);
+      return r.text();
+    }));
+    
+    try {
+      const htmlContents = await Promise.all(fetches);
+      htmlContents.forEach(html => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const slideCards = tempDiv.querySelectorAll('.slide-card');
+        slideCards.forEach(card => {
+          wrapper.appendChild(card);
+        });
+      });
+    } catch (error) {
+      console.error('Error loading session files:', error);
+      
+      // Render a premium looking CORS warning modal / banner
+      const errorDiv = document.createElement('div');
+      errorDiv.id = 'cors-warning-overlay';
+      errorDiv.style.cssText = `
+        position: fixed;
+        top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(15, 23, 42, 0.95);
+        display: flex; justify-content: center; align-items: center;
+        z-index: 99999;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #f8fafc;
+        padding: 20px;
+        box-sizing: border-box;
+      `;
+      errorDiv.innerHTML = `
+        <div style="background: #1e293b; border: 1px solid #334155; border-radius: 16px; padding: 40px; max-width: 500px; width: 100%; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); text-align: center; transform: translateY(0); transition: all 0.3s ease;">
+          <div style="background: rgba(239, 68, 68, 0.15); width: 64px; height: 64px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 24px;">
+            <svg style="width: 32px; height: 32px; fill: #ef4444;" viewBox="0 0 24 24">
+              <path d="M12,2L1,21H23L12,2M12,6L19.53,19H4.47L12,6M11,10V14H13V10H11M11,16V18H13V16H11Z"/>
+            </svg>
+          </div>
+          <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #f1f5f9;">슬라이드 데이터를 불러올 수 없습니다</h2>
+          <p style="font-size: 14px; line-height: 1.6; color: #94a3b8; margin-bottom: 24px; text-align: left;">
+            현재 파일 시스템 프로토콜(<code>file://</code>)을 통해 브라우저로 직접 실행했거나 웹 서버 환경이 구성되지 않아 브라우저 보안 정책(CORS)에 의해 파일 로드가 차단되었습니다.
+          </p>
+          <div style="background: #0f172a; border-radius: 8px; padding: 16px; margin-bottom: 24px; text-align: left; font-size: 13px; line-height: 1.5; border: 1px solid #1e293b;">
+            <strong style="color: #38bdf8; display: block; margin-bottom: 8px;">해결 방법:</strong>
+            1. VS Code가 켜져 있다면, 우측 하단의 <strong style="color: #fb7185;">Go Live</strong> (Live Server) 버튼을 클릭하세요.<br>
+            2. 또는 터미널에서 아래 명령어로 로컬 서버를 구동해 실행하세요:<br>
+            <code style="background: #1e293b; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 6px; color: #e2e8f0; font-family: monospace;">python -m http.server 8000</code>
+          </div>
+          <p style="font-size: 11px; color: #64748b; margin-top: 16px;">상세 로그: ${error.message}</p>
+        </div>
+      `;
+      document.body.appendChild(errorDiv);
+      throw error; // stop execution
+    }
+  }
+
+  await loadSessions();
+
   // --- State Initialization ---
   const state = {
     currentSlide: 0,

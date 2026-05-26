@@ -1,0 +1,438 @@
+<!-- Slide 1: [간지] SESSION 01 -->
+        <section class="slide-card divider-slide active" id="slide-1">
+          <div class="slide-header" style="display: none;">
+            <div class="slide-category">1일차 | 1차시. AI · LLM · Agent 개념 이해</div>
+            <div class="slide-title">[세션 오프닝] 1차시. AI · LLM · Agent 개념 이해</div>
+          </div>
+          <div class="divider-content">
+            <div class="divider-day">DAY 1</div>
+            <div class="divider-tag">SESSION 01</div>
+            <h1 class="divider-title">AI · LLM · Agent 개념 이해</h1>
+            <p class="divider-subtitle">생성형 AI와 AI 에이전트의 근본적인 작동 원리와 구조 정의</p>
+            <div class="divider-topics">
+              <div class="topic-badge"><span>01</span> AI / LLM / Agent 관계</div>
+              <div class="topic-badge"><span>02</span> Agent의 4대 구성요소 (IRAO)</div>
+              <div class="topic-badge"><span>03</span> 프롬프트 응답 품질 비교</div>
+            </div>
+          </div>
+          <div class="slide-body" style="display: none;">
+            <p>1차시. AI · LLM · Agent 개념 이해 세션 시작</p>
+            <p>생성형 AI와 AI 에이전트의 근본적인 작동 원리와 구조 정의</p>
+          </div>
+          <div class="presenter-notes" style="display:none;">1차시에서는 생성형 AI와 AI 에이전트가 어떻게 다른지 개념적으로 완벽히 정리하고, 에이전트의 내부
+            구조가 어떻게 돌아가는지 핵심 작동 원리를 파악해 보겠습니다.</div>
+          <div class="visual-guide-notes" style="display:none;">신비로운 블루/그린 그라데이션 배경. 중앙에 대형 라운드 아웃라인 타이포그래피.</div>
+        </section>
+        <!-- Slide 2: 과정 오프닝 & 1차시 안내 -->
+        <section class="slide-card" id="slide-2">
+          <div class="slide-header">
+            <div>
+              <div class="slide-category">1차시. AI · LLM · Agent 개념 이해</div>
+              <div class="slide-title">과정 오프닝 &amp; 1차시 안내</div>
+            </div>
+            <div class="slide-meta">
+              <span class="day-badge">1일차</span>
+              <span>에듀니티랩</span>
+            </div>
+          </div>
+          <div class="slide-body">
+            <ul class="bullet-list">
+              <li><span class="highlight">과정명:</span> [중급 공통] Antigravity 기반 AI 워크플로우 설계와 에이전트 구축</li>
+              <li><span class="highlight">1차시 주제:</span> AI · LLM · Agent 개념 이해 (AI 에이전트로의 첫걸음)</li>
+              <li><span class="highlight">오늘 배울 내용:</span>
+                <ul>
+                  <li>ChatGPT 질문과 에이전트 설계의 근본적 차이</li>
+                  <li>AI, LLM, Agent의 관계도 정의</li>
+                  <li>Agent의 4대 구성요소 (Input, Reasoning, Action, Output)</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="presenter-notes" style="display:none;">여러분 안녕하세요! 오늘부터 시작되는 'Antigravity 기반 AI 워크플로우 설계와 에이전트
+              구축' 과정의 첫 번째 시간입니다. 1차시에서는 우리가 매일 사용하는 생성형 AI와 앞으로 직접 설계하게 될 'AI 에이전트'가 어떻게 다른지 개념적으로 완벽히 정리하고, 에이전트의 내부
+              구조가 어떻게 돌아가는지 핵심 작동 원리를 파악해 보겠습니다.</div>
+            <div class="visual-guide-notes" style="display:none;">신뢰감을 주는 다크 네이비 배경에 세련된 네온 그린 그라데이션 타이포그래피 활용. 우측에는 지능형
+              동작을 연상시키는 3D 메쉬 구체 그래픽 배치.</div>
+          </div>
+          <div class="slide-footer">
+            <div>가이드: 신뢰감을 주는 다크 네이비 배경에 세련된 네온 그린 그라데이션 타이포그래피 활용.</div>
+            <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
+          </div>
+        </section>
+        <!-- Slide 3: 도입 질문: 질문과 설계의 차이 -->
+        <section class="slide-card" id="slide-3">
+          <div class="slide-header">
+            <div>
+              <div class="slide-category">1차시. AI · LLM · Agent 개념 이해</div>
+              <div class="slide-title">도입 질문: 질문과 설계의 차이</div>
+            </div>
+            <div class="slide-meta">
+              <span class="day-badge">1일차</span>
+              <span>에듀니티랩</span>
+            </div>
+          </div>
+          <div class="slide-body">
+            <div class="split-layout">
+              <div>
+                <ul class="bullet-list">
+                  <li><span class="highlight">도입 질문:</span> "ChatGPT에게 매번 좋은 답변을 얻기 위해 프롬프트를 고쳐 쓰는 것과, 하나의 에이전트를 설계하는 것은
+                    무엇이 다를까요?"</li>
+                  <li><span class="highlight">비교 분석:</span>
+                    <ul>
+                      <li><span class="highlight">ChatGPT 질문:</span> 일회성 질의, 답변을 얻기 위한 즉흥적 시도, 개인의 프롬프트 작성 능력에 의존.</li>
+                      <li><span class="highlight">Agent 설계:</span> 반복 가능한 시스템 구축, 입력을 해석해 결과를 내는 자동화 파이프라인 형성, 조직의 표준
+                        워크플로우 적용.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="image-container"
+                style="display: flex; justify-content: center; align-items: center; background: rgba(255,255,255,0.02); border: 1px solid var(--panel-border); border-radius: 12px; padding: 10px;">
+                <img alt="질문과 설계의 차이" src="images/slide3_illustration.png"
+                  style="max-width: 100%; max-height: 320px; border-radius: 8px; object-fit: contain;" />
+              </div>
+            </div>
+            <div class="presenter-notes" style="display:none;">우리는 프롬프트 엔지니어링이라고 하면 매번 다르게 입력해서 좋은 대답을 구하는 '개인 비서와의 대화'를
+              생각합니다. 하지만 에이전트 설계는 다릅니다. 사용자가 어떤 질문을 던지더라도 정해진 프로세스에 맞춰 판단하고, 도구를 실행해 표준화된 업무 결과물을 뽑아내는 '시스템'을 짓는 일입니다.
+            </div>
+            <div class="visual-guide-notes" style="display:none;">화면을 2분할하여 왼쪽은 '대화형 UI(Chat)'를, 오른쪽은 '기어와
+              파이프라인(System)' 아이콘을 배치하여 대비 효과 극대화.</div>
+          </div>
+          <div class="slide-footer">
+            <div>가이드: 화면을 2분할하여 왼쪽은 '대화형 UI(Chat)'를, 오른쪽은 '기어와 파이프라인(System)' 아이콘을 배치하여 대비 효과 극대화.</div>
+            <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
+          </div>
+        </section>
+        <!-- Slide 4: 도입 질문: AI가 일을 처리하려면? -->
+        <section class="slide-card" id="slide-4">
+          <div class="slide-header">
+            <div>
+              <div class="slide-category">1차시. AI · LLM · Agent 개념 이해</div>
+              <div class="slide-title">도입 질문: AI가 일을 처리하려면?</div>
+            </div>
+            <div class="slide-meta">
+              <span class="day-badge">1일차</span>
+              <span>에듀니티랩</span>
+            </div>
+          </div>
+          <div class="slide-body">
+            <div class="flow-diagram">
+              <div class="flow-step active">
+                <div class="flow-badge">1</div>
+                <div class="flow-title">판단 (Reasoning)</div>
+                <div class="flow-desc">현재 입력된 데이터가 무엇인지 파악하고 분류하는 문제 정의 및 의사결정 단계</div>
+              </div>
+              <div class="flow-arrow">
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
+                </svg>
+              </div>
+              <div class="flow-step">
+                <div class="flow-badge">2</div>
+                <div class="flow-title">도구 사용 (Action)</div>
+                <div class="flow-desc">메일 발송, DB 저장, API 통신 등 외부 시스템과의 연결 및 동작 수행 단계</div>
+              </div>
+              <div class="flow-arrow">
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
+                </svg>
+              </div>
+              <div class="flow-step">
+                <div class="flow-badge">3</div>
+                <div class="flow-title">구조화 출력 (Output)</div>
+                <div class="flow-desc">지정된 템플릿이나 JSON 포맷으로 최종 결과를 전달하여 후속 자동화 연계 보장</div>
+              </div>
+            </div>
+            <div class="visual-guide-notes" style="display:none;">'판단 -&gt; 도구 사용 -&gt; 출력'의 유기적인 순서도를 가로형 인포그래픽으로 구현.
+            </div>
+          </div>
+          <div class="slide-footer">
+            <div>가이드: '판단 -&gt; 도구 사용 -&gt; 출력'의 유기적인 순서도를 가로형 인포그래픽으로 구현.</div>
+            <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
+          </div>
+        </section>
+        <!-- Slide 5: 핵심 설명: AI · LLM · Agent의 관계 -->
+        <section class="slide-card" id="slide-5">
+          <div class="slide-header">
+            <div>
+              <div class="slide-category">1차시. AI · LLM · Agent 개념 이해</div>
+              <div class="slide-title">핵심 설명: AI · LLM · Agent의 관계</div>
+            </div>
+            <div class="slide-meta">
+              <span class="day-badge">1일차</span>
+              <span>에듀니티랩</span>
+            </div>
+          </div>
+          <div class="slide-body">
+            <div class="diagram-nested">
+              <div class="nested-container">
+                <span class="nested-label">AI (인공지능)</span>
+                <div class="nested-desc-top">인간의 지능적 행동을 컴퓨터 시스템으로 구현하려는 광범위한 과학 기술 숲</div>
+                <div class="nested-sub-1">
+                  <span class="nested-label">LLM (대형 언어 모델)</span>
+                  <div class="nested-desc-top">방대한 텍스트 데이터를 통해 자연어 맥락과 연산 능력을 극대화한 핵심 언어 두뇌 엔진</div>
+                  <div class="nested-sub-2">
+                    <span class="nested-label">Agent (에이전트)</span>
+                    <div class="nested-desc-top">LLM을 중추신경으로 삼아 스스로 판단(Reasoning)하고 도구를 활용해 행동(Action)하는 자동화 시스템</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="visual-guide-notes" style="display:none;">세 개의 원이 서로를 포함하고 있는 벤다이어그램(AI &gt; LLM &gt; Agent)을
+              입체적인
+              레이어로 표현.</div>
+          </div>
+          <div class="slide-footer">
+            <div>가이드: 세 개의 원이 서로를 포함하고 있는 벤다이어그램(AI &gt; LLM &gt; Agent)을 입체적인 레이어로 표현.</div>
+            <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
+          </div>
+        </section>
+        <!-- Slide 6: 핵심 설명: 생성형 AI vs 에이전트의 차이점 -->
+        <section class="slide-card" id="slide-6">
+          <div class="slide-header">
+            <div>
+              <div class="slide-category">1차시. AI · LLM · Agent 개념 이해</div>
+              <div class="slide-title">핵심 설명: 생성형 AI vs 에이전트의 차이점</div>
+            </div>
+            <div class="slide-meta">
+              <span class="day-badge">1일차</span>
+              <span>에듀니티랩</span>
+            </div>
+          </div>
+          <div class="slide-body">
+            <ul class="bullet-list">
+              <li><span class="highlight">차이 비교표:</span> </li>
+            </ul>
+            <div class="table-container" style="margin: 15px 0;">
+              <table class="slide-table">
+                <thead>
+                  <tr>
+                    <th>구분</th>
+                    <th>생성형 AI (Generative AI)</th>
+                    <th>AI 에이전트 (AI Agent)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>동작 방식</strong></td>
+                    <td>사용자 질문에 대해 즉시 답변 생성</td>
+                    <td>목표가 주어지면 내부 계획을 수립하여 다단계로 실행</td>
+                  </tr>
+                  <tr>
+                    <td><strong>사용 주체</strong></td>
+                    <td>인간이 직접 개입하여 질문을 보정함</td>
+                    <td>스스로 판단하고 도구를 호출하며 인간은 감독함</td>
+                  </tr>
+                  <tr>
+                    <td><strong>산출물</strong></td>
+                    <td>자연어 줄글, 일반적 이미지 등</td>
+                    <td>데이터베이스 레코드, 이메일 전송, 완료 보고서 등</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="presenter-notes" style="display:none;">단순 생성형 AI는 질문을 던지면 바로 답을 주는 단발성 관계입니다. 반면 에이전트는 '이 고객의 환불
+              요청 건을 최종 처리해줘'라는 목표를 주면, 규칙에 따라 환불 사유를 분류하고, 정책을 확인한 후, 환불 메일을 발송하는 단계를 스스로 기획하여 완료합니다.</div>
+            <div class="visual-guide-notes" style="display:none;">두 방식의 데이터 흐름 차이를 단순 선형 흐름(생성형 AI)과 순환형 루프(에이전트)
+              다이어그램으로 대조하여 시각화.</div>
+          </div>
+          <div class="slide-footer">
+            <div>가이드: 두 방식의 데이터 흐름 차이를 단순 선형 흐름(생성형 AI)과 순환형 루프(에이전트) 다이어그램으로 대조하여 시각화.</div>
+            <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
+          </div>
+        </section>
+        <!-- Slide 7: 핵심 설명: Agent 4대 구성요소 (IRAO) -->
+        <section class="slide-card" id="slide-7">
+          <div class="slide-header">
+            <div>
+              <div class="slide-category">1차시. AI · LLM · Agent 개념 이해</div>
+              <div class="slide-title">핵심 설명: Agent 4대 구성요소 (IRAO)</div>
+            </div>
+            <div class="slide-meta">
+              <span class="day-badge">1일차</span>
+              <span>에듀니티랩</span>
+            </div>
+          </div>
+          <div class="slide-body">
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <div class="flow-badge">I</div>
+                <div class="flow-title">Input (입력)</div>
+                <div class="flow-desc">사용자 발화, 이메일 본문, API 호출 등으로 전달받은 원시 데이터</div>
+              </div>
+              <div class="flow-arrow">
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
+                </svg>
+              </div>
+              <div class="flow-step">
+                <div class="flow-badge">R</div>
+                <div class="flow-title">Reasoning (판단)</div>
+                <div class="flow-desc">페르소나 규칙에 따라 입력 데이터 분석 및 실행 계획 수립</div>
+              </div>
+              <div class="flow-arrow">
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
+                </svg>
+              </div>
+              <div class="flow-step">
+                <div class="flow-badge">A</div>
+                <div class="flow-title">Action (도구)</div>
+                <div class="flow-desc">검색, API 요청, 코드 실행 등 물리적 태스크 수행</div>
+              </div>
+              <div class="flow-arrow">
+                <svg viewbox="0 0 24 24">
+                  <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
+                </svg>
+              </div>
+              <div class="flow-step">
+                <div class="flow-badge">O</div>
+                <div class="flow-title">Output (출력)</div>
+                <div class="flow-desc">최종 JSON, 사용자 알림 등 포맷팅된 결과 전달</div>
+              </div>
+            </div>
+            <div class="visual-guide-notes" style="display:none;">IRAO 4개 영역을 각각의 카드 레이아웃으로 구분하고 흐름을 화살표로 연결하여 표현.</div>
+          </div>
+          <div class="slide-footer">
+            <div>가이드: IRAO 4개 영역을 각각의 카드 레이아웃으로 구분하고 흐름을 화살표로 연결하여 표현.</div>
+            <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
+          </div>
+        </section>
+        <!-- Slide 8: 실습 안내: 질문 방식별 응답 비교 실습 -->
+        <section class="slide-card" id="slide-8">
+          <div class="slide-header">
+            <div>
+              <div class="slide-category">1차시. AI · LLM · Agent 개념 이해</div>
+              <div class="slide-title">실습 안내: 질문 방식별 응답 비교 실습</div>
+            </div>
+            <div class="slide-meta">
+              <span class="day-badge">1일차</span>
+              <span>에듀니티랩</span>
+            </div>
+          </div>
+          <div class="slide-body">
+            <ul class="bullet-list">
+              <li><span class="highlight">실습명:</span> 질문 방식에 따른 LLM 응답 품질 및 구조 변화 실험</li>
+              <li><span class="highlight">실습 목표:</span> 질문의 상세화 정도가 LLM의 상황 판단과 출력 정밀도에 미치는 영향 분석</li>
+              <li><span class="highlight">준비 도구:</span> Antigravity 프롬프트 테스트 환경</li>
+              <li><span class="highlight">제출 산출물:</span> 질문 방식별 응답 특징 비교표</li>
+            </ul>
+            <div class="presenter-notes" style="display:none;">이어서 첫 번째 실습을 진행하겠습니다. 동일한 고객 컴플레인 상황에서 질문을 단순하게 했을 때, 역할을
+              부여했을 때, 그리고 일의 순서와 형식을 명확히 지정해 주었을 때 LLM이 내놓는 답의 현실성과 비즈니스 가치가 얼마나 달라지는지 확인해 보겠습니다.</div>
+            <div class="visual-guide-notes" style="display:none;">실습 과정을 1, 2, 3 단계 아이콘과 함께 직관적으로 정리한 타임라인 그래픽 제공.</div>
+          </div>
+          <div class="slide-footer">
+            <div>가이드: 실습 과정을 1, 2, 3 단계 아이콘과 함께 직관적으로 정리한 타임라인 그래픽 제공.</div>
+            <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
+          </div>
+        </section>
+        <!-- Slide 9: 실습 진행: 3개 유형 프롬프트 대조 -->
+        <section class="slide-card" id="slide-9">
+          <div class="slide-header">
+            <div>
+              <div class="slide-category">1차시. AI · LLM · Agent 개념 이해</div>
+              <div class="slide-title">실습 진행: 3개 유형 프롬프트 대조</div>
+            </div>
+            <div class="slide-meta">
+              <span class="day-badge">1일차</span>
+              <span>에듀니티랩</span>
+            </div>
+          </div>
+          <div class="slide-body">
+            <div class="matrix-grid three-col">
+              <div class="code-container" style="margin-bottom:0;">
+                <div class="code-header">
+                  <span>1단계: 일반 질문</span>
+                  <button class="copy-btn">복사</button>
+                </div>
+                <pre class="code-block">고객 불만 메일에 답장해줘.</pre>
+              </div>
+              <div class="code-container" style="margin-bottom:0;">
+                <div class="code-header">
+                  <span>2단계: 역할 지정</span>
+                  <button class="copy-btn">복사</button>
+                </div>
+                <pre class="code-block">너는 친절한 고객지원 담당자야. 고객 불만 메일에 답장해줘.</pre>
+              </div>
+              <div class="code-container" style="margin-bottom:0;">
+                <div class="code-header">
+                  <span>3단계: 구조화 질문</span>
+                  <button class="copy-btn">복사</button>
+                </div>
+                <pre class="code-block">고객 불만 메일을 분석하고, 불만 원인, 사과 문장, 해결 방안, 후속 조치로 나누어 답장 초안을 작성해줘.</pre>
+              </div>
+            </div>
+            <div class="visual-guide-notes" style="display:none;">3개 프롬프트 상자를 강조 효과와 함께 나열하고, 각 단계마다 늘어나는 구체적 제약 조건을 표시.
+            </div>
+          </div>
+          <div class="slide-footer">
+            <div>가이드: 3개 프롬프트 상자를 강조 효과와 함께 나열하고, 각 단계마다 늘어나는 구체적 제약 조건을 표시.</div>
+            <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
+          </div>
+        </section>
+        <!-- Slide 10: 공유 및 토론: 무엇이 결과의 차이를 만드는가? -->
+        <section class="slide-card" id="slide-10">
+          <div class="slide-header">
+            <div>
+              <div class="slide-category">1차시. AI · LLM · Agent 개념 이해</div>
+              <div class="slide-title">공유 및 토론: 무엇이 결과의 차이를 만드는가?</div>
+            </div>
+            <div class="slide-meta">
+              <span class="day-badge">1일차</span>
+              <span>에듀니티랩</span>
+            </div>
+          </div>
+          <div class="slide-body">
+            <ul class="bullet-list">
+              <li><span class="highlight">공유 질문:</span>
+                <ul>
+                  <li>1. 어떤 방식의 질문 결과가 실제 현업 메일로 즉시 사용하기에 가장 수월했습니까?</li>
+                  <li>2. 1단계와 3단계 결과물의 퀄리티 차이를 만든 핵심적인 요인은 무엇입니까?</li>
+                  <li>3. 에이전트 설계라는 관점에서 볼 때, 'Action(실행)' 단계에 활용될 수 있는 부분은 무엇입니까?</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="presenter-notes" style="display:none;">실습 결과를 서로 나누어 보겠습니다. 단순히 친절하게 답하라는 지시보다, 메일의 본질적인 구조(사과,
+              원인 분석, 대안 제시)를 분할하여 지시했을 때 훨씬 정돈된 대답이 나옵니다. 에이전트 설계의 핵심은 바로 이 '단계적 지시'와 '구조 설계'에 있습니다.</div>
+            <div class="visual-guide-notes" style="display:none;">토론 분위기를 돋우는 말풍선 그래픽과 대표 질문 3가지를 가독성 높게 배치.</div>
+          </div>
+          <div class="slide-footer">
+            <div>가이드: 토론 분위기를 돋우는 말풍선 그래픽과 대표 질문 3가지를 가독성 높게 배치.</div>
+            <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
+          </div>
+        </section>
+        <!-- Slide 11: 정리: 1차시 핵심 요약 -->
+        <section class="slide-card" id="slide-11">
+          <div class="slide-header">
+            <div>
+              <div class="slide-category">1차시. AI · LLM · Agent 개념 이해</div>
+              <div class="slide-title">정리: 1차시 핵심 요약</div>
+            </div>
+            <div class="slide-meta">
+              <span class="day-badge">1일차</span>
+              <span>에듀니티랩</span>
+            </div>
+          </div>
+          <div class="slide-body">
+            <ul class="bullet-list">
+              <li><span class="highlight">1차시 요약:</span>
+                <ul>
+                  <li><span class="highlight">질문보다 시스템:</span> 에이전트는 매번 질문을 잘 다듬는 차원을 넘어, 업무 프로세스를 파이프라인화하는 시스템 설계다.
+                  </li>
+                  <li><span class="highlight">구조화된 생각:</span> 입력을 정확히 규정하고, 판단 로직을 세우고, 실행 도구를 연결하고, 정돈된 출력을 내는 과정이다.
+                  </li>
+                  <li><span class="highlight">다음 차시 예고:</span> 2차시. 프롬프트 구조화 &amp; Persona 설계 (일관성 있는 페르소나와 구조화 기법)</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="presenter-notes" style="display:none;">1차시를 정리하겠습니다. 에이전트 설계는 단순 질문 작성이 아닌 구조화된 업무의 설계도입니다. 다음
+              2차시에는 에이전트의 '두뇌' 부분에 확실한 일관성을 불어넣어 줄 Persona와 이를 지탱하는 프롬프트 구조화 기법을 알아보겠습니다. 수고하셨습니다.</div>
+            <div class="visual-guide-notes" style="display:none;">깔끔한 체크리스트 형태의 레이아웃. 우측 하단에 'Next Step: 2차시'를 가리키는 밝은
+              화살표 이펙트 적용.
+
+              ---</div>
+          </div>
+          <div class="slide-footer">
+            <div>가이드: 깔끔한 체크리스트 형태의 레이아웃.</div>
+            <div class="footer-nav-guide"><span>이전 <kbd>←</kbd></span> <span>다음 <kbd>→</kbd></span></div>
+          </div>
+        </section>
