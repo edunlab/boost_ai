@@ -11,11 +11,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     try {
       const htmlContents = await Promise.all(fetches);
-      htmlContents.forEach(html => {
+      htmlContents.forEach((html, sessionIndex) => {
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = html;
         const slideCards = tempDiv.querySelectorAll('.slide-card');
         slideCards.forEach(card => {
+          card.classList.add(`session-${sessionIndex + 1}`);
           wrapper.appendChild(card);
         });
       });
@@ -588,6 +589,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         const card = document.createElement('div');
         card.className = 'dashboard-card';
         card.setAttribute('data-index', idx);
+
+        // Inherit session class from slide
+        const sessionClass = Array.from(slide.classList).find(c => c.startsWith('session-'));
+        if (sessionClass) {
+          card.classList.add(sessionClass);
+        }
 
         // Pick badge day color based on category/meta
         const dayBadgeEl = slide.querySelector('.day-badge');

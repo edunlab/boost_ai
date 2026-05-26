@@ -218,7 +218,7 @@ header {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: var(--slide-bg);
+  background: var(--session-slide-bg, var(--slide-bg));
   border: 1px solid var(--slide-border);
   border-radius: 20px;
   box-shadow: var(--panel-shadow);
@@ -259,7 +259,7 @@ header {
   left: 0;
   width: 150px;
   height: 4px;
-  background: linear-gradient(90deg, var(--accent-cyan), transparent);
+  background: linear-gradient(90deg, var(--session-accent-primary, var(--accent-cyan)), transparent);
 }
 
 .slide-card::after {
@@ -269,7 +269,7 @@ header {
   right: 0;
   width: 150px;
   height: 4px;
-  background: linear-gradient(90deg, transparent, var(--accent-purple));
+  background: linear-gradient(90deg, transparent, var(--session-accent-secondary, var(--accent-purple)));
 }
 
 /* --- Slide Content Typography --- */
@@ -288,7 +288,7 @@ header {
   text-transform: uppercase;
   font-size: 0.95rem;
   letter-spacing: 0.15em;
-  color: var(--accent-blue);
+  color: var(--session-accent-primary, var(--accent-blue));
   font-weight: 600;
   margin-bottom: 4px;
 }
@@ -551,7 +551,7 @@ header {
 }
 
 .dashboard-card {
-  background: var(--slide-bg);
+  background: var(--session-slide-bg, var(--slide-bg));
   border: 1px solid var(--slide-border);
   border-radius: 16px;
   padding: 24px;
@@ -578,8 +578,8 @@ header {
 
 .dashboard-card:hover {
   transform: translateY(-5px);
-  border-color: var(--accent-cyan);
-  box-shadow: 0 10px 25px rgba(0, 242, 254, 0.08);
+  border-color: var(--session-accent-primary, var(--accent-cyan));
+  box-shadow: 0 10px 25px var(--session-shadow-color, rgba(0, 242, 254, 0.08));
   background: rgba(255, 255, 255, 0.02);
 }
 
@@ -588,7 +588,7 @@ header {
 }
 
 .dashboard-card:hover::before {
-  background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+  background: linear-gradient(90deg, var(--session-accent-secondary, var(--accent-blue)), var(--session-accent-primary, var(--accent-cyan)));
 }
 
 .card-num {
@@ -2389,4 +2389,71 @@ header {
     white-space: pre-wrap !important;
     word-break: break-all !important;
   }
+}
+
+/* --- Session Custom Color Themes --- */
+/* Session 1: AI, LLM, Agent (Blue/Cyan) */
+.session-1 {
+  --session-accent-primary: var(--accent-cyan);
+  --session-accent-secondary: var(--accent-blue);
+  --session-shadow-color: rgba(0, 242, 254, 0.15);
+  --session-slide-bg: rgba(8, 22, 40, 0.55);
+}
+[data-theme="light"] .session-1 {
+  --session-slide-bg: rgba(240, 246, 255, 0.96);
+}
+
+/* Session 2: Prompt & Persona (Violet/Purple) */
+.session-2 {
+  --session-accent-primary: var(--accent-purple);
+  --session-accent-secondary: var(--accent-violet);
+  --session-shadow-color: rgba(157, 78, 221, 0.15);
+  --session-slide-bg: rgba(20, 14, 38, 0.55);
+}
+[data-theme="light"] .session-2 {
+  --session-slide-bg: rgba(247, 242, 255, 0.96);
+}
+
+/* Session 3: Data Pipeline & Vector DB (Teal/Green) */
+.session-3 {
+  --session-accent-primary: var(--accent-green);
+  --session-accent-secondary: var(--accent-cyan);
+  --session-shadow-color: rgba(16, 185, 129, 0.15);
+  --session-slide-bg: rgba(8, 26, 20, 0.55);
+}
+[data-theme="light"] .session-3 {
+  --session-slide-bg: rgba(240, 253, 244, 0.96);
+}
+
+/* Session 4: IRAO Components (Yellow/Orange) */
+.session-4 {
+  --session-accent-primary: var(--accent-yellow);
+  --session-accent-secondary: var(--accent-pink);
+  --session-shadow-color: rgba(245, 158, 11, 0.15);
+  --session-slide-bg: rgba(28, 18, 10, 0.55);
+}
+[data-theme="light"] .session-4 {
+  --session-slide-bg: rgba(254, 247, 230, 0.96);
+}
+
+/* Session 5: Autonomous Agents (Pink/Plum) */
+.session-5 {
+  --session-accent-primary: var(--accent-pink);
+  --session-accent-secondary: var(--accent-purple);
+  --session-shadow-color: rgba(247, 25, 133, 0.15);
+  --session-slide-bg: rgba(28, 12, 22, 0.55);
+}
+[data-theme="light"] .session-5 {
+  --session-slide-bg: rgba(255, 241, 248, 0.96);
+}
+
+/* Session 6: Mini Project (Steel Blue/Indigo) */
+.session-6 {
+  --session-accent-primary: var(--accent-blue);
+  --session-accent-secondary: var(--accent-purple);
+  --session-shadow-color: rgba(79, 172, 254, 0.15);
+  --session-slide-bg: rgba(12, 18, 30, 0.55);
+}
+[data-theme="light"] .session-6 {
+  --session-slide-bg: rgba(241, 245, 249, 0.96);
 }
