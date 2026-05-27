@@ -197,13 +197,13 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px 30px 95px 30px;
+  padding: 15px 15px 85px 15px;
 }
 
 /* --- Presentation Mode --- */
 .slides-wrapper {
-  width: min(100%, calc((100vh - 195px) * 16 / 9));
-  height: min(100%, calc((100vw - 60px) * 9 / 16));
+  width: min(100%, calc((100vh - 170px) * 16 / 9));
+  height: min(100%, calc((100vw - 30px) * 9 / 16));
   max-width: 1366px;
   max-height: 768px;
   aspect-ratio: 16/9;

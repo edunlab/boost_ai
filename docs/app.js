@@ -124,6 +124,42 @@ document.addEventListener('DOMContentLoaded', async () => {
   let lastX = 0;
   let lastY = 0;
 
+  // --- Dynamic Slide Viewport Scaling ---
+  function resizeSlides() {
+    const mainViewport = document.querySelector('.main-viewport');
+    const wrapper = document.querySelector('.slides-wrapper');
+    if (!mainViewport || !wrapper) return;
+
+    if (window.innerWidth <= 768) {
+      // Mobile vertical scroll mode: clear dynamic scaling
+      wrapper.style.transform = '';
+      wrapper.style.width = '';
+      wrapper.style.height = '';
+      return;
+    }
+
+    // Design resolution reference
+    const designWidth = 1366;
+    const designHeight = 768;
+
+    // Viewport padding (defined in CSS: 15px left/right/top, 85px bottom)
+    const paddingX = 30; // 15px * 2
+    const paddingY = 100; // 15px + 85px
+
+    const availableWidth = mainViewport.clientWidth - paddingX;
+    const availableHeight = mainViewport.clientHeight - paddingY;
+
+    // Calculate scale factor to fit the slides-wrapper within available space
+    const scale = Math.min(availableWidth / designWidth, availableHeight / designHeight);
+
+    // Apply explicit sizing and scaling transform
+    wrapper.style.width = `${designWidth}px`;
+    wrapper.style.height = `${designHeight}px`;
+    wrapper.style.transform = `scale(${scale})`;
+    wrapper.style.transformOrigin = 'center center';
+    wrapper.style.flexShrink = '0';
+  }
+
   // --- Initialize Canvas Resolution ---
   function resizeCanvas() {
     drawingCanvas.width = drawingCanvas.parentElement.clientWidth;
@@ -136,9 +172,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     ctx.lineJoin = 'round';
   }
 
-  window.addEventListener('resize', resizeCanvas);
+  // Combined resize handler
+  function handleResize() {
+    resizeSlides();
+    resizeCanvas();
+  }
+
+  window.addEventListener('resize', handleResize);
   // Initial size deferred slightly until slide-cards lay out
-  setTimeout(resizeCanvas, 300);
+  setTimeout(handleResize, 300);
 
   // --- View Control (Presentation vs Dashboard) ---
   function setViewMode(mode) {
@@ -155,7 +197,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         대시보드 <span class="badge">Esc</span>
       `;
       // Close draw mode and drawer when leaving dashboard just to be clean
-      resizeCanvas();
+      handleResize();
     } else {
       presentationViewport.style.display = 'none';
       dashboardViewport.style.display = 'block';
@@ -404,8 +446,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   function getMousePos(canvas, evt) {
     const rect = canvas.getBoundingClientRect();
     return {
-      x: evt.clientX - rect.left,
-      y: evt.clientY - rect.top
+      x: (evt.clientX - rect.left) * (canvas.width / rect.width),
+      y: (evt.clientY - rect.top) * (canvas.height / rect.height)
     };
   }
 
