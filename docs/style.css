@@ -197,7 +197,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px 15px 85px 15px;
+  padding: 50px 15px 85px 15px;
 }
 
 /* --- Presentation Mode --- */
@@ -754,7 +754,7 @@ header {
   position: relative;
   padding-left: 28px;
   margin-bottom: 12px;
-  font-size: 1.45rem;
+  font-size: 1.5rem;
   line-height: 1.6;
   color: var(--text-primary);
 }
@@ -790,7 +790,7 @@ header {
   padding-left: 20px;
   margin-top: 6px;
   margin-bottom: 6px;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   line-height: 1.5;
   color: var(--text-secondary);
 }
