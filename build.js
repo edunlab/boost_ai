@@ -84,19 +84,38 @@ function build() {
     process.exit(1);
   }
 
-  // 5. Write index.html to docs/
+  // 5. Read and inline style.css and app.js
+  console.log('Inlining style.css and app.js...');
+  const styleCss = fs.readFileSync(path.join(srcDir, 'style.css'), 'utf8');
+  const appJs = fs.readFileSync(path.join(srcDir, 'app.js'), 'utf8');
+
+  indexHtml = indexHtml.replace(
+    /<link\s+[^>]*href=["']style\.css["'][^>]*>/g,
+    `<style>\n${styleCss}\n</style>`
+  );
+  indexHtml = indexHtml.replace(
+    /<script\s+[^>]*src=["']app\.js["'][^>]*>\s*<\/script>/g,
+    `<script>\n${appJs}\n</script>`
+  );
+
+  // 6. Write index.html to docs/
   fs.writeFileSync(path.join(docsDir, 'index.html'), indexHtml, 'utf8');
 
-  // 6. Copy styles, scripts, and other assets
-  console.log('Copying style.css and app.js...');
-  fs.copyFileSync(path.join(srcDir, 'style.css'), path.join(docsDir, 'style.css'));
-  fs.copyFileSync(path.join(srcDir, 'app.js'), path.join(docsDir, 'app.js'));
+  // 7. Cleanup standalone CSS and JS in docs if they exist
+  const standaloneCss = path.join(docsDir, 'style.css');
+  const standaloneJs = path.join(docsDir, 'app.js');
+  if (fs.existsSync(standaloneCss)) {
+    fs.unlinkSync(standaloneCss);
+  }
+  if (fs.existsSync(standaloneJs)) {
+    fs.unlinkSync(standaloneJs);
+  }
 
   console.log('Copying images and review files...');
   copyDirSync(path.join(srcDir, 'images'), path.join(docsDir, 'images'));
   copyDirSync(path.join(srcDir, 'review'), path.join(docsDir, 'review'));
 
-  // 7. Cleanup docs/session/ if it exists in deploy folder (no longer needed)
+  // 8. Cleanup docs/session/ if it exists in deploy folder (no longer needed)
   const docsSessionDir = path.join(docsDir, 'session');
   if (fs.existsSync(docsSessionDir)) {
     console.log('Cleaning up unused docs/session folder...');

@@ -1,373 +1,378 @@
 <!-- Slide 56: [간지] SESSION 06 -->
-        <section class="slide-card divider-slide" id="slide-56">
-          <div class="slide-header" style="display: none;">
-            <div class="slide-category">2일차 | 6차시. 자율화 에이전트 실습: Mini Project</div>
-            <div class="slide-title">[세션 오프닝] 6차시. 자율화 에이전트 실습: Mini Project</div>
-          </div>
-          <div class="divider-content">
-            <div class="divider-day">DAY 2</div>
-            <div class="divider-tag">SESSION 06</div>
-            <h1 class="divider-title">자율화 에이전트 실습</h1>
-            <p class="divider-subtitle">학습한 모든 개념을 총동원하여 실무 자동화 에이전트를 직접 기획하고 구축하는 종합 프로젝트</p>
-            <div class="divider-topics">
-              <div class="topic-badge"><span>01</span> 미니 프로젝트 기획 &amp; 설계</div>
-              <div class="topic-badge"><span>02</span> 에이전트 파이프라인 구축</div>
-              <div class="topic-badge"><span>03</span> 디버깅, 최적화 및 최종 배포</div>
-            </div>
-          </div>
-          <div class="slide-body" style="display: none;">
-            <p>6차시. 자율화 에이전트 실습: Mini Project 세션 시작</p>
-            <p>학습한 모든 개념을 총동원하여 실무 자동화 에이전트를 직접 기획하고 구축하는 종합 프로젝트</p>
-          </div>
-          <div class="presenter-notes" style="display:none;">마지막 6차시에서는 지금까지 배운 모든 에이전트 설계 기술을 총동원하여, 실무 문제를 직접 해결하는 나만의
-            자동화 에이전트 시스템을 기획하고 구현하는 미니 프로젝트를 진행합니다.</div>
-          <div class="visual-guide-notes" style="display:none;">골드와 퍼플의 조화로운 그라데이션. 완성도 높은 메쉬 구체와 파이프라인 그래픽.</div>
-        </section>
-        <!-- Slide 57: 6차시 도입 & 아젠다 -->
-        <section class="slide-card" id="slide-57">
-          <div class="slide-header">
-            <div>
-              <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
-              <div class="slide-title">6차시 도입 &amp; 아젠다</div>
-            </div>
-            <div class="slide-meta">
-              <span class="day-badge">2일차</span>
-              <span>에듀니티랩</span>
-            </div>
-          </div>
-          <div class="slide-body">
-            <ul class="bullet-list">
-              <li><span class="highlight">6차시 주제:</span> 업무 자동화 Agent 설계: Mini Project</li>
-              <li><span class="highlight">오늘 수행할 과제:</span>
-                <ul>
-                  <li>실무에서 자동화가 필요한 반복 업무 발굴 및 타겟팅</li>
-                  <li>에이전트 자동화 적합성 평가 3대 지표 분석</li>
-                  <li>종합 에이전트 설계서 작성 및 3분 피칭(발표)</li>
-                  <li>상호 동료 피드백 및 루브릭 기반 평가</li>
-                </ul>
-              </li>
-            </ul>
-            <div class="presenter-notes" style="display:none;">여러분, 드디어 본 과정의 최종 하이라이트인 6차시 Mini Project 시간입니다. 지금까지 배운
-              개별 부품들을 조립해 실제 여러분의 업무 현장에 당장 배치할 수 있는 '실무형 업무 자동화 에이전트'를 기획하고, 동료들 앞에서 발표하며 실용성을 검증받는 종합 실습을 시작하겠습니다.
-            </div>
-            <div class="visual-guide-notes" style="display:none;">웅장하고 신뢰감을 주는 다크 테마 배경에 골드 포인트를 준 디자인. 피니시 라인 깃발 또는
-              프로젝트 런칭을 뜻하는 로켓 로드 그래픽 배치.</div>
-          </div>
-        </section>
-        <!-- Slide 58: 도입 질문: 어떤 업무를 에이전트에 맡길 것인가? -->
-        <section class="slide-card" id="slide-58">
-          <div class="slide-header">
-            <div>
-              <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
-              <div class="slide-title">도입 질문: 어떤 업무를 에이전트에 맡길 것인가?</div>
-            </div>
-            <div class="slide-meta">
-              <span class="day-badge">2일차</span>
-              <span>에듀니티랩</span>
-            </div>
-          </div>
-          <div class="slide-body">
-            <ul class="bullet-list">
-              <li><span class="highlight">도입 질문:</span> "현재 여러분이 하고 있는 일상 업무 중, AI 에이전트에게 온전히 넘겨주고 여러분은 더 창의적인 일에 몰두하고
-                싶은 첫 번째 업무는 무엇인가요?"</li>
-              <li><span class="highlight">자동화 대상 후보 아이디어:</span>
-                <ul>
-                  <li>매일 아침 여러 뉴스 사이트에서 수집하는 '업계 트렌드 스크랩'</li>
-                  <li>정기적으로 고객들에게 보내는 '맞춤형 뉴스레터 초안 작성'</li>
-                  <li>유입되는 고객의 주문 정보 유효성 검사 및 정제 작업</li>
-                </ul>
-              </li>
-            </ul>
-            <div class="presenter-notes" style="display:none;">가장 나쁜 업무 자동화 기획은 '어려워 보이고 거창한 일'을 고르는 것입니다. 진짜 훌륭한 기획은 매주
-              2~3시간씩 나의 손목을 아프게 만드는 지루하고 짜증 나는 반복 작업을 찾아내는 것입니다. 오늘 그런 업무를 하나씩 꺼내어 자동화해 봅시다.</div>
-            <div class="visual-guide-notes" style="display:none;">좌측에 지루한 표정으로 엑셀 복사-붙여넣기를 반복하는 직장인, 우측에 에이전트를 가동해 커피를
-              마시며 회의하는 직장인의 미니 일러스트 대조.</div>
-          </div>
-        </section>
-        <!-- Slide 59: 핵심 설명: 자동화 업무 선정의 3대 필터 (R-R-D) -->
-        <section class="slide-card" id="slide-59">
-          <div class="slide-header">
-            <div>
-              <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
-              <div class="slide-title">핵심 설명: 자동화 업무 선정의 3대 필터 (R-R-D)</div>
-            </div>
-            <div class="slide-meta">
-              <span class="day-badge">2일차</span>
-              <span>에듀니티랩</span>
-            </div>
-          </div>
-          <div class="slide-body">
-            <div class="flow-diagram">
-              <div class="flow-step">
-                <div class="flow-badge">R</div>
-                <div class="flow-title">Repeatability (반복성)</div>
-                <div class="flow-desc">매주 10회 이상 정기적으로 반복 발생하여 자동화 효용성이 입증되는 성격의 업무</div>
-              </div>
-              <div class="flow-arrow">
-                <svg viewbox="0 0 24 24">
-                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-                </svg>
-              </div>
-              <div class="flow-step">
-                <div class="flow-badge">R</div>
-                <div class="flow-title">Rules (명확한 규칙성)</div>
-                <div class="flow-desc">판단 조건(If-Else)이 명백하고 인간의 막연한 직관 대신 매뉴얼화가 가능한 영역</div>
-              </div>
-              <div class="flow-arrow">
-                <svg viewbox="0 0 24 24">
-                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-                </svg>
-              </div>
-              <div class="flow-step">
-                <div class="flow-badge">D</div>
-                <div class="flow-title">Data (정형 데이터화)</div>
-                <div class="flow-desc">입출력 데이터의 포맷이 표준화되어 있어 LLM과 연동 기계 처리에 무리가 없는 환경</div>
-              </div>
-            </div>
-            <div class="visual-guide-notes" style="display:none;">3단계 깔때기(Funnel) 모양의 다이어그램. 각 층에 반복성, 규칙성, 데이터성이라는 레이블이
-              붙어 있고 통과된 업무가 보석 아이콘으로 나오는 비주얼.</div>
-          </div>
-        </section>
-        <!-- Slide 60: 핵심 설명: 에이전트 설계서의 표준 뼈대 -->
-        <section class="slide-card" id="slide-60">
-          <div class="slide-header">
-            <div>
-              <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
-              <div class="slide-title">핵심 설명: 에이전트 설계서의 표준 뼈대</div>
-            </div>
-            <div class="slide-meta">
-              <span class="day-badge">2일차</span>
-              <span>에듀니티랩</span>
-            </div>
-          </div>
-          <div class="slide-body">
-            <div class="code-container" style="margin-bottom:0;">
-              <div class="code-header">
-                <span>AI 에이전트 서비스 기획서 마크다운 표준 양식</span>
-                <button class="copy-btn">복사</button>
-              </div>
-              <pre class="code-block"># AI 에이전트 서비스 기획서
+<section class="slide-card divider-slide session-6" id="slide-56">
+  <div class="slide-header" style="display: none;">
+    <div class="slide-category">2일차 | 6차시. 업무 자동화 Agent 설계: Mini Project</div>
+    <div class="slide-title">[세션 오프닝] 6차시. 업무 자동화 Agent 설계: Mini Project</div>
+  </div>
+  <div class="divider-content">
+    <div class="divider-day">DAY 2</div>
+    <div class="divider-tag">SESSION 06</div>
+    <h1 class="divider-title">업무 자동화 Agent 설계</h1>
+    <p class="divider-subtitle">학습한 모든 개념을 총동원하여 실무 자동화 에이전트를 직접 기획하고 설계하는 미니 프로젝트</p>
+    <div class="divider-topics">
+      <div class="topic-badge"><span>01</span> 자동화 적합성 평가 (RRD)</div>
+      <div class="topic-badge"><span>02</span> 에이전트 설계서 작성</div>
+      <div class="topic-badge"><span>03</span> 3분 스피치 피칭 &amp; 루브릭 평가</div>
+    </div>
+  </div>
+  <div class="slide-body" style="display: none;">
+    <p>6차시. 업무 자동화 Agent 설계: Mini Project 세션 시작</p>
+    <p>학습한 모든 개념을 총동원하여 실무 자동화 에이전트를 직접 기획하고 설계하는 미니 프로젝트</p>
+  </div>
+  <div class="presenter-notes" style="display:none;">마지막 6차시에서는 지금까지 배운 모든 에이전트 설계 기술을 총동원하여, 실무 문제를 직접 해결하는 나만의 자동화 에이전트 시스템을 기획하고 구현하는 미니 프로젝트를 진행합니다.</div>
+  <div class="visual-guide-notes" style="display:none;">골드와 퍼플의 조화로운 그라데이션. 완성도 높은 메쉬 구체와 파이프라인 그래픽.</div>
+</section>
 
-## 1. 개요 및 비즈니스 임팩트
-- 대상 업무: 고객 문의 및 불만 응대
-- 기대 효과: 초기 대응 시간 80% 단축
+<!-- Slide 57: 6차시 도입 & 아젠다 -->
+<section class="slide-card session-6" id="slide-57">
+  <div class="slide-header">
+    <div>
+      <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
+      <div class="slide-title">6차시 도입 &amp; 아젠다</div>
+    </div>
+    <div class="slide-meta">
+      <span class="day-badge">2일차</span>
+      <span>에듀니티랩</span>
+    </div>
+  </div>
+  <div class="slide-body">
+    <ul class="bullet-list">
+      <li><span class="highlight">6차시 주제:</span> 업무 자동화 Agent 설계: Mini Project</li>
+      <li><span class="highlight">시간 계획 (총 60분):</span>
+        <ul>
+          <li>도입 (5분) - 자동화 대상 선정의 중요성 설명</li>
+          <li>핵심 설명 (15분) - 자동화 3대 평가 기준, Agent 설계서 작성법 안내</li>
+          <li>실습 진행 (30분) - 업무 후보 선정, 자동화 적합성 평가 및 Agent 설계서 작성</li>
+          <li>발표 및 정리 (10분) - 팀별 발표 및 피드백, 전체 과정 마무리</li>
+        </ul>
+      </li>
+    </ul>
+    <div class="presenter-notes" style="display:none;">여러분, 드디어 본 과정의 최종 하이라이트인 6차시 Mini Project 시간입니다. 지금까지 배운 개별 부품들을 조립해 실제 여러분의 업무 현장에 당장 배치할 수 있는 '실무형 업무 자동화 에이전트'를 기획하고, 동료들 앞에서 발표하며 실용성을 검증받는 종합 실습을 시작하겠습니다.</div>
+    <div class="visual-guide-notes" style="display:none;">웅장하고 신뢰감을 주는 다크 테마 배경에 골드 포인트를 준 디자인. 피니시 라인 깃발 또는 프로젝트 런칭을 뜻하는 로켓 로드 그래픽 배치.</div>
+  </div>
+</section>
 
-## 2. Agent 4대 설계 명세 (IRAO)
-- Input: 고객 유입 메시지 본문
-- Reasoning: VIP 여부 및 불만 카테고리 분석
-- Action: 메일 전송 API, 내부 DB 조회
-- Output: 자동 회신문 본문 및 관리자 알림
+<!-- Slide 58: 도입 질문: 어떤 업무를 에이전트에 맡길 것인가? -->
+<section class="slide-card session-6" id="slide-58">
+  <div class="slide-header">
+    <div>
+      <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
+      <div class="slide-title">도입 질문: 어떤 업무를 에이전트에 맡길 것인가?</div>
+    </div>
+    <div class="slide-meta">
+      <span class="day-badge">2일차</span>
+      <span>에듀니티랩</span>
+    </div>
+  </div>
+  <div class="slide-body">
+    <ul class="bullet-list">
+      <li><span class="highlight">도입 질문:</span> "현재 여러분이 하고 있는 일상 업무 중, AI 에이전트에게 온전히 넘겨주고 여러분은 더 창의적인 일에 몰두하고 싶은 첫 번째 업무는 무엇인가요?"</li>
+      <li><span class="highlight">자동화 대상 후보 아이디어:</span>
+        <ul>
+          <li>매일 아침 여러 사이트에서 수집하는 '업계 동향 칼럼 스크랩'</li>
+          <li>고객 문의에 대한 '개인화 답변 초안 이메일 작성'</li>
+          <li>유입되는 원시 데이터 검사 및 표 정제 작업</li>
+        </ul>
+      </li>
+    </ul>
+    <div class="presenter-notes" style="display:none;">가장 나쁜 업무 자동화 기획은 '어려워 보이고 거창한 일'을 고르는 것입니다. 진짜 훌륭한 기획은 매주 2~3시간씩 나의 손목을 아프게 만드는 지루하고 짜증 나는 반복 작업을 찾아내는 것입니다. 오늘 그런 업무를 하나씩 꺼내어 자동화해 봅시다.</div>
+    <div class="visual-guide-notes" style="display:none;">좌측에 지루한 표정으로 엑셀 복사-붙여넣기를 반복하는 직장인, 우측에 에이전트를 가동해 커피를 마시며 회의하는 직장인의 미니 일러스트 대조.</div>
+  </div>
+</section>
 
-## 3. 흐름도 및 예외처리 가이드
-- 분류 조건: VIP -&gt; 담당자 호출 / 일반 -&gt; AI 초안
-- 예외 상황: 고객 비방 발생 시 즉각 담당자 이관 처리</pre>
-            </div>
-            <div class="visual-guide-notes" style="display:none;">실제 비즈니스 기획서 서식 템플릿의 각 구획을 확대해 보여주며 주요 포인트를 말풍선으로 안내.
-            </div>
-          </div>
-        </section>
-        <!-- Slide 61: 실습 안내: 종합 Mini Project 수행 요령 -->
-        <section class="slide-card" id="slide-61">
-          <div class="slide-header">
-            <div>
-              <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
-              <div class="slide-title">실습 안내: 종합 Mini Project 수행 요령</div>
-            </div>
-            <div class="slide-meta">
-              <span class="day-badge">2일차</span>
-              <span>에듀니티랩</span>
-            </div>
-          </div>
-          <div class="slide-body">
-            <ul class="bullet-list">
-              <li><span class="highlight">프로젝트 명:</span> 현업 밀착형 나만의 업무 자동화 Agent 설계</li>
-              <li><span class="highlight">진행 절차:</span>
-                <ul>
-                  <li><span class="highlight">1단계 (업무 선정):</span> 개별 또는 조별 반복 업무 후보 3개 적기 -&gt; R-R-D 기준으로 최고점 1개 선정.
-                  </li>
-                  <li><span class="highlight">2단계 (설계서 작성):</span> 배포된 템플릿에 맞추어 문제 정의, 흐름, 예외 처리 설계 채우기.</li>
-                  <li><span class="highlight">3단계 (발표 준비):</span> 3분 분량의 엘리베이터 피치 형식 슬라이드 1장 요약본 작성.</li>
-                </ul>
-              </li>
+<!-- Slide 59: 핵심 설명: 자동화 업무 선정의 3대 필터 (RRD) -->
+<section class="slide-card session-6" id="slide-59">
+  <div class="slide-header">
+    <div>
+      <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
+      <div class="slide-title">핵심 설명: 자동화 업무 선정의 3대 필터 (RRD)</div>
+    </div>
+    <div class="slide-meta">
+      <span class="day-badge">2일차</span>
+      <span>에듀니티랩</span>
+    </div>
+  </div>
+  <div class="slide-body">
+    <div class="flow-diagram">
+      <div class="flow-step">
+        <div class="flow-badge">R</div>
+        <div class="flow-title">Repeatability (반복성)</div>
+        <div class="flow-desc">매주/매일 규칙적으로 발생하여 자동화 구축의 효용성이 있는 작업</div>
+      </div>
+      <div class="flow-arrow">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
+        </svg>
+      </div>
+      <div class="flow-step">
+        <div class="flow-badge">R</div>
+        <div class="flow-title">Rules (규칙성)</div>
+        <div class="flow-desc">판단 조건(If-Else)과 내부 업무 매뉴얼이 텍스트로 명시화될 수 있는 영역</div>
+      </div>
+      <div class="flow-arrow">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 11h12.59l-5.3 5.3 1.42 1.42L20 12l-7.29-7.29-1.42 1.42 5.3 5.3H4v2z"></path>
+        </svg>
+      </div>
+      <div class="flow-step">
+        <div class="flow-badge">D</div>
+        <div class="flow-title">Data (데이터성)</div>
+        <div class="flow-desc">인풋과 아웃풋이 문서, 텍스트, 표 등 전산 데이터로 규격화가 가능한 환경</div>
+      </div>
+    </div>
+    <div class="visual-guide-notes" style="display:none;">3단계 깔때기(Funnel) 모양의 다이어그램. 각 층에 반복성, 규칙성, 데이터성이라는 레이블이 붙어 있고 통과된 업무가 보석 아이콘으로 나오는 비주얼.</div>
+  </div>
+</section>
+
+<!-- Slide 60: 핵심 설명: 에이전트 설계서의 표준 뼈대 -->
+<section class="slide-card session-6" id="slide-60">
+  <div class="slide-header">
+    <div>
+      <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
+      <div class="slide-title">핵심 설명: 에이전트 설계서의 표준 뼈대</div>
+    </div>
+    <div class="slide-meta">
+      <span class="day-badge">2일차</span>
+      <span>에듀니티랩</span>
+    </div>
+  </div>
+  <div class="slide-body">
+    <div class="code-container" style="margin-bottom:0;">
+      <div class="code-header">
+        <span>AI 에이전트 설계서 마크다운 양식</span>
+        <button class="copy-btn">복사</button>
+      </div>
+      <pre class="code-block" style="font-size: 11px; line-height: 1.3;"># AI 에이전트 설계서
+1. 프로젝트명: (예: 고객 피드백 원인 자동 분석 봇)
+2. 문제 정의: 수작업 분류 및 조치 지연으로 인한 고객 불만 누적
+3. 입력 데이터: 이메일 본문, 게시판 텍스트
+4. 처리 단계 (Workflow):
+   - Step 1: 3문장 요약 및 감정 분석
+   - Step 2: 불만 원인 키워드 식별 (JSON)
+   - Step 3: 부서별 조치 계획 Markdown 표 출력
+5. 조건 분기: 부정 감정 발생 시 유관 부서 Slack 즉시 연동
+6. Persona: 고객 중심 IT 기획자 (친절하고 정교한 판단)</pre>
+    </div>
+    <div class="visual-guide-notes" style="display:none;">실제 비즈니스 기획서 서식 템플릿의 각 구획을 확대해 보여주며 주요 포인트를 말풍선으로 안내.</div>
+  </div>
+</section>
+
+<!-- Slide 61: 실습 안내: 종합 Mini Project 수행 요령 -->
+<section class="slide-card session-6" id="slide-61">
+  <div class="slide-header">
+    <div>
+      <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
+      <div class="slide-title">실습 안내: 종합 Mini Project 수행 요령</div>
+    </div>
+    <div class="slide-meta">
+      <span class="day-badge">2일차</span>
+      <span>에듀니티랩</span>
+    </div>
+  </div>
+  <div class="slide-body">
+    <ul class="bullet-list">
+      <li><span class="highlight">프로젝트 주제:</span> 현업 밀착형 나만의 업무 자동화 Agent 설계서 작성</li>
+      <li><span class="highlight">진행 절차 (총 30분 실습):</span>
+        <ul>
+          <li><strong>1단계 (업무 선정):</strong> 개인/팀별 반복 업무 후보 3개 나열 -> RRD 기준으로 최고점 1개 선정</li>
+          <li><strong>2단계 (설계서 작성):</strong> 배포된 템플릿에 맞춰 문제 정의, 흐름, 예외 처리 설계 채우기</li>
+          <li><strong>3단계 (피칭 준비):</strong> 3분 분량의 발표용 요약본 1페이지 슬라이드 준비</li>
+        </ul>
+      </li>
+    </ul>
+    <div class="presenter-notes" style="display:none;">프로젝트 진행 순서입니다. 우선 개인별로 후보 업무를 적고, 조원들과 의논해 가장 파급력이 크고 자동화하기 알맞은 주제를 단 하나만 선택하십시오. 그 후 설계서를 꼼꼼히 메우고 최종 발표용 요약 슬라이드를 작성하시면 됩니다.</div>
+    <div class="visual-guide-notes" style="display:none;">3단계 로드맵 형태의 타임라인 인포그래픽. 각 단계별 마감 시간과 체크포인트를 명시.</div>
+  </div>
+</section>
+
+<!-- Slide 62: 실습 진행: 반복 업무 후보 선정표 양식 -->
+<section class="slide-card session-6" id="slide-62">
+  <div class="slide-header">
+    <div>
+      <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
+      <div class="slide-title">실습 진행: 반복 업무 후보 선정표 양식</div>
+    </div>
+    <div class="slide-meta">
+      <span class="day-badge">2일차</span>
+      <span>에듀니티랩</span>
+    </div>
+  </div>
+  <div class="slide-body">
+    <div class="table-container" style="margin: 15px 0;">
+      <table class="slide-table">
+        <thead>
+          <tr>
+            <th>후보 업무명</th>
+            <th>반복성 (1~5)</th>
+            <th>규칙성 (1~5)</th>
+            <th>데이터성 (1~5)</th>
+            <th>총점 및 선정여부</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>(예시) 고객 문의 메일 분류 및 초안 작성</td>
+            <td>5</td>
+            <td>4</td>
+            <td>5</td>
+            <td><strong>14</strong> (선정)</td>
+          </tr>
+          <tr>
+            <td>(예시) 디자인 시안 창의적 아이디어 도출</td>
+            <td>3</td>
+            <td>1</td>
+            <td>2</td>
+            <td><strong>6</strong> (탈락)</td>
+          </tr>
+          <tr>
+            <td>(예시) 주간 매출 보고 데이터 취합 요약</td>
+            <td>4</td>
+            <td>5</td>
+            <td>5</td>
+            <td><strong>14</strong> (후보)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="presenter-notes" style="display:none;">후보 선정표 작성 방법입니다. 화면처럼 점수를 1점부터 5점까지 부여해 보십시오. 디자인 창작은 감성적 영역이라 규칙성이 낮아 총점이 떨어집니다. 반면 매출 보고서 요약이나 메일 분류는 총점이 매우 높죠. 이처럼 철저히 수치화해서 최선의 주제를 골라주세요.</div>
+    <div class="visual-guide-notes" style="display:none;">평가표 템플릿의 가시성이 높은 그리드 레이아웃. 합산 점수가 높은 항목에 파란색 하이라이트 원형 효과 표시.</div>
+  </div>
+</section>
+
+<!-- Slide 63: 실습 진행: 종합 에이전트 설계서 세부 템플릿 -->
+<section class="slide-card session-6" id="slide-63">
+  <div class="slide-header">
+    <div>
+      <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
+      <div class="slide-title">실습 진행: 종합 에이전트 설계서 세부 템플릿</div>
+    </div>
+    <div class="slide-meta">
+      <span class="day-badge">2일차</span>
+      <span>에듀니티랩</span>
+    </div>
+  </div>
+  <div class="slide-body">
+    <ul class="bullet-list">
+      <li><span class="highlight">에이전트 설계 항목:</span>
+        <ul>
+          <li><strong>프로젝트명 &amp; 문제 정의:</strong> 해결하고자 하는 실무 한계 요인</li>
+          <li><strong>사용자 및 데이터:</strong> 에이전트 구동자 및 인풋 예시</li>
+          <li><strong>처리 단계 (Workflow):</strong> Step별 기능 및 바톤 터치 구조</li>
+          <li><strong>조건 분기 및 예외 규칙:</strong> 특수 상황(If/Else) 대응 가이드라인</li>
+          <li><strong>출력 결과 &amp; 기대 효과:</strong> 표, JSON 등 최종 형태와 세이브 타임</li>
+        </ul>
+      </li>
+    </ul>
+    <div class="presenter-notes" style="display:none;">이 설계서 시트가 오늘 과정의 최종 결과물입니다. 그동안 배운 R-I-C-O, Few-Shot 예시, JSON 스키마, If-Else 분기 논리가 이 한 장의 문서에 조화롭게 들어가야 합니다. 옆 사람이나 조원들과 활발히 아이디어를 묻고 답하며 완성도를 높여 주십시오.</div>
+    <div class="visual-guide-notes" style="display:none;">설계서 템플릿 양식이 화살표 지시선과 함께 상세 기재 요령을 안내하는 오버레이 팝업 스타일의 그래픽.</div>
+  </div>
+</section>
+
+<!-- Slide 64: 발표 가이드: 3분 엘리베이터 피칭 -->
+<section class="slide-card session-6" id="slide-64">
+  <div class="slide-header">
+    <div>
+      <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
+      <div class="slide-title">발표 가이드: 3분 엘리베이터 피칭</div>
+    </div>
+    <div class="slide-meta">
+      <span class="day-badge">2일차</span>
+      <span>에듀니티랩</span>
+    </div>
+  </div>
+  <div class="slide-body">
+    <ul class="bullet-list">
+      <li><span class="highlight">3분 발표 구성 요령:</span>
+        <ul>
+          <li><span class="highlight">1단계 (문제 정의):</span> 해결하려는 고통 점수와 업무 맥락 (30초)</li>
+          <li><span class="highlight">2단계 (입출력 및 흐름):</span> 에이전트의 워크플로우 처리 과정 (1분)</li>
+          <li><span class="highlight">3단계 (핵심 조건 분기):</span> 특이 케이스(예외) 및 핵심 판단 기준 (30초)</li>
+          <li><span class="highlight">4단계 (기대 효과):</span> 시간 절감 및 품질 개선 정량 가치 (30초)</li>
+        </ul>
+      </li>
+    </ul>
+    <div class="presenter-notes" style="display:none;">설계서 작성이 끝나면 발표가 진행됩니다. 발표 시간은 팀당 딱 3분입니다. 군더더기 정보는 빼고 '어떤 문제를 겪고 있었는데, 어떤 구조의 에이전트로 해결했고, 도입하면 얼마나 업무 시간이 줄어드는지' 핵심 위주로 명료하게 설득해 주시기 바랍니다.</div>
+    <div class="visual-guide-notes" style="display:none;">3분 스톱워치 아이콘과 함께 피칭의 단계별 시간 배분을 도넛 차트로 형상화하여 표시.</div>
+  </div>
+</section>
+
+<!-- Slide 65: 피드백 및 평가 루브릭 활용 -->
+<section class="slide-card session-6" id="slide-65">
+  <div class="slide-header">
+    <div>
+      <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
+      <div class="slide-title">피드백 및 평가 루브릭 활용</div>
+    </div>
+    <div class="slide-meta">
+      <span class="day-badge">2일차</span>
+      <span>에듀니티랩</span>
+    </div>
+  </div>
+  <div class="slide-body">
+    <div class="table-container" style="margin: 15px 0;">
+      <table class="slide-table" style="font-size: 12px;">
+        <thead>
+          <tr>
+            <th>평가 항목</th>
+            <th>우수</th>
+            <th>보통</th>
+            <th>보완 필요</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>문제 정의</strong></td>
+            <td>해결 대상 및 페인포인트 구체적</td>
+            <td>업무 기재되었으나 다소 포괄적</td>
+            <td>문제가 불명확함</td>
+          </tr>
+          <tr>
+            <td><strong>처리 흐름</strong></td>
+            <td>Step별 입출력 및 RICO 명확</td>
+            <td>단계는 존재하나 연결성 부족</td>
+            <td>단발성 프롬프트 수준</td>
+          </tr>
+          <tr>
+            <td><strong>조건 분기</strong></td>
+            <td>분기 기준 및 예외 가드레일 수립</td>
+            <td>기본적인 If 기준만 존재</td>
+            <td>조건/예외 규칙 없음</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="presenter-notes" style="display:none;">다른 조의 발표를 들으실 때는 이 루브릭을 바탕으로 피드백을 적어 주셔야 합니다. 완성도가 다소 낮더라도 아이디어가 참신한지, 실제 동작할 수 있는 흐름으로 쪼개졌는지 건설적이고 날카로운 질문을 많이 던져 주시기 바랍니다.</div>
+    <div class="visual-guide-notes" style="display:none;">별 다섯 개 만점 척도 평가지 이미지와 함께 '건설적 피드백', '질문 중심 토론' 배너 타이포그래피 노출.</div>
+  </div>
+</section>
+
+<!-- Slide 66: 과정 클로징: AI 에이전트 설계자로의 도약 -->
+<section class="slide-card session-6" id="slide-66">
+  <div class="slide-header">
+    <div>
+      <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
+      <div class="slide-title">과정 클로징: AI 에이전트 설계자로의 도약</div>
+    </div>
+    <div class="slide-meta">
+      <span class="day-badge">2일차</span>
+      <span>에듀니티랩</span>
+    </div>
+  </div>
+  <div class="slide-body">
+    <ul class="bullet-list">
+      <li><span class="highlight">클로징 메시지:</span>
+        <ul>
+          <li>"단순히 질문을 던져 답을 유도하는 Prompt User에서, 스스로 판단하고 동작하는 비즈니스 시스템의 **Agent Architect**로 도약하십시오."</li>
+          <li><span class="highlight">현업 복귀 후 Action Item:</span>
+            <ul>
+              <li>매주 1개씩 나의 병목 업무 발굴하기</li>
+              <li>Antigravity 플랫폼을 활용하여 작은 Step부터 자동화 설계 및 배포해 보기</li>
             </ul>
-            <div class="presenter-notes" style="display:none;">프로젝트 진행 순서입니다. 우선 개인별로 후보 업무를 적고, 조원들과 의논해 가장 파급력이 크고
-              자동화하기 알맞은 주제를 단 하나만 선택하십시오. 그 후 설계서를 꼼꼼히 메우고 최종 발표용 요약 슬라이드를 작성하시면 됩니다.</div>
-            <div class="visual-guide-notes" style="display:none;">3단계 로드맵 형태의 타임라인 인포그래픽. 각 단계별 마감 시간과 체크포인트를 명시.</div>
-          </div>
-        </section>
-        <!-- Slide 62: 실습 진행: 반복 업무 후보 선정표 양식 -->
-        <section class="slide-card" id="slide-62">
-          <div class="slide-header">
-            <div>
-              <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
-              <div class="slide-title">실습 진행: 반복 업무 후보 선정표 양식</div>
-            </div>
-            <div class="slide-meta">
-              <span class="day-badge">2일차</span>
-              <span>에듀니티랩</span>
-            </div>
-          </div>
-          <div class="slide-body">
-            <ul class="bullet-list">
-              <li><span class="highlight">업무 발굴 가이드:</span> </li>
-            </ul>
-            <div class="table-container" style="margin: 15px 0;">
-              <table class="slide-table">
-                <thead>
-                  <tr>
-                    <th>후보 업무명</th>
-                    <th>반복성 (1~5)</th>
-                    <th>규칙성 (1~5)</th>
-                    <th>데이터성 (1~5)</th>
-                    <th>총점 (선정 여부)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>예시: 고객 문의 메일 분류 및 초안 작성</td>
-                    <td>5</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td><strong>14</strong> (선정)</td>
-                  </tr>
-                  <tr>
-                    <td>예시: 신규 광고 배너 디자인 창작</td>
-                    <td>3</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td><strong>6</strong> (탈락)</td>
-                  </tr>
-                  <tr>
-                    <td>예시: 주간 매출 보고서 요약 및 전송</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>5</td>
-                    <td><strong>14</strong> (후보)</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="presenter-notes" style="display:none;">후보 선정표 작성 방법입니다. 화면처럼 점수를 1점부터 5점까지 부여해 보십시오. 광고 배너 디자인
-              창작은 감성적 영역이라 규칙성이 낮아 총점이 떨어집니다. 반면 매출 보고서 요약이나 메일 분류는 총점이 매우 높죠. 이처럼 철저히 수치화해서 최선의 주제를 골라주세요.</div>
-            <div class="visual-guide-notes" style="display:none;">평가표 템플릿의 가시성이 높은 그리드 레이아웃. 합산 점수가 높은 항목에 파란색 하이라이트 원형
-              효과 표시.</div>
-          </div>
-        </section>
-        <!-- Slide 63: 실습 진행: 종합 에이전트 설계서 세부 템플릿 -->
-        <section class="slide-card" id="slide-63">
-          <div class="slide-header">
-            <div>
-              <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
-              <div class="slide-title">실습 진행: 종합 에이전트 설계서 세부 템플릿</div>
-            </div>
-            <div class="slide-meta">
-              <span class="day-badge">2일차</span>
-              <span>에듀니티랩</span>
-            </div>
-          </div>
-          <div class="slide-body">
-            <ul class="bullet-list">
-              <li><span class="highlight">작성할 항목 리스트:</span>
-                <ul>
-                  <li><span class="highlight">1. 프로젝트명:</span> 에이전트의 이름 (예: 고객 소리 분석 로봇)</li>
-                  <li><span class="highlight">2. 해결할 문제:</span> 기존 업무 방식의 한계와 고통 지점</li>
-                  <li><span class="highlight">3. 인풋 데이터:</span> 가공할 대상 원본 (예: 상담 게시판 글)</li>
-                  <li><span class="highlight">4. 처리 아키텍처:</span> Persona 정의 및 3단계 Workflow 흐름</li>
-                  <li><span class="highlight">5. 조건 분기 로직:</span> 예외 및 상황 분류 필터 기준</li>
-                  <li><span class="highlight">6. 최종 아웃풋:</span> JSON 구조 및 사용자 전달 표 포맷</li>
-                </ul>
-              </li>
-            </ul>
-            <div class="presenter-notes" style="display:none;">이 설계서 시트가 오늘 과정의 최종 결과물입니다. 그동안 배운 R-I-C-O, Few-Shot 예시,
-              JSON 스키마, If-Else 분기 논리가 이 한 장의 문서에 조화롭게 들어가야 합니다. 옆 사람이나 조원들과 활발히 아이디어를 묻고 답하며 완성도를 높여 주십시오.</div>
-            <div class="visual-guide-notes" style="display:none;">설계서 템플릿 양식이 화살표 지시선과 함께 상세 기재 요령을 안내하는 오버레이 팝업 스타일의
-              그래픽.</div>
-          </div>
-        </section>
-        <!-- Slide 64: 발표 가이드: 3분 엘리베이터 피칭(Elevator Pitch) -->
-        <section class="slide-card" id="slide-64">
-          <div class="slide-header">
-            <div>
-              <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
-              <div class="slide-title">발표 가이드: 3분 엘리베이터 피칭(Elevator Pitch)</div>
-            </div>
-            <div class="slide-meta">
-              <span class="day-badge">2일차</span>
-              <span>에듀니티랩</span>
-            </div>
-          </div>
-          <div class="slide-body">
-            <ul class="bullet-list">
-              <li><span class="highlight">핵심 3분 피치 구성 요령:</span>
-                <ul>
-                  <li><span class="highlight">1단계: 문제 상황 정의 (30초):</span> "우리는 매일 X개의 데이터 처리에 Y시간을 낭비하고 있습니다."</li>
-                  <li><span class="highlight">2단계: 솔루션 흐름 제시 (60초):</span> "본 에이전트는 입력-처리-분기-출력 과정을 통해 해결합니다."</li>
-                  <li><span class="highlight">3단계: 핵심 판단 메커니즘 (60초):</span> "특히 복합 감정 분류와 JSON 변환이 핵심 로직입니다."</li>
-                  <li><span class="highlight">4단계: 도입 후 기대 효과 (30초):</span> "도입 시 주당 Z시간 단축 및 오류율 0%를 달성합니다."</li>
-                </ul>
-              </li>
-            </ul>
-            <div class="presenter-notes" style="display:none;">설계서 작성이 끝나면 발표가 진행됩니다. 발표 시간은 팀당 딱 3분입니다. 군더더기 정보는 빼고 '어떤
-              문제를 겪고 있었는데, 어떤 구조의 에이전트로 해결했고, 도입하면 얼마나 업무 시간이 줄어드는지' 핵심 위주로 명료하게 설득해 주시기 바랍니다.</div>
-            <div class="visual-guide-notes" style="display:none;">3분 스톱워치 아이콘과 함께 피칭의 단계별 시간 배분을 도넛 차트로 형상화하여 표시.</div>
-          </div>
-        </section>
-        <!-- Slide 65: 피드백 및 평가 루브릭 활용 -->
-        <section class="slide-card" id="slide-65">
-          <div class="slide-header">
-            <div>
-              <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
-              <div class="slide-title">피드백 및 평가 루브릭 활용</div>
-            </div>
-            <div class="slide-meta">
-              <span class="day-badge">2일차</span>
-              <span>에듀니티랩</span>
-            </div>
-          </div>
-          <div class="slide-body">
-            <ul class="bullet-list">
-              <li><span class="highlight">동료 평가 기준 (Rubric):</span>
-                <ul>
-                  <li><span class="highlight">문제 정의:</span> 대상 업무와 페인 포인트가 아주 뚜렷한가?</li>
-                  <li><span class="highlight">흐름 설계:</span> 단계별 입출력 연결이 논리적이고 현실성 있는가?</li>
-                  <li><span class="highlight">조건 분기:</span> 상황 분류와 예외 처리(Fallback)가 촘촘히 설계되었는가?</li>
-                  <li><span class="highlight">출력 설계:</span> 후속 시스템이나 사람이 즉시 재활용하기 좋은 형식인가?</li>
-                </ul>
-              </li>
-            </ul>
-            <div class="presenter-notes" style="display:none;">다른 조의 발표를 들으실 때는 이 루브릭을 바탕으로 피드백을 적어 주셔야 합니다. 완성도가 다소
-              낮더라도 아이디어가 참신한지, 실제 동작할 수 있는 흐름으로 쪼개졌는지 건설적이고 날카로운 질문을 많이 던져 주시기 바랍니다.</div>
-            <div class="visual-guide-notes" style="display:none;">별 다섯 개 만점 척도 평가지 이미지와 함께 '건설적 피드백', '질문 중심 토론' 배너
-              타이포그래피 노출.</div>
-          </div>
-        </section>
-        <!-- Slide 66: 과정 클로징: AI 에이전트 설계자로의 도약 -->
-        <section class="slide-card" id="slide-66">
-          <div class="slide-header">
-            <div>
-              <div class="slide-category">6차시. 업무 자동화 Agent 설계: Mini Project</div>
-              <div class="slide-title">과정 클로징: AI 에이전트 설계자로의 도약</div>
-            </div>
-            <div class="slide-meta">
-              <span class="day-badge">2일차</span>
-              <span>에듀니티랩</span>
-            </div>
-          </div>
-          <div class="slide-body">
-            <ul class="bullet-list">
-              <li><span class="highlight">클로징 메시지:</span>
-                <ul>
-                  <li>"AI를 단순히 잘 부려먹는 질문자(Prompt User)를 넘어, AI가 스스로 판단하고 안전하게 일하도록 환경을 만드는 <strong>에이전트 시스템 설계자(Agent
-                      Architect)</strong>로 나아가십시오."</li>
-                  <li><span class="highlight">지속 가능한 액션:</span> 현업 복귀 후 매주 1개의 비효율 업무 발굴하기, Antigravity 플랫폼 활용해 작은
-                    워크플로우부터
-                    점진적으로 구축해 보기.</li>
-                </ul>
-              </li>
-            </ul>
-            <div class="presenter-notes" style="display:none;">이틀 동안 정말 고생 많으셨습니다. 여러분이 만든 설계서는 단순한 종이 조각이 아닌, 곧바로 구현
-              가능한 비즈니스 자산입니다. AI의 노예가 아닌, AI 워크포스를 지휘하는 훌륭한 시스템 아키텍트로서 현업의 혁신을 이끌어 나가시기를 늘 응원하겠습니다. 감사합니다!</div>
-            <div class="visual-guide-notes" style="display:none;">미래지향적이고 웅장한 아치형 건축물 사이로 빛이 들어오는 비주얼. 'Congratulations!
-              Agent Architect' 문구를 세련된 엠보싱 텍스트로 연출하며 화려하게 엔딩.</div>
-          </div>
-        </section>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <div class="presenter-notes" style="display:none;">이틀 동안 정말 고생 많으셨습니다. 여러분이 만든 설계서는 단순한 종이 조각이 아닌, 곧바로 구현 가능한 비즈니스 자산입니다. AI의 노예가 아닌, AI 워크포스를 지휘하는 훌륭한 시스템 아키텍트로서 현업의 혁신을 이끌어 나가시기를 늘 응원하겠습니다. 감사합니다!</div>
+    <div class="visual-guide-notes" style="display:none;">미래지향적이고 웅장한 아치형 건축물 사이로 빛이 들어오는 비주얼. 'Congratulations! Agent Architect' 문구를 세련된 엠보싱 텍스트로 연출하며 화려하게 마무리.</div>
+  </div>
+</section>

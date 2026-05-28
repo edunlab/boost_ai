@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       return; // Skip fetching if slides are already inlined
     }
 
-    const sessions = ['session1.html', 'session2.html', 'session3.html', 'session4.html', 'session5.html', 'session6.html'];
+    const sessions = ['session/session1.html', 'session/session2.html', 'session/session3.html', 'session/session4.html', 'session/session5.html', 'session/session6.html'];
     
     const fetches = sessions.map(file => fetch(file).then(r => {
       if (!r.ok) throw new Error(`HTTP error! status: ${r.status}`);
